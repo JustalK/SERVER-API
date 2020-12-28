@@ -1,0 +1,49 @@
+{
+  "name": "server-api",
+  "version": "1.0.0",
+  "description": "In development",
+  "main": "index.js",
+  "scripts": {
+    "start": "node -e 'require(\"./src/index\").start()'",
+    "seed": "node -e 'require(\"./seeding/seeder.js\").seed()'",
+    "test": "nyc --reporter=text-lcov --reporter=text ava --verbose --timeout=1m",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "engines": {
+    "node": ">=15.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JustalK/SERVER-API.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JustalK/COUPLE-API/issues"
+  },
+  "homepage": "https://github.com/JustalK/COUPLE-API#readme",
+  "dependencies": {
+    "apollo-server-fastify": "^2.19.0",
+    "dotenv": "^8.2.0",
+    "fastify": "^3.9.1",
+    "fastify-mongodb": "^2.0.1",
+    "fastify-plugin": "^3.0.0",
+    "graphql": "^15.4.0",
+    "graphql-tools": "^4.0.8",
+    "isomorphic-fetch": "^3.0.0",
+    "mongo-uri-builder": "^3.2.2",
+    "mongoose": "^5.11.7"
+  },
+  "devDependencies": {
+    "ava": "^3.14.0",
+    "coveralls": "^3.1.0",
+    "mongo-seeding": "^3.5.0",
+    "nyc": "^15.1.0"
+  },
+  "ava": {
+    "files": [
+      "test/**/*",
+      "!test/libs"
+    ]
+  }
+}

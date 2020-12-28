@@ -1,0 +1,184 @@
+{
+	"info": {
+		"_postman_id": "b9f4ad7f-b0af-4a67-87ce-e7fb1e7a9b59",
+		"name": "CoupleApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Mutations",
+			"item": [
+				{
+					"name": "Add new question",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation ($question: String!) { \n    add_new_question(question: $question) {\n        question\n    }\n}",
+								"variables": "{\n    \"question\": \"Do you wanna ask a question ?\"\n}"
+							}
+						},
+						"url": {
+							"raw": "https://couple-api.loca.lt/api/graphql",
+							"protocol": "https",
+							"host": [
+								"couple-api",
+								"loca",
+								"lt"
+							],
+							"path": [
+								"api",
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "59ca6a68-289a-4b61-9f50-1ee0faefeb56",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "dc28cfee-d397-4a8d-9984-0b4ae7d5fcec",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Queries",
+			"item": [
+				{
+					"name": "Count total questions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query { \n    count_total_questions\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://couple-api.loca.lt/api/graphql",
+							"protocol": "https",
+							"host": [
+								"couple-api",
+								"loca",
+								"lt"
+							],
+							"path": [
+								"api",
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all the questions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query { \n    get_all_questions {\n        question\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "https://couple-api.loca.lt/api/graphql",
+							"protocol": "https",
+							"host": [
+								"couple-api",
+								"loca",
+								"lt"
+							],
+							"path": [
+								"api",
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all question by level",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($level: Int) { \n    get_all_questions_by_level(level: $level) {\n        question\n    }\n}",
+								"variables": "{\n    \"level\": 0\n}"
+							}
+						},
+						"url": {
+							"raw": "https://couple-api.loca.lt/api/graphql",
+							"protocol": "https",
+							"host": [
+								"couple-api",
+								"loca",
+								"lt"
+							],
+							"path": [
+								"api",
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get x random questions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($limit: Int) { \n    get_random_questions(limit: $limit) {\n        question\n    }\n}",
+								"variables": "{\n    \"limit\": 2\n}"
+							}
+						},
+						"url": {
+							"raw": "https://couple-api.loca.lt/api/graphql",
+							"protocol": "https",
+							"host": [
+								"couple-api",
+								"loca",
+								"lt"
+							],
+							"path": [
+								"api",
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
