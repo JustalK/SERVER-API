@@ -34,6 +34,8 @@ module.exports = {
 
 		module.exports.register_graphql(server);
 
+		server.register(require('./routes/app'))
+
 		return new Promise(async (resolve, reject) => {
 			try {
 				await server.listen(port);

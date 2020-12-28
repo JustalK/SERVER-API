@@ -8,7 +8,7 @@
     "seed": "node -e 'require(\"./seeding/seeder.js\").seed()'",
     "test": "nyc --reporter=text-lcov --reporter=text ava --verbose --timeout=1m",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-	"check-update": "npm outdated --depth=0"
+    "check-update": "npm outdated --depth=0"
   },
   "engines": {
     "node": ">=15.0"
@@ -31,6 +31,7 @@
     "fastify-plugin": "^3.0.0",
     "graphql": "^15.4.0",
     "graphql-tools": "^4.0.8",
+    "graphql-voyager": "^1.0.0-rc.31",
     "isomorphic-fetch": "^3.0.0",
     "mongo-uri-builder": "^3.2.2",
     "mongoose": "^5.11.7"
