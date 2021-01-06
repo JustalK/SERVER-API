@@ -36,14 +36,18 @@ module.exports = {
 
 		server.register(require('./routes/app'))
 
-		return new Promise(async (resolve, reject) => {
-			try {
-				await server.listen(port);
-				resolve(true);
-			} catch (err) {
-				server.log.error(err);
-				process.exit(1);
-			}
+    return new Promise(async (resolve, reject) => {
+			await server.listen({ port: port, host: host}, module.exports.errors);
+			resolve(true);
 		});
+	},
+	/**
+	* Handle the callback of the server listening
+	* @params {Error} error The object error returned by the listen function
+	**/
+	errors: (error) => {
+		if (error) {
+		 	throw new Error('Server fail');
+		}
 	}
 }
