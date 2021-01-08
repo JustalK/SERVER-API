@@ -1,7 +1,6 @@
 'use strict'
 
 const apollo = require('./apollo');
-const jwt = require('fastify-jwt');
 /**
 * This module take care of the server creation
 **/
@@ -22,15 +21,6 @@ module.exports = {
 	register_graphql: (server) => {
 		server.register(apollo.get_handler());
 	},
-	/**
-	* Allow us to use JWT with fastify for authentification system
-	* @params {fastify} server The server allowed to use JWT
-	**/
-  register_jwt: (server) => {
-    server.register(jwt, {
-      secret: 'supersecret'
-    })
-  },
 	/**
 	* Start the server using the parameter
 	* @params {string} name The name of the server
