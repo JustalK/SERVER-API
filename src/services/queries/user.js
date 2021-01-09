@@ -11,7 +11,8 @@ module.exports = {
 	/**
 	* Services for getting all the question
 	**/
-	get_all_users: async () => {
+	get_all_users: async (_, args, context) => {
+		console.log(context);
 		return dbs.get_all({});
 	}
 };
