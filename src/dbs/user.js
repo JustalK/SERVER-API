@@ -12,5 +12,13 @@ module.exports = {
 	**/
 	insert: (user) => {
 		return model.create(user);
+	},
+	/**
+	* Call mongodb for testing the existence of a document respecting the condtion
+	* @params {Object} The condition the document has to respect
+	* @return {boolean} True if a document exist or else False
+	**/
+	test: (find) => {
+		return model.exists(find);
 	}
 };
