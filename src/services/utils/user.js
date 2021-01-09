@@ -51,19 +51,27 @@ module.exports = {
 		return dbs.insert(user);
 	},
 	/**
+	* Get an user by username or email
+	* @params {String} login The username or email to search
+	* @return {Object} The user found or null
+	**/
+	get_user_by_login: async login => {
+		return dbs.get_one({$or: [{email: login}, {username: login}]});
+	},
+	/**
 	* Test the an user exist in the db with the username specified
 	* @params {String} username The username to test
-	* @return True if the username exist or else False
+	* @return {boolean} True if the username exist or else False
 	**/
-	is_user_exist_by_username: async (username) => {
+	is_user_exist_by_username: async username => {
 		return dbs.test({username: username});
 	},
 	/**
 	* Test the email if a user exist in the db with this email
 	* @params {String} email The email to test
-	* @return True if the user exist or else False
+	* @return {boolean} True if the user exist or else False
 	**/
-	is_user_exist_by_email: async (email) => {
+	is_user_exist_by_email: async email => {
 		return dbs.test({email: email});
 	}
 };

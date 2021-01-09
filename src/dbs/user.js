@@ -14,6 +14,14 @@ module.exports = {
 		return model.create(user);
 	},
 	/**
+	* Call mongodb for getting a document respecting the condtion
+	* @params {Object} The condition the document has to respect
+	* @return {Object} The document found or null
+	**/
+	get_one: (find) => {
+		return model.findOne(find);
+	},
+	/**
 	* Call mongodb for testing the existence of a document respecting the condtion
 	* @params {Object} The condition the document has to respect
 	* @return {boolean} True if a document exist or else False
