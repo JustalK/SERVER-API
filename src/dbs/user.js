@@ -14,6 +14,14 @@ module.exports = {
 		return model.create(user);
 	},
 	/**
+	* Call mongodb for getting all the document respecting the conditions
+	* @params {Object} find The condition the document has to respect
+	* @return {User} The users respecting the conditions
+	**/
+	get_all: (find) => {
+		return model.find(find);
+	},
+	/**
 	* Call mongodb for getting a document respecting the condtion
 	* @params {Object} The condition the document has to respect
 	* @return {Object} The document found or null

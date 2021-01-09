@@ -5,7 +5,7 @@ const utils_auth = require('../utils/auth');
 const utils_password = require('../utils/password');
 
 /**
-* Manage the queries for the level model
+* Manage the queries for the authentification process
 **/
 module.exports = {
 	/**
