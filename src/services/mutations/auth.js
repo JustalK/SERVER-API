@@ -16,6 +16,7 @@ module.exports = {
     const user = await utils_user.add_user(args);
     const payload = utils_auth.create_payload(user);
     const token = jwt.sign(payload, secret);
-    return token;
+
+	return {...user.toJSON(), token: token};
 	}
 };

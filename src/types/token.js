@@ -3,12 +3,8 @@
 const { gql } = require('apollo-server-fastify');
 
 module.exports = gql`
-	interface Account {
-		username: String!
-		email: String!
-		password: String!
-	}
-	type User implements Account {
+	type Token implements Account {
+		token: String
 		username: String!
 		email: String!
 		password: String!

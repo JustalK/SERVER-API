@@ -65,7 +65,13 @@ module.exports = {
 		const typeDefs = module.exports.get_types();
 		const resolvers = module.exports.get_resolvers();
 
-		const schema = makeExecutableSchema({typeDefs, resolvers});
+		const schema = makeExecutableSchema({
+			typeDefs,
+			resolvers,
+			resolverValidationOptions: {
+				requireResolversForResolveType: false
+			}
+		});
 		return schema;
 	},
 	/**
