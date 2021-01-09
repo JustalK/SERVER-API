@@ -3,7 +3,7 @@
 const bcrypt = require('bcrypt');
 
 /**
-* Manage the queries for the level model
+* Manage the utils function for password
 **/
 module.exports = {
 	/**

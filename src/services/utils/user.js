@@ -3,6 +3,7 @@
 const path = require('path');
 const utils_auth = require('./auth');
 const utils_password = require('./password');
+const utils_email = require('./email');
 const filename = path.basename(__filename, '.js');
 const dbs = require('../../dbs/' + filename);
 const User = require('../../models/' + filename);
@@ -16,12 +17,18 @@ module.exports = {
 	* @params {Object} args The argument passed to the function
 	**/
 	add_user: async (args) => {
-	    const tmp_user = args;
+		const tmp_user = args;
 
-		// Check if user already exist
+		// Check if the email is a real one
+		const is_email = utils_email.check_email(args.email);
+		if (!is_email) {
+			throw new Error('This is not an email.');
+		}
+
+		// Check if an user with the same email already exist
 		const is_email_already_used = await module.exports.is_user_exist_by_email(args.email);
-		if (!is_email_already_used) {
-			throw new Error('This email is already used by someone else.')
+		if (is_email_already_used) {
+			throw new Error('This email is already used by someone else.');
 		}
 
 		// Check if the password is strong

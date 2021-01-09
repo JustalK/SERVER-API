@@ -1,7 +1,7 @@
 'use strict';
 
 /**
-* Manage the queries for the level model
+* Manage the utils function for the auth
 **/
 module.exports = {
 	create_payload: (user) => {
