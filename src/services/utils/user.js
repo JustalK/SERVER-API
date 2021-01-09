@@ -2,6 +2,7 @@
 
 const path = require('path');
 const utils_auth = require('./auth');
+const utils_password = require('./password');
 const filename = path.basename(__filename, '.js');
 const dbs = require('../../dbs/' + filename);
 const User = require('../../models/' + filename);
@@ -24,7 +25,7 @@ module.exports = {
 		}
 
 		// Check if the password is strong
-		const is_password_not_strong = utils_auth.check_new_password(
+		const is_password_not_strong = utils_password.check_new_password(
 			args.password,
 			['has_lowercase', 'has_uppercase', 'has_number', 'has_enough_length']
 		);
@@ -32,7 +33,7 @@ module.exports = {
 			throw new Error('This password is not strong enough. It must have a lowercase, an uppercase, a number and a length superior at ' + Number(process.env.PASSWORD_LIMIT_CHARACTER))
 		}
 
-		tmp_user.password = await utils_auth.hash_password(tmp_user.password);
+		tmp_user.password = await utils_password.hash_password(tmp_user.password);
 		const user = new User(args);
 		return dbs.insert(user);
 	},
