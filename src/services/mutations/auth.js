@@ -2,6 +2,7 @@
 
 const utils_user = require('../utils/user');
 const utils_auth = require('../utils/auth');
+const utils_password = require('../utils/password');
 
 /**
 * Manage the queries for the level model
@@ -24,12 +25,18 @@ module.exports = {
 	* @params {Object} args The argument passed to the function
 	**/
 	login: async (parent, args) => {
+		// Check if an account exist for the user
 		const user = await utils_user.get_user_by_login(args.login);
 		if (user === null) {
 			throw new Error('This account does not exist.');
 		}
 
-		//TODO Check validity of the password
+		// Check if the password is the corect one
+		const is_password_correct = await utils_password.compare_password_hash(args.password, user.password);
+		if (!is_password_correct) {
+			throw new Error('The password is not correct.');
+		}
+
 		const token = utils_auth.create_token(user);
 		return {...user.toJSON(), token: token};
 	}

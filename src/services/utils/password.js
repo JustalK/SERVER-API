@@ -16,6 +16,15 @@ module.exports = {
 		return bcrypt.hash(password, salt);
 	},
 	/**
+	* Compare a password with a hash password
+	* @params {string} password The password we want to check
+	* @params {string} hash_password The password to what we want to check
+	* @return The encrypted password
+	**/
+	compare_password_hash: async (password, hash_password) => {
+		return bcrypt.compare(password, hash_password);
+	},
+	/**
 	* Check if the password has a lowercase
 	* @params {string} password The password to check
 	* @return {string} True if the password has a lowercase or else False
