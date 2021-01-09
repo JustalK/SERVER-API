@@ -25,10 +25,16 @@ module.exports = {
 			throw new Error('This is not an email.');
 		}
 
-		// Check if an user with the same email already exist
+		// Check if an user with the same email exist
 		const is_email_already_used = await module.exports.is_user_exist_by_email(args.email);
 		if (is_email_already_used) {
 			throw new Error('This email is already used by someone else.');
+		}
+
+		// Check if an user with the same username exist
+		const is_username_already_used = await module.exports.is_user_exist_by_username(args.username);
+		if (is_username_already_used) {
+			throw new Error('This username is already used by someone else.');
 		}
 
 		// Check if the password is strong
@@ -45,8 +51,16 @@ module.exports = {
 		return dbs.insert(user);
 	},
 	/**
+	* Test the an user exist in the db with the username specified
+	* @params {String} username The username to test
+	* @return True if the username exist or else False
+	**/
+	is_user_exist_by_username: async (username) => {
+		return dbs.test({username: username});
+	},
+	/**
 	* Test the email if a user exist in the db with this email
-	* @params {String} email Test if the user exist by email
+	* @params {String} email The email to test
 	* @return True if the user exist or else False
 	**/
 	is_user_exist_by_email: async (email) => {
