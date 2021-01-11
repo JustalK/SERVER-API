@@ -2,6 +2,7 @@
 
 const { ApolloServer, gql } = require('apollo-server-fastify');
 const { makeExecutableSchema } = require('graphql-tools');
+const { isLoggedinDirective } = require("./services/directives/directives");
 const fs = require('fs');
 
 module.exports = {
@@ -68,6 +69,9 @@ module.exports = {
 		const schema = makeExecutableSchema({
 			typeDefs,
 			resolvers,
+      schemaDirectives: {
+        isLoggedin: isLoggedinDirective,
+      },
 			resolverValidationOptions: {
 				requireResolversForResolveType: false
 			}
