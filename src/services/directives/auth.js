@@ -7,7 +7,7 @@ const utils_auth = require('../utils/auth');
 /**
 * Create a directive for managing the Permissions of call
 **/
-class isLoggedinDirective extends SchemaDirectiveVisitor {
+class isLoggedIn extends SchemaDirectiveVisitor {
 	visitFieldDefinition(field) {
 		const { resolve = defaultFieldResolver } = field;
 		field.resolve = async function (...args) {
@@ -21,11 +21,11 @@ class isLoggedinDirective extends SchemaDirectiveVisitor {
 			if (payload.date_given < payload.exp) {
 				throw new ForbiddenError("The token expired.");
 			}
-			
+
 			const result = await resolve.apply(this, args);
 			return result;
 		};
 	}
 }
 
-module.exports = { isLoggedinDirective }
+module.exports = { isLoggedIn }
