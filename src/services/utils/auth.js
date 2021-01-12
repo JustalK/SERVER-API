@@ -40,7 +40,7 @@ module.exports = {
 	**/
 	create_token: (user) => {
 		const payload = module.exports.create_payload(user);
-		const token = jwt.sign(payload, module.exports.get_secret(),{expiresIn: 2 });
+		const token = jwt.sign(payload, module.exports.get_secret(),{expiresIn: process.env.TOKEN_EXPIRE_TIME });
 		return token;
 	},
 	/**
