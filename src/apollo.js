@@ -91,15 +91,15 @@ module.exports = {
 	create_server: schema => {
 		return new ApolloServer({
 			schema,
-	context: (req) => {
-		// get the authorization from the request headers
-		// return a context obj with our token. if any!
-		const request = req.request;
-		const auth = request.headers.authorization || '';
-		return {
-			auth
-		};
-	}
+			context: (req) => {
+				// get the authorization from the request headers
+				// return a context obj with our token. if any!
+				const request = req.request;
+				const auth = request.headers.authorization || '';
+				return {
+					auth
+				};
+			}
 		});
 	},
 	/**
