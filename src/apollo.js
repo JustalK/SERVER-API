@@ -110,7 +110,7 @@ module.exports = {
 		const server = module.exports.create_server(schema);
 
 		return server.createHandler({
-			path: '/api/graphql'
+			path: process.env.ENDPOINT
 		})
 	}
 }
