@@ -91,6 +91,7 @@ module.exports = {
 	create_server: schema => {
 		return new ApolloServer({
 			schema,
+      introspection: true,
 			context: ({req}) => {
 				// get the authorization from the request headers
 				// return a context obj with our token. if any!

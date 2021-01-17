@@ -1,6 +1,9 @@
 'use strict'
 
 const apollo = require('./apollo');
+const express = require('express');
+const voyagerMiddleware =  require('graphql-voyager/middleware');
+
 /**
 * This module take care of the server creation
 **/
@@ -10,16 +13,15 @@ module.exports = {
 	* @return {fastify} A server restify without any routes
 	**/
 	create_server: () => {
-		return require('fastify')({
-			logger: true
-		})
+		return express();
 	},
 	/**
 	* Allow us to use Graph QL with fastify
 	* @params {fastify} server The server allowed to use graphQl
 	**/
 	register_graphql: (server) => {
-		server.register(apollo.get_handler());
+    const apollo_server = apollo.get_handler();
+		apollo_server.applyMiddleware({app: server, path: process.env.ENDPOINT});
 	},
 	/**
 	* Start the server using the parameter
@@ -33,7 +35,9 @@ module.exports = {
 
 		module.exports.register_graphql(server);
 
-		server.register(require('./routes/app'))
+    server.use('/voyager', voyagerMiddleware.express({ endpointUrl: '/api/graphql' }));
+
+		server.use('/', require('./routes/app'));
 
     return new Promise(async (resolve, reject) => {
 			await server.listen({ port: port, host: host}, module.exports.errors);
