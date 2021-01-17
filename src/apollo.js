@@ -1,6 +1,6 @@
 'use strict'
 
-const { ApolloServer, gql } = require('apollo-server-fastify');
+const { ApolloServer, gql } = require('apollo-server-express');
 const { makeExecutableSchema } = require('graphql-tools');
 const fs = require('fs');
 
@@ -91,11 +91,11 @@ module.exports = {
 	create_server: schema => {
 		return new ApolloServer({
 			schema,
-			context: (req) => {
+			context: ({req}) => {
 				// get the authorization from the request headers
 				// return a context obj with our token. if any!
-				const request = req.request;
-				const auth = request.headers.authorization || '';
+				const request = req.headers;
+				const auth = req.headers.authorization || '';
 				return {
 					auth
 				};
@@ -109,8 +109,6 @@ module.exports = {
 		const schema = module.exports.create_schema();
 		const server = module.exports.create_server(schema);
 
-		return server.createHandler({
-			path: process.env.ENDPOINT
-		})
+		return server;
 	}
 }

@@ -1,7 +1,11 @@
-module.exports = async (fastify, options) => {
-	fastify.get('/', async (request, reply) => {
-		return {
-			status: 'working'
-		}
-	})
-}
+const express = require('express')
+const router = express.Router()
+
+router.get('/', async (request, response) => {
+  response.send({
+    status: 'working'
+  });
+})
+
+
+module.exports = router;
