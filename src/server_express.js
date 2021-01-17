@@ -2,6 +2,7 @@
 
 const apollo = require('./apollo');
 const express = require('express');
+const voyagerMiddleware =  require('graphql-voyager/middleware');
 
 /**
 * This module take care of the server creation
@@ -33,6 +34,8 @@ module.exports = {
 		const server = module.exports.create_server();
 
 		module.exports.register_graphql(server);
+
+    server.use('/voyager', voyagerMiddleware.express({ endpointUrl: '/api/graphql' }));
 
 		server.use('/', require('./routes/app'));
 

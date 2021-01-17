@@ -35,10 +35,13 @@
     "fastify-plugin": "^3.0.0",
     "graphql": "^15.4.0",
     "graphql-tools": "^4.0.8",
+    "graphql-voyager": "^1.0.0-rc.31",
     "isomorphic-fetch": "^3.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongo-uri-builder": "^3.2.2",
-    "mongoose": "^5.11.7"
+    "mongoose": "^5.11.7",
+    "react": "^16.3.0",
+    "react-dom": "^16.8.6"
   },
   "devDependencies": {
     "ava": "^3.14.0",
