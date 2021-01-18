@@ -2,7 +2,7 @@
 
 const path = require('path')
 const filename = path.basename(__filename, '.js')
-const dbs = require('../../dbs/' + filename)
+const dbs = require('@src/dbs/' + filename)
 
 /**
 * Manage the queries for the question model

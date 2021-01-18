@@ -39,6 +39,7 @@
     "graphql-voyager": "^1.0.0-rc.31",
     "isomorphic-fetch": "^3.0.0",
     "jsonwebtoken": "^8.5.1",
+    "module-alias": "^2.2.2",
     "mongo-uri-builder": "^3.2.2",
     "mongoose": "^5.11.7",
     "react": "^16.3.0",
@@ -60,5 +61,8 @@
       "test/**/*",
       "!test/libs"
     ]
+  },
+  "_moduleAliases": {
+    "@src"      : "./src"
   }
 }

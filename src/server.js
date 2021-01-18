@@ -1,6 +1,6 @@
 'use strict'
 
-const apollo = require('./apollo')
+const apollo = require('@src/apollo')
 const express = require('express')
 const voyagerMiddleware = require('graphql-voyager/middleware')
 

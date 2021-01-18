@@ -2,7 +2,7 @@
 
 const { ForbiddenError, SchemaDirectiveVisitor } = require('apollo-server-fastify')
 const { defaultFieldResolver } = require('graphql')
-const utils_auth = require('../utils/auth')
+const utils_auth = require('@src/services/utils/auth')
 
 /**
 * Create a directive for managing the Permissions of call

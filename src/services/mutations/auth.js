@@ -1,8 +1,8 @@
 'use strict'
 
-const utils_user = require('../utils/user')
-const utils_auth = require('../utils/auth')
-const utils_password = require('../utils/password')
+const utils_user = require('@src/services/utils/user')
+const utils_auth = require('@src/services/utils/auth')
+const utils_password = require('@src/services/utils/password')
 
 /**
 * Manage the queries for the authentification process

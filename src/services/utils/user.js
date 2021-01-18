@@ -1,11 +1,11 @@
 'use strict'
 
 const path = require('path')
-const utils_password = require('./password')
-const utils_email = require('./email')
+const utils_password = require('@src/services/utils/password')
+const utils_email = require('@src/services/utils/email')
 const filename = path.basename(__filename, '.js')
-const dbs = require('../../dbs/' + filename)
-const User = require('../../models/' + filename)
+const dbs = require('@src/dbs/' + filename)
+const User = require('@src/models/' + filename)
 
 /**
 * Manage the mutations for the question model
