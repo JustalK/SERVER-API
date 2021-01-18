@@ -10,8 +10,8 @@ module.exports = {
   * @params {Object} find The matching parameters
   * @return {Level[]} Return an array of level
   **/
-  get_all: (find) => {
+  get_config: () => {
     return model
-      .find(find)
+      .findOne()
   }
 }
