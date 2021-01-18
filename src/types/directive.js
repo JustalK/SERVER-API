@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
-const { gql } = require('apollo-server-fastify');
+const { gql } = require('apollo-server-fastify')
 
 module.exports = gql`
-	directive @isLoggedIn on FIELD_DEFINITION
+  directive @isLoggedIn on FIELD_DEFINITION
 `

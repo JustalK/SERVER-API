@@ -9,7 +9,7 @@
     "test": "nyc --reporter=text-lcov --reporter=text ava --verbose --timeout=1m",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "check-update": "npm outdated --depth=0",
-    "linter": "eslint --fix ./src/*.js"
+    "linter": "eslint --fix './src/**/*.js'"
   },
   "engines": {
     "node": ">=15.0"

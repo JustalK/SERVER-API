@@ -1,6 +1,6 @@
 'use strict'
 
-const { ApolloServer, gql } = require('apollo-server-express')
+const { ApolloServer } = require('apollo-server-express')
 const { makeExecutableSchema } = require('graphql-tools')
 const fs = require('fs')
 
@@ -26,6 +26,7 @@ module.exports = {
     const path_without_src = path.replace('src/', './')
     services.map(service => {
       result = { ...result, ...require(path_without_src + '/' + service.split('.')[0]) }
+      return null
     })
     return result
   },
@@ -95,7 +96,6 @@ module.exports = {
       context: ({ req }) => {
         // get the authorization from the request headers
         // return a context obj with our token. if any!
-        const request = req.headers
         const auth = req.headers.authorization || ''
         return {
           auth
