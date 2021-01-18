@@ -2,7 +2,7 @@
 
 This project is a fresh starter for creating a **REST API** with all my favorite tools.
 
-The server is using the library `Fastify` but it can be switch easily in the **server.js** file for Express or Restify. The server is linked to the library `Apollo-server` for managing the data with `GraphQL`. The database is handle by `MongoDB` and can also be easily switch in **database.js**.
+The server is using the library `Restify` but it can be switch easily in the **server.js** file for Express or Restify. The server is linked to the library `Apollo-server` for managing the data with `GraphQL`. The database is handle by `MongoDB` and can also be easily switch in **database.js**.
 
 The models are found in the folder **models**. Their schema are described with `mongoose` and also typed for using `GraphQL`.
 
@@ -13,13 +13,27 @@ The continuous integration is handled with `Travis` and the coverage is checked 
 I explain with all the details how I build the project and my way of working.
 
 1. [ERD](#erd)
-2. [Organization](#organization)
-3. [Development](#development)
-4. [Seeding](#seeding)
-5. [Testing](#testing)
-6. [Running](#running)
+2. [Documentation](#documentation)
+3. [Organization](#organization)
+4. [Development](#development)
+5. [Seeding](#seeding)
+6. [Testing](#testing)
+7. [Running](#running)
 
 ## ERD
+
+`Graphql-voyager` has been added as a middleware so you can visualize the ERD on the following endpoint : `/erd`
+
+## Documentation API
+
+Since it's a graphql, anyone can generate the documentation by introspection. I suggest to use this tool `2fd/graphdoc` with the following commands :
+
+```
+npm install -g @2fd/graphdoc
+graphdoc -e http://localhost:5000/graphql -o ./doc/schema
+```
+
+A html doc will be then found inside the directory **/doc/schema**.
 
 ## Organization
 

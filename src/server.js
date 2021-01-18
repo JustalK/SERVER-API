@@ -35,7 +35,7 @@ module.exports = {
 
 		module.exports.register_graphql(server);
 
-    server.use('/voyager', voyagerMiddleware.express({ endpointUrl: '/api/graphql' }));
+    server.use('/erd', voyagerMiddleware.express({ endpointUrl: '/api/graphql' }));
 
 		server.use('/', require('./routes/app'));
 
