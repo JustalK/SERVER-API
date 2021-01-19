@@ -3,24 +3,14 @@ const path = require('path')
 const filename = path.basename(__filename, '.js')
 
 const schema = new mongoose.Schema({
-  usertype: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'user_type',
-    required: true
-  },
-  username: {
+  name: {
     type: String,
+    uppercase: true,
     trim: true,
     require: true
   },
-  email: {
-    type: String,
-    trim: true,
-    require: true
-  },
-  password: {
-    type: String,
-    trim: true,
+  permission_level: {
+    type: Number,
     require: true
   }
 }, {

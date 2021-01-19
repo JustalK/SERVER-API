@@ -16,5 +16,8 @@ module.exports = gql`
 
     # The password of the user
     password: String!
+
+    # The usertype Object of the user
+    user_type: User_type!
   }
 `
