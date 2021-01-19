@@ -1,8 +1,9 @@
 'use strict'
 
-const apollo = require('@src/apollo')
 const express = require('express')
 const voyagerMiddleware = require('graphql-voyager/middleware')
+const apollo = require('@src/apollo')
+const logger = require('@src/libs/logger')
 
 /**
 * This module take care of the server creation
@@ -39,18 +40,18 @@ module.exports = {
     server.use('/', require('./routes/app'))
 
     return new Promise((resolve, reject) => {
-      server.listen({ port: port, host: host }, (error) => module.exports.errors(error, resolve, reject))
+      server.listen({ port: port, host: host }, (error) => module.exports.callback(error, resolve, reject))
     })
   },
   /**
   * Handle the callback of the server listening
   * @params {Error} error The object error returned by the listen function
   **/
-  errors: (error, resolve, reject) => {
+  callback: (error, resolve, reject) => {
     if (error) {
       reject('Server fail to start !')
     }
-
+    logger.info('Server Started')
     resolve(true)
   }
 }

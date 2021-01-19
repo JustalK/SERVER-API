@@ -1,6 +1,7 @@
 'use strict'
 
 const bcrypt = require('bcrypt')
+const dbs_config = require('@src/dbs/config')
 
 /**
 * Manage the utils function for password
@@ -53,8 +54,9 @@ module.exports = {
   * @params {string} password The password to check
   * @return {string} True if the password is long enough or else False
   **/
-  has_enough_length: (password, length) => {
-    return password.length > Number(process.env.PASSWORD_LIMIT_CHARACTER)
+  has_enough_length: async (password, length) => {
+    const config = dbs_config.get_config()
+    return password.length > Number(config.password_limit_character)
   },
   /**
   * Check if the password depending of the conditon passed
@@ -64,8 +66,8 @@ module.exports = {
   * @return {string} True if the password respect all condition or else False
   **/
   check_new_password: (password, conditions = []) => {
-    const result = conditions.reduce((accumulator, current_value) => {
-      return accumulator + Number(module.exports[current_value](password))
+    const result = conditions.reduce(async (accumulator, current_value) => {
+      return accumulator + Number(await module.exports[current_value](password))
     }, 0)
     return result !== conditions.length
   }
