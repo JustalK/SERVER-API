@@ -6,6 +6,11 @@ const schema = new mongoose.Schema({
   password_limit_character: {
     type: Number,
     require: true
+  },
+  default_user_type: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user_type',
+    required: true
   }
 }, {
   timestamps: {

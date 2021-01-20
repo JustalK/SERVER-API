@@ -14,6 +14,14 @@ module.exports = {
   * @params {String} name The name of the user type searched
   * @return {user_type} The user type found
   **/
+  get_user_type_by_id: id => {
+    return dbs.get_one({ _id: id })
+  },
+  /**
+  * Return the user_type by the name
+  * @params {String} name The name of the user type searched
+  * @return {user_type} The user type found
+  **/
   get_user_type_by_name: name => {
     if (!name) {
       throw new Error('The name cannot be null.')
@@ -27,6 +35,6 @@ module.exports = {
   get_default_user_type: async () => {
     const config = await utils_config.get_config()
     const default_user_type = config.default_user_type
-    return module.exports.get_user_type_by_name(default_user_type)
+    return module.exports.get_user_type_by_id(default_user_type)
   }
 }

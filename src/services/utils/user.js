@@ -45,9 +45,10 @@ module.exports = {
       throw new Error('This password is not strong enough. It must have a lowercase, an uppercase, a number and a length superior at ' + Number(process.env.PASSWORD_LIMIT_CHARACTER))
     }
 
+    const default_user_type = await utils_user_type.get_default_user_type()
+    args.user_type = default_user_type._id
+
     tmp_user.password = await utils_password.hash_password(tmp_user.password)
-    const default_user_type = utils_user_type.get_default_user_type()
-    console.log(default_user_type)
     const user = new User(args)
     return dbs.insert(user)
   },

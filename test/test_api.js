@@ -39,8 +39,7 @@ test('[STATIC] Subscribe', async t => {
       }`
   })
 
-  console.log(response)
-  t.not(response.login.username, 'robert')
-  t.is(response.login.email, 'robert@gmail.com')
-  t.not(response.login.token, undefined)
+  t.not(response.signing.username, 'robert')
+  t.is(response.signing.email, 'robert@gmail.com')
+  t.not(response.signing.token, undefined)
 })
