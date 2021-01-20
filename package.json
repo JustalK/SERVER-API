@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run linter && node -e 'require(\"./src/index\").start()'",
     "seed": "node -e 'require(\"./seeding/seeder.js\").seed()'",
-    "test": "nyc --reporter=text-lcov --reporter=text ava --verbose --timeout=1m",
+    "test": "nyc ava --verbose --timeout=1m",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "check-update": "npm outdated --depth=0",
     "linter": "eslint --fix './src/**/*.js'"

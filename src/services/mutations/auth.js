@@ -16,7 +16,6 @@ module.exports = {
   signing: async (_, args) => {
     const user = await utils_user.add_user(args)
     const token = utils_auth.create_token(user)
-
     return { ...user.toJSON(), token: token }
   },
   /**

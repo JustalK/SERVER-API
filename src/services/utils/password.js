@@ -55,7 +55,7 @@ module.exports = {
   * @return {string} True if the password is long enough or else False
   **/
   has_enough_length: async (password, length) => {
-    const config = dbs_config.get_config()
+    const config = await dbs_config.get_config()
     return password.length > Number(config.password_limit_character)
   },
   /**
@@ -65,10 +65,10 @@ module.exports = {
   * @params {string[]} conditions An array of the name of the check function
   * @return {string} True if the password respect all condition or else False
   **/
-  check_new_password: (password, conditions = []) => {
-    const result = conditions.reduce(async (accumulator, current_value) => {
-      return accumulator + Number(await module.exports[current_value](password))
-    }, 0)
+  check_new_password: async (password, conditions = []) => {
+    const result = await conditions.reduce(async (accumulator, current_value) => {
+      return Promise.resolve(await accumulator + Number(await module.exports[current_value](password)))
+    }, Promise.resolve(0))
     return result !== conditions.length
   }
 }
