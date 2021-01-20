@@ -3,7 +3,7 @@ const path = require('path')
 const filename = path.basename(__filename, '.js')
 
 const schema = new mongoose.Schema({
-  usertype: {
+  user_type: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user_type',
     required: true

@@ -3,10 +3,10 @@
 const path = require('path')
 const utils_password = require('@src/services/utils/password')
 const utils_email = require('@src/services/utils/email')
+const utils_user_type = require('@src/services/utils/user_type')
 const filename = path.basename(__filename, '.js')
 const dbs = require('@src/dbs/' + filename)
 const User = require('@src/models/' + filename)
-const queries_config = require('@src/services/queries/config')
 
 /**
 * Manage the mutations for the question model
@@ -46,6 +46,8 @@ module.exports = {
     }
 
     tmp_user.password = await utils_password.hash_password(tmp_user.password)
+    const default_user_type = utils_user_type.get_default_user_type()
+    console.log(default_user_type)
     const user = new User(args)
     return dbs.insert(user)
   },
@@ -56,14 +58,6 @@ module.exports = {
   **/
   get_user_by_login: async login => {
     return dbs.get_one({ $or: [{ email: login }, { username: login }] })
-  },
-  /**
-  * Get the default user type 
-  **/
-  get_default_user_type: async () => {
-    const config = queries_config.get_config()
-    const default_user_type = config.default_user_type
-    await
   },
   /**
   * Test the an user exist in the db with the username specified

@@ -1,14 +1,12 @@
 'use strict'
 
-const path = require('path')
-const filename = path.basename(__filename, '.js')
-const dbs = require('@src/dbs/' + filename)
+const utils_config = require('@src/services/utils/config')
 
 /**
 * Manage the utils function for the config
 **/
 module.exports = {
   get_config: () => {
-    return dbs.get_config()
+    return utils_config.get_config()
   }
 }
