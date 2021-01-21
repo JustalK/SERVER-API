@@ -13,5 +13,6 @@ module.exports = {
   get_config: () => {
     return model
       .findOne()
+      .populate('default_user_type')
   }
 }

@@ -43,3 +43,20 @@ test('[STATIC] Subscribe', async t => {
   t.is(response.signing.email, 'robert@gmail.com')
   t.not(response.signing.token, undefined)
 })
+
+test('[STATIC] Get the config', async t => {
+  const response = await m_utils.getter({
+    query: `
+      query {
+        get_config {
+          password_limit_character
+          default_user_type {
+            name
+          }
+        }
+      }`
+  })
+
+  t.not(response.get_config.password_limit_character, undefined)
+  t.not(response.get_config.default_user_type.name, undefined)
+})
