@@ -8,5 +8,9 @@ module.exports = {
   **/
   mode: node_env => {
     return node_env !== undefined ? node_env : 'production'
+  },
+  capitalize: (s) => {
+    if (typeof s !== 'string') return ''
+    return s.charAt(0).toUpperCase() + s.slice(1)
   }
 }

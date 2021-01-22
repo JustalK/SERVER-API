@@ -2,6 +2,7 @@
 
 const { ApolloServer } = require('apollo-server-express')
 const { makeExecutableSchema } = require('graphql-tools')
+const utils = require('@src/libs/utils')
 const fs = require('fs')
 
 module.exports = {
@@ -45,6 +46,22 @@ module.exports = {
     return module.exports.get_services('src/services/mutations')
   },
   /**
+  * Get the resolver for multiple level queries from the services
+  * @return {Object} Return The resolvers
+  **/
+  get_resolvers_children: () => {
+    const result = {}
+    const resolvers = fs.readdirSync('src/services/resolvers')
+    const path_without_src = './services/resolvers'
+    resolvers.map(resolver => {
+      const filename_without_ext = resolver.split('.')[0]
+      const key = utils.capitalize(filename_without_ext)
+      result[key] = require(path_without_src + '/' + filename_without_ext)
+      return null
+    })
+    return result
+  },
+  /**
   * Get the directives from the services
   * @return {Object} Return The directives
   **/
@@ -58,15 +75,12 @@ module.exports = {
   get_resolvers: () => {
     const queries = module.exports.get_queries()
     const mutations = module.exports.get_mutations()
+    const resolvers_children = module.exports.get_resolvers_children()
 
     const resolvers = {
       Query: queries,
-      Config: {
-        default_user_type (parent) {
-          return { name: 'whatever' }
-        }
-      },
-      Mutation: mutations
+      Mutation: mutations,
+      ...resolvers_children
     }
     return resolvers
   },

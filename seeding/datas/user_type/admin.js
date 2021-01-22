@@ -6,6 +6,6 @@ module.exports = [
   {
     id: mongoose.Types.ObjectId('5fd5b58efbc2f7a33c2aa001'),
     name: 'ADMIN',
-    level: 99
+    permission_level: 99
   }
 ]
