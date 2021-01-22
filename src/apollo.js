@@ -61,6 +61,11 @@ module.exports = {
 
     const resolvers = {
       Query: queries,
+      Config: {
+        default_user_type (parent) {
+          return { name: 'whatever' }
+        }
+      },
       Mutation: mutations
     }
     return resolvers

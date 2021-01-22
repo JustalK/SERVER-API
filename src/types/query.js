@@ -9,5 +9,7 @@ module.exports = gql`
     get_all_users: [User]! @isLoggedIn
     # Get the config of the API
     get_config: Config!
+    # Get the config of the API
+    get_default_user_type: User_type!
   }
 `

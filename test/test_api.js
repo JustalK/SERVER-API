@@ -57,6 +57,7 @@ test('[STATIC] Get the config', async t => {
       }`
   })
 
+  console.log(response)
   t.not(response.get_config.password_limit_character, undefined)
   t.not(response.get_config.default_user_type.name, undefined)
 })
