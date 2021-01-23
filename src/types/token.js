@@ -4,20 +4,11 @@ const { gql } = require('apollo-server-fastify')
 
 module.exports = gql`
   # The User with a token
-  type Token implements Account {
+  type Token {
     # The OAUTH token use for connecting
     token: String
 
-    # The username of the user
-    username: String!
-
-    # The email of the user
-    email: String!
-
-    # The password of the user
-    password: String!
-
-    # The usertype Object of the user
-    user_type: User_type!
+    # The user of this token
+    user: User!
   }
 `

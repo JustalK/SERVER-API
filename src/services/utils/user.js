@@ -61,6 +61,14 @@ module.exports = {
     return dbs.get_one({ $or: [{ email: login }, { username: login }] })
   },
   /**
+  * Get an user by id
+  * @params {String} id The id of the user to search
+  * @return {Object} The user found or null
+  **/
+  get_user_by_id: async id => {
+    return dbs.get_one({ _id: id })
+  },
+  /**
   * Test the an user exist in the db with the username specified
   * @params {String} username The username to test
   * @return {boolean} True if the username exist or else False

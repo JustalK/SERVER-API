@@ -16,15 +16,17 @@ test('[STATIC] Login', async t => {
     query: `
       mutation {
         login(login: "admin", password: "azerty") {
-          username
-          email
+          user {
+            username
+            email
+          }
           token
         }
       }`
   })
 
-  t.is(response.login.username, 'admin')
-  t.is(response.login.email, 'admin@gmail.com')
+  t.is(response.login.user.username, 'admin')
+  t.is(response.login.user.email, 'admin@gmail.com')
   t.not(response.login.token, undefined)
 })
 
@@ -33,14 +35,16 @@ test('[STATIC] Subscribe', async t => {
     query: `
       mutation {
         signing(username: "robert", email: "robert@gmail.com", password: "FrsdsdstSc8@") {
-          email
+          user {
+            email
+          }
           token
         }
       }`
   })
 
-  t.not(response.signing.username, 'robert')
-  t.is(response.signing.email, 'robert@gmail.com')
+  t.not(response.signing.user.username, 'robert')
+  t.is(response.signing.user.email, 'robert@gmail.com')
   t.not(response.signing.token, undefined)
 })
 
