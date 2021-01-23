@@ -30,6 +30,15 @@ module.exports = {
     return model.findOne(find)
   },
   /**
+  * Update a document in mongodb respecting the condtion
+  * @params {Object} filter The condition the document has to respect
+  * @params {Object} update The update to apply
+  * @return {Object} The document updated or null
+  **/
+  update_by_id: (_id, update) => {
+    return model.findOneAndUpdate({ _id: _id }, update, { new: true })
+  },
+  /**
   * Call mongodb for testing the existence of a document respecting the condtion
   * @params {Object} The condition the document has to respect
   * @return {boolean} True if a document exist or else False

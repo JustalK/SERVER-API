@@ -24,6 +24,9 @@ module.exports = {
       throw new Error('This account cannot be edited with this request.')
     }
 
-    return user
+    const update = args
+    delete update.user_id
+
+    return utils_user.edit_user_by_user(user, update)
   }
 }

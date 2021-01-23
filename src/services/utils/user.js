@@ -4,6 +4,7 @@ const path = require('path')
 const utils_password = require('@src/services/utils/password')
 const utils_email = require('@src/services/utils/email')
 const utils_user_type = require('@src/services/utils/user_type')
+const libs_object = require('@src/libs/object')
 const filename = path.basename(__filename, '.js')
 const dbs = require('@src/dbs/' + filename)
 const User = require('@src/models/' + filename)
@@ -52,6 +53,15 @@ module.exports = {
     const user = new User(args)
     return dbs.insert(user)
   },
+  edit_user_by_user: async (user, update) => {
+    if (!module.exports.is_instanceof_user(user)) {
+      throw new Error('This is not an user.')
+    }
+
+    const update_sanitized = libs_object.clean_values(update, false)
+
+    return dbs.update_by_id(user._id, update_sanitized)
+  },
   /**
   * Get an user by username or email
   * @params {String} login The username or email to search
@@ -83,5 +93,13 @@ module.exports = {
   **/
   is_user_exist_by_email: async email => {
     return dbs.test({ email: email })
+  },
+  /**
+  * Test if the user is an instance of user
+  * @params {Object} user The object user to test
+  * @return {boolean} True if it's an object user or else false
+  **/
+  is_instanceof_user: user => {
+    return user instanceof User
   }
 }
