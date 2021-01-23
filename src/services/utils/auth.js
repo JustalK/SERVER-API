@@ -29,8 +29,7 @@ module.exports = {
   create_payload: (user) => {
     return {
       date_given: Date.now(),
-      username: user.username,
-      email: user.email
+      _id: user._id
     }
   },
   /**
