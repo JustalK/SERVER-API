@@ -26,6 +26,8 @@ module.exports = {
   * @params {string} The level of the log
   **/
   log: (message, level = 'info') => {
-    logger.log({ message, level })
+    if (process.env.LOGS === 'TRUE') {
+      logger.log({ message, level })
+    }
   }
 }
