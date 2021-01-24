@@ -3,10 +3,26 @@
 const { gql } = require('apollo-server-fastify')
 
 module.exports = gql`
+  """
+  User of the app \n
+  Control the account of the system
+  """
   type User {
+    """
+    The user type of the user
+    """
     user_type: User_type!
+    """
+    The name of the user
+    """
     username: String!
+    """
+    The email of the user
+    """
     email: String!
+    """
+    The password of the user
+    """
     password: String!
   }
 `

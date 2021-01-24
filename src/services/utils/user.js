@@ -43,7 +43,7 @@ module.exports = {
       ['has_lowercase', 'has_uppercase', 'has_number', 'has_enough_length']
     )
     if (is_password_not_strong) {
-      throw new Error('This password is not strong enough. It must have a lowercase, an uppercase, a number and a length superior at ' + Number(process.env.PASSWORD_LIMIT_CHARACTER))
+      throw new Error('This password is not strong enough. It must have a lowercase, an uppercase, a number and a length superior at ' + Number(process.env.password_minimum_character))
     }
 
     const default_user_type = await utils_user_type.get_default_user_type()

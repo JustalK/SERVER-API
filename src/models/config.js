@@ -3,7 +3,7 @@ const path = require('path')
 const filename = path.basename(__filename, '.js')
 
 const schema = new mongoose.Schema({
-  password_limit_character: {
+  password_minimum_character: {
     type: Number,
     require: true
   },

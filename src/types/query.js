@@ -3,16 +3,18 @@
 const { gql } = require('apollo-server-fastify')
 
 module.exports = gql`
-  # Root Query
+  """
+  Queries of the app
+  """
   type Query  {
     """
-    Return:
-    true : DB save successful
-    false : DB save unsuccessful
+    Return all the user in the system
     """
     get_all_users: [User]! @isLoggedIn
 
-    # Get the config of the API
+    """
+    Return the config of the system
+    """
     get_config: Config! @isAdmin @isLoggedIn
   }
 `

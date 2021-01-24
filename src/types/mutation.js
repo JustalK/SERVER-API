@@ -4,7 +4,18 @@ const { gql } = require('apollo-server-fastify')
 
 module.exports = gql`
   type Mutation  {
-    signing(username: String!, email: String!, password: String!): Token
+    """
+    The method for signing to the application
+    """
+    signing(
+      "The username of the user"
+      username: String!,
+      "The email of the user"
+      email: String!,
+      "The password of the user"
+      password: String!
+    ): Token
+
     login(login: String!, password: String!): Token
 
     edit_user_account(user_id: String!, user_type: String, username: String, email: String, password: String): User

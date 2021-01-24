@@ -56,7 +56,7 @@ module.exports = {
   **/
   has_enough_length: async (password, length) => {
     const config = await dbs_config.get_config()
-    return password.length > Number(config.password_limit_character)
+    return password.length > Number(config.password_minimum_character)
   },
   /**
   * Check if the password depending of the conditon passed
