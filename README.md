@@ -2,7 +2,7 @@
 
 This project is a fresh starter for creating a **REST API** with all my favorite tools.
 
-The server is using the library `Restify` but it can be switch easily in the **server.js** file for Express or Restify. The server is linked to the library `Apollo-server` for managing the data with `GraphQL`. The database is handle by `MongoDB` and can also be easily switch in **database.js**.
+The server is using the library `Express` but it can be switch easily in the **server.js** file for Fastify or Restify. The server is linked to the library `Apollo-server` for managing the data with `GraphQL`. The database is handle by `MongoDB` and can also be easily switch in **database.js**.
 
 The models are found in the folder **models**. Their schema are described with `mongoose` and also typed for using `GraphQL`.
 
