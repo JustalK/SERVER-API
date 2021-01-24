@@ -24,13 +24,35 @@ I explain with all the details how I build the project and my way of working.
 
 `Graphql-voyager` has been added as a middleware so you can visualize the ERD on the following endpoint : `/erd`
 
-## Documentation API
+```
+http://localhost:5000/erd
+```
+
+## Documentation
+
+#### Server documentation
+
+The documentation of the server can be access at this endpoint. It gives information about the server, the tools and how to use the API. Open a browser and go to the following URL :
+
+```
+http://localhost:5000/documentation
+```
+
+#### Online API documentation
+
+The playground of the apollo server is activated, so the documentation and the json format can be access at the endpoint of the api. Open a browser and browse to the following URL :
+
+```
+http://localhost:5000/api/graphql
+```
+
+#### Local API documentation
 
 Since it's a graphql, anyone can generate the documentation by introspection. I suggest to use this tool `2fd/graphdoc` with the following commands :
 
 ```
 npm install -g @2fd/graphdoc
-graphdoc -e http://localhost:5000/graphql -o ./doc/schema
+graphdoc -e http://localhost:5000/api/graphql -o ./doc/schema
 ```
 
 A html doc will be then found inside the directory **/doc/schema**.
