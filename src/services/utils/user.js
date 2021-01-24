@@ -68,7 +68,7 @@ module.exports = {
   * @return {Object} The user found or null
   **/
   get_user_by_login: async login => {
-    return dbs.get_one({ $or: [{ email: login }, { username: login }] })
+    return dbs.get_user_by_login(login)
   },
   /**
   * Get an user by id
@@ -76,7 +76,13 @@ module.exports = {
   * @return {Object} The user found or null
   **/
   get_user_by_id: async id => {
-    return dbs.get_one({ _id: id })
+    return dbs.get_user_by_id(id)
+  },
+  /**
+  * Return all the users
+  **/
+  get_all_users: async () => {
+    return dbs.get_all_users()
   },
   /**
   * Test the an user exist in the db with the username specified

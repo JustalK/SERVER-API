@@ -15,7 +15,7 @@ module.exports = {
   * @return {user_type} The user type found
   **/
   get_user_type_by_id: id => {
-    return dbs.get_one({ _id: id })
+    return dbs.get_user_type_by_id({ _id: id })
   },
   /**
   * Return the user_type by the name
@@ -27,7 +27,7 @@ module.exports = {
       throw new Error('The name cannot be null.')
     }
     const uppercase_name = name.toUpperCase()
-    return dbs.get_one({ name: uppercase_name })
+    return dbs.get_user_type_by_name(uppercase_name)
   },
   /**
   * Get the default user type

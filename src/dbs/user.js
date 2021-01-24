@@ -14,20 +14,27 @@ module.exports = {
     return model.create(user)
   },
   /**
-  * Call mongodb for getting all the document respecting the conditions
-  * @params {Object} find The condition the document has to respect
-  * @return {User} The users respecting the conditions
+  * Call mongodb for getting all the document
+  * @return {[User]} All the users
   **/
-  get_all: (find) => {
-    return model.find(find)
+  get_all_user: () => {
+    return model.find({})
   },
   /**
-  * Call mongodb for getting a document respecting the condtion
-  * @params {Object} The condition the document has to respect
-  * @return {Object} The document found or null
+  * Call mongodb for getting an user by id
+  * @params {String} id The id to search
+  * @return {Object} The user found or null
   **/
-  get_one: (find) => {
-    return model.findOne(find)
+  get_user_by_id: id => {
+    return model.findOne({ _id: id })
+  },
+  /**
+  * Call mongodb for getting an user by login
+  * @params {String} login The login to search
+  * @return {Object} The user found or null
+  **/
+  get_user_by_login: login => {
+    return model.findOne({ $or: [{ email: login }, { username: login }] })
   },
   /**
   * Update a document in mongodb respecting the condtion

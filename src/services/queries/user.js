@@ -1,17 +1,16 @@
 'use strict'
 
-const path = require('path')
-const filename = path.basename(__filename, '.js')
-const dbs = require('@src/dbs/' + filename)
+const utils_user = require('@src/services/utils/user')
 
 /**
 * Manage the queries for the question model
 **/
 module.exports = {
   /**
-  * Services for getting all the question
+  * Query for getting all the user
+  * @params {[User]} Return the list of all the user
   **/
-  get_all_users: async (_, args, context) => {
-    return dbs.get_all({})
+  get_all_users: async () => {
+    return utils_user.get_all_users()
   }
 }
