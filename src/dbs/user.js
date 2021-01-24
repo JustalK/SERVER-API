@@ -39,11 +39,19 @@ module.exports = {
     return model.findOneAndUpdate({ _id: _id }, update, { new: true })
   },
   /**
-  * Call mongodb for testing the existence of a document respecting the condtion
-  * @params {Object} The condition the document has to respect
+  * Call mongodb for testing the existence of an user by username
+  * @params {String} username The username to search
   * @return {boolean} True if a document exist or else False
   **/
-  test: (find) => {
-    return model.exists(find)
+  test_user_by_username: username => {
+    return model.exists({ username: username })
+  },
+  /**
+  * Call mongodb for testing the existence of an user by email
+  * @params {String} username The username to search
+  * @return {boolean} True if a document exist or else False
+  **/
+  test_user_by_email: email => {
+    return model.exists({ email: email })
   }
 }

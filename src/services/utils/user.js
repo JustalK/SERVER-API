@@ -84,7 +84,7 @@ module.exports = {
   * @return {boolean} True if the username exist or else False
   **/
   is_user_exist_by_username: async username => {
-    return dbs.test({ username: username })
+    return dbs.test_user_by_username(username)
   },
   /**
   * Test the email if a user exist in the db with this email
@@ -92,7 +92,7 @@ module.exports = {
   * @return {boolean} True if the user exist or else False
   **/
   is_user_exist_by_email: async email => {
-    return dbs.test({ email: email })
+    return dbs.test_user_by_email(email)
   },
   /**
   * Test if the user is an instance of user

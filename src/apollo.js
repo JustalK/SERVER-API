@@ -2,7 +2,7 @@
 
 const { ApolloServer } = require('apollo-server-express')
 const { makeExecutableSchema } = require('graphql-tools')
-const utils = require('@src/libs/utils')
+const libs_string = require('@src/libs/string')
 const fs = require('fs')
 
 module.exports = {
@@ -55,7 +55,7 @@ module.exports = {
     const path_without_src = './services/resolvers'
     resolvers.map(resolver => {
       const filename_without_ext = resolver.split('.')[0]
-      const key = utils.capitalize(filename_without_ext)
+      const key = libs_string.capitalize(filename_without_ext)
       result[key] = require(path_without_src + '/' + filename_without_ext)
       return null
     })
