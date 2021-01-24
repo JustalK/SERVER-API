@@ -3,6 +3,7 @@
 const utils_user = require('@src/services/utils/user')
 const utils_auth = require('@src/services/utils/auth')
 const utils_password = require('@src/services/utils/password')
+const libs_logger = require('@src/libs/logger')
 
 /**
 * Manage the queries for the authentification process
@@ -14,6 +15,7 @@ module.exports = {
   * @params {Object} args The argument passed to the function
   **/
   signing: async (_, args) => {
+    libs_logger.log('New signing to the app')
     const user = await utils_user.add_user(args)
     const token = utils_auth.create_token(user)
     return { user: user._id, token: token }
@@ -24,6 +26,7 @@ module.exports = {
   * @params {Object} args The argument passed to the function
   **/
   login: async (_, args) => {
+    libs_logger.log('New login to the app')
     // Check if an account exist for the user
     const user = await utils_user.get_user_by_login(args.login)
     if (user === null) {

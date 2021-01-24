@@ -2,6 +2,7 @@
 
 const utils_user = require('@src/services/utils/user')
 const utils_user_type = require('@src/services/utils/user_type')
+const libs_logger = require('@src/libs/logger')
 
 /**
 * Manage the queries for the authentification process
@@ -13,6 +14,7 @@ module.exports = {
   * @params {Object} args The argument passed to the function
   **/
   edit_user_account: async (_, args) => {
+    libs_logger.log('New edit of an user account')
     // Check if an account exist for the user
     const user = await utils_user.get_user_by_id(args.user_id)
     if (user === null) {
