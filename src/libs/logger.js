@@ -5,6 +5,15 @@ const winston = require('winston')
 /**
 * Config the logger for winston
 **/
+const logger_console = winston.createLogger({
+  transports: [
+    new winston.transports.Console()
+  ]
+})
+
+/**
+* Config the logger for winston
+**/
 const logger = winston.createLogger({
   transports: [
     new winston.transports.Console(),
@@ -18,7 +27,7 @@ module.exports = {
   * @params {string} The message who will be display
   **/
   info: message => {
-    logger.info(message)
+    logger_console.info(message)
   },
   /**
   * Write a message in the log file

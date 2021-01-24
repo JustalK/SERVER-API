@@ -49,9 +49,12 @@ module.exports = {
   **/
   callback: (error, resolve, reject) => {
     if (error) {
+      logger.info('Server fail to start !')
+      logger.log('Server fail to start !')
       reject('Server fail to start !')
     }
     logger.info('Server Started')
+    logger.log('Logger Activated')
     resolve(true)
   }
 }
