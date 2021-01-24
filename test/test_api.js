@@ -49,6 +49,15 @@ test('[STATIC] Subscribe', async t => {
 })
 
 test('[STATIC] Get the config', async t => {
+  const response_login = await m_utils.getter({
+    query: `
+      mutation {
+        login(login: "admin", password: "azerty") {
+          token
+        }
+      }`
+  })
+  
   const response = await m_utils.getter({
     query: `
       query {
@@ -60,8 +69,9 @@ test('[STATIC] Get the config', async t => {
           }
         }
       }`
-  })
+  }, response_login.login.token)
 
+  console.log(response)
   t.not(response.get_config.password_limit_character, undefined)
   t.not(response.get_config.default_user_type.name, undefined)
   t.not(response.get_config.default_user_type.permission_level, undefined)
