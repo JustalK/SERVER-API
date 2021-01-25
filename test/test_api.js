@@ -57,12 +57,12 @@ test('[STATIC] Get the config', async t => {
         }
       }`
   })
-  
+
   const response = await m_utils.getter({
     query: `
       query {
         get_config {
-          password_limit_character
+          password_minimum_character
           default_user_type {
             name
             permission_level
@@ -71,8 +71,7 @@ test('[STATIC] Get the config', async t => {
       }`
   }, response_login.login.token)
 
-  console.log(response)
-  t.not(response.get_config.password_limit_character, undefined)
+  t.not(response.get_config.password_minimum_character, undefined)
   t.not(response.get_config.default_user_type.name, undefined)
   t.not(response.get_config.default_user_type.permission_level, undefined)
 })
