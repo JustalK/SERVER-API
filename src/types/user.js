@@ -9,6 +9,10 @@ module.exports = gql`
   """
   type User {
     """
+    The id of the user
+    """
+    _id: String!
+    """
     The user type of the user
     """
     user_type: User_type!

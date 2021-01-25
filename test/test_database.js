@@ -1,5 +1,6 @@
 'use strict'
 
+require('module-alias/register')
 const test = require('ava')
 const m = require('@src/database')
 
