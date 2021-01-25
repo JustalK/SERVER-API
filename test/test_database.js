@@ -1,5 +1,7 @@
+'use strict'
+
 const test = require('ava')
-const m = require('../src/database')
+const m = require('@src/database')
 
 test('[STATIC] Testing parse_db_uri with correct value', t => {
   const db_data = m.parse_db_uri('my_database', 'mongodb://localhost:27017/', 'robert', 'qwerty')
