@@ -13,5 +13,14 @@ module.exports = {
   get_config: () => {
     return model
       .findOne()
+  },
+  /**
+  * Update a document in mongodb respecting the condtion
+  * @params {Object} filter The condition the document has to respect
+  * @params {Object} update The update to apply
+  * @return {Object} The document updated or null
+  **/
+  update_by_id: (_id, update) => {
+    return model.findOneAndUpdate({ _id: _id }, update, { new: true })
   }
 }
