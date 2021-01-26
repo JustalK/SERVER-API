@@ -18,6 +18,7 @@ I explain with all the details how I build the project and my way of working.
 4. [Development](#development)
 5. [Seeding](#seeding)
 6. [Testing](#testing)
+6. [Monitoring](#monitoring)
 7. [Running](#running)
 
 ## ERD
@@ -114,6 +115,14 @@ For connecting to the API during the development, I use `localtunnel` for exposi
 ```
 npm install -g localtunnel
 lt --port 5000 --subdomain couple-api
+```
+
+## Monitoring
+
+The monitoring is enable by default and can be viewed live on the endpoint `/status` :
+
+```
+http://localhost:5000/status
 ```
 
 ## Running

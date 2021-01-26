@@ -37,6 +37,7 @@ module.exports = {
     module.exports.register_graphql(server)
 
     server.use(process.env.ENDPOINT_ERD, voyagerMiddleware.express({ endpointUrl: process.env.ENDPOINT }))
+    server.use(require('express-status-monitor')())
     server.use('/', require('./routes/app'))
 
     return new Promise((resolve, reject) => {
