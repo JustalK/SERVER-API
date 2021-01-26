@@ -20,6 +20,6 @@ module.exports = gql`
 
     edit_user_account(user_id: String!, user_type: String, username: String, email: String, password: String): User
 
-    edit_config(password_minimum_character: Int, default_user_type_id: User_type): Config
+    edit_config(password_minimum_character: Int, default_user_type_id: String): Config
   }
 `

@@ -53,3 +53,10 @@ test('[USER] Edit subscribe', async t => {
   t.not(username, response_user_edited.edit_user_account.username)
   t.not(email, response_user_edited.edit_user_account.email)
 })
+
+test('[USER] Edit config', async t => {
+  const response_login = await queries_auth.login_admin()
+
+  const response = await queries_config.edit_config(response_login.login.token)
+  t.is(response.edit_config.password_minimum_character, 2)
+})

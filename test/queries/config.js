@@ -17,5 +17,15 @@ module.exports = {
           }
         }`
     }, token)
+  },
+  edit_config: async token => {
+    return m_utils.getter({
+      query: `
+        mutation {
+          edit_config(password_minimum_character: 2) {
+            password_minimum_character
+          }
+        }`
+    }, token)
   }
 }
