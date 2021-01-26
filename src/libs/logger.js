@@ -1,6 +1,7 @@
 'use strict'
 
 const winston = require('winston')
+const { combine, timestamp, prettyPrint } = winston.format
 
 /**
 * Config the logger for winston
@@ -15,9 +16,14 @@ const logger_console = winston.createLogger({
 * Config the logger for winston
 **/
 const logger = winston.createLogger({
+  format: combine(timestamp(), prettyPrint()),
   transports: [
-    new winston.transports.Console(),
-    new winston.transports.File({ filename: 'logs/combined.log' })
+    new winston.transports.Console({
+      format: winston.format.simple()
+    }),
+    new winston.transports.File({
+      filename: 'logs/combined.log'
+    })
   ]
 })
 
@@ -26,17 +32,17 @@ module.exports = {
   * Write a message in the console and the logger
   * @params {string} The message who will be display
   **/
-  info: message => {
-    logger_console.info(message)
+  info: (message, object) => {
+    logger_console.info(message, object)
   },
   /**
   * Write a message in the log file
   * @params {string} The message who will be writen
   * @params {string} The level of the log
   **/
-  log: (message, level = 'info') => {
+  log: (message, object, level = 'info') => {
     if (process.env.LOGS === 'TRUE') {
-      logger.log({ message, level })
+      logger.log({ level, message, object })
     }
   }
 }
