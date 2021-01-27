@@ -19,16 +19,34 @@ module.exports = gql`
     """
     Login to the application with an account
     """
-    login(login: String!, password: String!): Token
+    login(
+      "Username or email of the user"
+      login: String!,
+      "Password of the user"
+      password: String!): Token
 
     """
     Edit an user account
     """
-    edit_user_account(user_id: String!, user_type: String, username: String, email: String, password: String): User
+    edit_user_account(
+      "Id of the user to modify"
+      user_id: String!,
+      "New name of the usertype to apply to the user"
+      user_type: String,
+      "New username of the user"
+      username: String,
+      "New email of the user"
+      email: String,
+      "New passport of the user"
+      password: String): User
 
     """
     Edit the config of the server
     """
-    edit_config(password_minimum_character: Int, default_user_type_id: String): Config
+    edit_config(
+      "New minimum length of the password for an user"
+      password_minimum_character: Int,
+      "New default usertype of an user"
+      default_user_type_id: String): Config
   }
 `
