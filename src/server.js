@@ -11,18 +11,32 @@ const logger = require('@src/libs/logger')
 module.exports = {
   /**
   * Create the restify server
-  * @return {fastify} A server restify without any routes
+  * @return {Express} A server restify without any routes
   **/
   create_server: () => {
     return express()
   },
   /**
   * Allow us to use Graph QL with fastify
-  * @params {fastify} server The server allowed to use graphQl
+  * @params {Express} server The server allowed to use graphQl
   **/
   register_graphql: (server) => {
     const apollo_server = apollo.get_handler()
     apollo_server.applyMiddleware({ app: server, path: process.env.ENDPOINT })
+  },
+  /**
+  * Allow us to use the middleware voyager
+  * @params {Express} server The server allowed to use the middleware voyager
+  **/
+  register_voyager: (server) => {
+    server.use(process.env.ENDPOINT_ERD, voyagerMiddleware.express({ endpointUrl: process.env.ENDPOINT }))
+  },
+  /**
+  * Allow us to use the middleware express status monitor
+  * @params {Express} server The server allowed to use the monitor
+  **/
+  register_monitor: (server) => {
+    server.use(require('express-status-monitor')())
   },
   /**
   * Start the server using the parameter
@@ -35,9 +49,9 @@ module.exports = {
     const server = module.exports.create_server()
 
     module.exports.register_graphql(server)
+    module.exports.register_voyager(server)
+    module.exports.register_monitor(server)
 
-    server.use(process.env.ENDPOINT_ERD, voyagerMiddleware.express({ endpointUrl: process.env.ENDPOINT }))
-    server.use(require('express-status-monitor')())
     server.use('/', require('./routes/app'))
 
     return new Promise((resolve, reject) => {
