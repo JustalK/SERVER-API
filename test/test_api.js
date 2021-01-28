@@ -61,11 +61,31 @@ test('[USER] Edit config', async t => {
   t.is(response.edit_config.password_minimum_character, 2)
 })
 
-test('[USER] Get all user', async t => {
+test('[USER] Get all users with limit', async t => {
   const response_user = await queries_user.create_new_random_user('Q@sDwerty10')
   const response_login = await queries_auth.login_user(response_user.signing.user.username, 'Q@sDwerty10')
 
-  const response = await queries_user.get_all_users(1, response_login.login.token)
-  console.log(response)
-  t.is(response.edit_config.password_minimum_character, 2)
+  const response_two_users = await queries_user.get_all_users_with_filter(2, response_login.login.token)
+  t.is(response_two_users.get_all_users.length, 2)
+  t.is(response_two_users.get_all_users[0].username, 'admin')
+  t.is(response_two_users.get_all_users[0].email, 'admin@gmail.com')
+  t.not(response_two_users.get_all_users[1].username, undefined)
+  t.not(response_two_users.get_all_users[1].email, undefined)
+
+  const response_one_users = await queries_user.get_all_users_with_filter(1, response_login.login.token)
+  t.is(response_one_users.get_all_users.length, 1)
+  t.is(response_two_users.get_all_users[0].username, 'admin')
+  t.is(response_two_users.get_all_users[0].email, 'admin@gmail.com')
+})
+
+test('[USER] Get all users', async t => {
+  const response_user = await queries_user.create_new_random_user('Q@sDwerty10')
+  const response_login = await queries_auth.login_user(response_user.signing.user.username, 'Q@sDwerty10')
+
+  const response = await queries_user.get_all_users(response_login.login.token)
+  t.not(response.get_all_users.length, undefined)
+  t.is(response.get_all_users[0].username, 'admin')
+  t.is(response.get_all_users[0].email, 'admin@gmail.com')
+  t.not(response.get_all_users[1].username, undefined)
+  t.not(response.get_all_users[1].email, undefined)
 })

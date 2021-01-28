@@ -42,7 +42,19 @@ module.exports = {
         }`
     })
   },
-  get_all_users: async (limit, token) => {
+  get_all_users: async token => {
+    return m_utils.getter({
+      query: `
+        query {
+          get_all_users {
+            _id
+            email
+            username
+          }
+        }`
+    }, token)
+  },
+  get_all_users_with_filter: async (limit, token) => {
     return m_utils.getter({
       query: `
         query {
