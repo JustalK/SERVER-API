@@ -10,7 +10,7 @@ module.exports = gql`
     """
     Return all the user in the system
     """
-    get_all_users: [User]! @isLoggedIn
+    get_all_users(limit: Int): [User]! @isLoggedIn
 
     """
     Return the config of the system

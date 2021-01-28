@@ -60,3 +60,12 @@ test('[USER] Edit config', async t => {
   const response = await queries_config.edit_config(response_login.login.token)
   t.is(response.edit_config.password_minimum_character, 2)
 })
+
+test('[USER] Get all user', async t => {
+  const response_user = await queries_user.create_new_random_user('Q@sDwerty10')
+  const response_login = await queries_auth.login_user(response_user.signing.user.username, 'Q@sDwerty10')
+
+  const response = await queries_user.get_all_users(1, response_login.login.token)
+  console.log(response)
+  t.is(response.edit_config.password_minimum_character, 2)
+})

@@ -80,9 +80,10 @@ module.exports = {
   },
   /**
   * Return all the users
+  * @params {Int} limit Limit the number of user returned
   **/
-  get_all_users: async () => {
-    return dbs.get_all_users()
+  get_all_users: async (limit = null) => {
+    return dbs.get_all_users(limit)
   },
   /**
   * Test the an user exist in the db with the username specified

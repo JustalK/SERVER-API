@@ -5,11 +5,11 @@ const faker = require('faker')
 const m_utils = require('@test/libs/utils')
 
 module.exports = {
-  create_new_random_user: async () => {
+  create_new_random_user: async (password = null) => {
     const user = {
       username: faker.internet.userName(),
       email: faker.internet.email(),
-      password: faker.internet.password()
+      password: password || faker.internet.password()
     }
 
     return m_utils.getter({
@@ -41,5 +41,17 @@ module.exports = {
           }
         }`
     })
+  },
+  get_all_users: async (limit, token) => {
+    return m_utils.getter({
+      query: `
+        query {
+          get_all_users(limit: ${limit}) {
+            _id
+            email
+            username
+          }
+        }`
+    }, token)
   }
 }

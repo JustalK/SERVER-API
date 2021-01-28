@@ -17,5 +17,19 @@ module.exports = {
           }
         }`
     })
+  },
+  login_user: async (login, password) => {
+    return m_utils.getter({
+      query: `
+        mutation {
+          login(login: "${login}", password: "${password}") {
+            user {
+              username
+              email
+            }
+            token
+          }
+        }`
+    })
   }
 }

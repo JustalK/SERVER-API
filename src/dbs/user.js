@@ -15,10 +15,17 @@ module.exports = {
   },
   /**
   * Call mongodb for getting all the document
+  * @params {Int} limit Limit the number of user returned
   * @return {[User]} All the users
   **/
-  get_all_user: () => {
-    return model.find({})
+  get_all_users: (limit = null) => {
+    const aggregation = []
+
+    if (limit !== null) {
+      aggregation.push({ $limit: limit })
+    }
+
+    return model.aggregate(aggregation)
   },
   /**
   * Call mongodb for getting an user by id
