@@ -18,15 +18,15 @@ module.exports = {
   * @params {Int} limit Limit the number of user returned
   * @return {[User]} All the users
   **/
-  get_all_users: (limit = null, sort = null) => {
+  get_all_users: (limit = null, sort = null, order = null) => {
     const aggregation = []
 
-    if (sort !== null) {
-      aggregation.push({ $sort: { _id: 1 } })
-    } else {
-      aggregation.push({ $sort: { _id: 1 } })
-    }
+    // Sort the result
+    order = order === 'DESC' ? 1 : -1
+    sort = sort !== null ? { [sort]: order } : { _id: order }
+    aggregation.push({ $sort: sort })
 
+    // Limit the result
     if (limit !== null) {
       aggregation.push({ $limit: limit })
     }
