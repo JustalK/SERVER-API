@@ -9,7 +9,7 @@ module.exports = {
   * @params {Int} limit The argument to handle
   * @return {Int|null} Return the limit or null
   **/
-  handle_limit_argument: async limit => {
+  handle_limit_argument: limit => {
     return limit !== null ? limit : null
   },
   /**
@@ -17,7 +17,7 @@ module.exports = {
   * @params {String} order The argument to handle
   * @return {String} Return the order to use for the query
   **/
-  handle_order_argument: async order => {
+  handle_order_argument: order => {
     if (!order || order !== 'DESC' || order !== 'ASC') {
       return 'DESC'
     }

@@ -31,6 +31,7 @@ module.exports = {
       aggregation.push({ $limit: limit })
     }
 
+    console.log(aggregation)
     return model.aggregate(aggregation)
   },
   /**
