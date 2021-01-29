@@ -14,6 +14,6 @@ module.exports = {
   get_all_users: async (_, args) => {
     const limit = utils_filter.handle_limit_argument(args.limit)
     const order = utils_filter.handle_order_argument(args.order)
-    return utils_user.get_all_users(limit, null, order)
+    return utils_user.get_all_users({ limit, order })
   }
 }

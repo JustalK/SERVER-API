@@ -18,7 +18,7 @@ module.exports = {
   * @params {Int} limit Limit the number of user returned
   * @return {[User]} All the users
   **/
-  get_all_users: (limit = null, sort = null, order = null) => {
+  get_all_users: ({ limit = null, sort = null, order = null }) => {
     const aggregation = []
 
     // Sort the result
