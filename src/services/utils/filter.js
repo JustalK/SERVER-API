@@ -18,10 +18,34 @@ module.exports = {
   * @return {String} Return the order to use for the query
   **/
   handle_order_argument: order => {
-    if (!order || order !== 'DESC' || order !== 'ASC') {
+    if (!order) {
       return 'DESC'
     }
 
+    if (order !== 'DESC' && order !== 'ASC') {
+      throw new Error(`The order (${order}) is not available for ordering. Only DESC and ASC are possible variable.`)
+    }
+
     return order
+  },
+  /**
+  * Handle the sorting argument
+  * @params {String} sort The key on what we gonna apply the sort
+  * @params {Object} model The model use for checking if a key is valid or no
+  * @return {String} The sort key
+  **/
+  handle_sort_argument: (sort, model) => {
+    if (!sort) {
+      return null
+    }
+
+    const keys_mongoose = ['__v', 'created_at', 'updated_at', 'id']
+    const keys = Object.keys(model.schema.tree).filter(key => !keys_mongoose.includes(key))
+
+    if (!keys.includes(sort)) {
+      throw new Error(`The key (${sort}) is not available for sorting`)
+    }
+
+    return sort
   }
 }
