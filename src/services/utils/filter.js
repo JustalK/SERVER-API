@@ -47,5 +47,17 @@ module.exports = {
     }
 
     return sort
+  },
+  /**
+  * Handle the matching argument
+  * @params {String} match The key on what we gonna apply the match
+  * @return {String} The match key
+  **/
+  handle_match_argument: (match) => {
+    if (!match) {
+      return null
+    }
+
+    return match
   }
 }
