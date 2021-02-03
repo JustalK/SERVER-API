@@ -24,7 +24,7 @@ module.exports = {
     // Manage all the matches
     const matches = []
     if (username !== null) {
-      matches.push({ username })
+      matches.push({ username: { $regex: username } })
     }
 
     if (matches.length === 1) {
