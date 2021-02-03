@@ -10,7 +10,15 @@ module.exports = gql`
     """
     Return all the user in the system
     """
-    get_all_users(limit: Int, sort: String, order: String, username: String): [User]! @isLoggedIn
+    get_all_users(
+      "Limit the result"
+      limit: Int,
+      "Sort the result to a key"
+      sort: String,
+      "Order the result ASC or DESC"
+      order: String,
+      "Regex matching the username"
+      username: String): [User]! @isLoggedIn
 
     """
     Return the config of the system

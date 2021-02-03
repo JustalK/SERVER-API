@@ -65,14 +65,14 @@ test('[USER] Get all users with limit', async t => {
   const response_user = await queries_user.create_new_random_user('Q@sDwerty10')
   const response_login = await queries_auth.login_user(response_user.signing.user.username, 'Q@sDwerty10')
 
-  const response_two_users = await queries_user.get_all_users_with_filter(2, response_login.login.token)
+  const response_two_users = await queries_user.get_all_users_with_limit(2, response_login.login.token)
   t.is(response_two_users.get_all_users.length, 2)
   t.is(response_two_users.get_all_users[0].username, 'admin')
   t.is(response_two_users.get_all_users[0].email, 'admin@gmail.com')
   t.not(response_two_users.get_all_users[1].username, undefined)
   t.not(response_two_users.get_all_users[1].email, undefined)
 
-  const response_one_users = await queries_user.get_all_users_with_filter(1, response_login.login.token)
+  const response_one_users = await queries_user.get_all_users_with_limit(1, response_login.login.token)
   t.is(response_one_users.get_all_users.length, 1)
   t.is(response_two_users.get_all_users[0].username, 'admin')
   t.is(response_two_users.get_all_users[0].email, 'admin@gmail.com')
@@ -88,4 +88,14 @@ test('[USER] Get all users', async t => {
   t.is(response.get_all_users[0].email, 'admin@gmail.com')
   t.not(response.get_all_users[1].username, undefined)
   t.not(response.get_all_users[1].email, undefined)
+})
+
+test('[USER] Get all users with username', async t => {
+  const response_user = await queries_user.create_new_random_user('Q@sDwerty10')
+  const response_login = await queries_auth.login_user(response_user.signing.user.username, 'Q@sDwerty10')
+
+  const response = await queries_user.get_all_users_with_username('.*dmin', response_login.login.token)
+  t.is(response.get_all_users.length, 1)
+  t.is(response.get_all_users[0].username, 'admin')
+  t.is(response.get_all_users[0].email, 'admin@gmail.com')
 })
