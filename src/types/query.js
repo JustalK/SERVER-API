@@ -18,7 +18,9 @@ module.exports = gql`
       "Order the result ASC or DESC"
       order: String,
       "Regex matching the username"
-      username: String): [User]! @isLoggedIn
+      username: String,
+      "Regex matching the email"
+      email: String): [User]! @isLoggedIn
 
     """
     Return the config of the system

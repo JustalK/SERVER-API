@@ -18,7 +18,7 @@ module.exports = {
   * @params {Int} limit Limit the number of user returned
   * @return {[User]} All the users
   **/
-  get_all_users: ({ limit = null, sort = null, order = null, username = null }) => {
+  get_all_users: ({ limit = null, sort = null, order = null, username = null, email = null }) => {
     const aggregation = []
 
     // Manage all the matches
@@ -26,9 +26,14 @@ module.exports = {
     if (username !== null) {
       matches.push({ username: { $regex: username } })
     }
+    if (email !== null) {
+      matches.push({ email: { $regex: email } })
+    }
 
     if (matches.length === 1) {
       aggregation.push({ $match: matches[0] })
+    } else if (matches.length > 1) {
+      aggregation.push({ $match: { $and: matches } })
     }
 
     // Sort the result
@@ -40,7 +45,7 @@ module.exports = {
     if (limit !== null) {
       aggregation.push({ $limit: limit })
     }
-
+    console.log(aggregation)
     return model.aggregate(aggregation)
   },
   /**
