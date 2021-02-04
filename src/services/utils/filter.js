@@ -1,5 +1,7 @@
 'use strict'
 
+const constants = require('@src/libs/constants')
+
 /**
 * Manage the utils function for the config
 **/
@@ -19,10 +21,10 @@ module.exports = {
   **/
   handle_order_argument: order => {
     if (!order) {
-      return 'desc'
+      return constants.order_descending
     }
 
-    if (order !== 'desc' && order !== 'asc') {
+    if (order !== constants.order_descending && order !== constants.order_ascending) {
       throw new Error(`The order (${order}) is not available for ordering. Only 'desc' and 'asc' are possible variable.`)
     }
 
@@ -67,10 +69,10 @@ module.exports = {
   **/
   handle_joint_argument: joint => {
     if (!joint) {
-      return '$and'
+      return constants.joint_and
     }
 
-    if (!['and', 'or'].includes(joint)) {
+    if (![constants.joint_and, constants.joint_or].includes(joint)) {
       throw new Error(`The key (${joint}) is not available for joint argument.`)
     }
 

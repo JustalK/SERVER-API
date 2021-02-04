@@ -15,7 +15,7 @@ module.exports = gql`
       limit: Int,
       "Sort the result to a key"
       sort: String,
-      "Order the result ASC or DESC"
+      "Order the result 'asc' or 'desc'"
       order: String,
       "Define the joint for multiple matching parameter 'and' or 'or'"
       joint: String,

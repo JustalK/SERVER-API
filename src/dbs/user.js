@@ -3,6 +3,7 @@
 const path = require('path')
 const filename = path.basename(__filename, '.js')
 const model = require('@src/models/' + filename)
+const constants = require('@src/libs/constants')
 
 module.exports = {
   /**
@@ -33,12 +34,12 @@ module.exports = {
     if (matches.length === 1) {
       aggregation.push({ $match: matches[0] })
     } else if (matches.length > 1) {
-      joint = joint === 'and' || joint === 'or' ? '$' + joint : '$and'
-      aggregation.push({ $match: { [joint]: matches } })
+      joint = joint === constants.joint_and || joint === constants.joint_or ? joint : constants.joint_and
+      aggregation.push({ $match: { ['$' + joint]: matches } })
     }
 
     // Sort the result
-    order = order === 'desc' ? 1 : -1
+    order = order === constants.order_descending ? 1 : -1
     sort = sort !== null ? { [sort]: order } : { _id: order }
     aggregation.push({ $sort: sort })
 
