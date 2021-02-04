@@ -53,11 +53,27 @@ module.exports = {
   * @params {String} match The key on what we gonna apply the match
   * @return {String} The match key
   **/
-  handle_match_argument: (match) => {
+  handle_match_argument: match => {
     if (!match) {
       return null
     }
 
     return match
+  },
+  /**
+  * Handle the joint argument
+  * @params {String} match The key on what we gonna apply the match joint
+  * @return {String} The joint key
+  **/
+  handle_joint_argument: joint => {
+    if (!joint) {
+      return '$and'
+    }
+
+    if (!['and', 'or'].includes(joint)) {
+      throw new Error(`The key (${joint}) is not available for joint argument.`)
+    }
+
+    return joint
   }
 }

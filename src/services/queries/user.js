@@ -17,8 +17,9 @@ module.exports = {
     const limit = utils_filter.handle_limit_argument(args.limit)
     const sort = utils_filter.handle_sort_argument(args.sort, User)
     const order = utils_filter.handle_order_argument(args.order)
+    const joint = utils_filter.handle_joint_argument(args.joint)
     const username = utils_filter.handle_match_argument(args.username)
     const email = utils_filter.handle_match_argument(args.email)
-    return utils_user.get_all_users({ limit, sort, order, username, email })
+    return utils_user.get_all_users({ limit, sort, order, username, email, joint })
   }
 }

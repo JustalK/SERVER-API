@@ -17,6 +17,8 @@ module.exports = gql`
       sort: String,
       "Order the result ASC or DESC"
       order: String,
+      "Define the joint for multiple matching parameter 'and' or 'or'"
+      joint: String,
       "Regex matching the username"
       username: String,
       "Regex matching the email"
