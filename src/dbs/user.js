@@ -38,7 +38,7 @@ module.exports = {
     }
 
     // Sort the result
-    order = order === 'DESC' ? 1 : -1
+    order = order === 'desc' ? 1 : -1
     sort = sort !== null ? { [sort]: order } : { _id: order }
     aggregation.push({ $sort: sort })
 

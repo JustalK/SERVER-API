@@ -19,11 +19,11 @@ module.exports = {
   **/
   handle_order_argument: order => {
     if (!order) {
-      return 'DESC'
+      return 'desc'
     }
 
-    if (order !== 'DESC' && order !== 'ASC') {
-      throw new Error(`The order (${order}) is not available for ordering. Only DESC and ASC are possible variable.`)
+    if (order !== 'desc' && order !== 'asc') {
+      throw new Error(`The order (${order}) is not available for ordering. Only 'desc' and 'asc' are possible variable.`)
     }
 
     return order
