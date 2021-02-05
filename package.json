@@ -57,8 +57,9 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "faker": "^5.1.0",
-    "husky": "^4.3.8",
+    "husky": "^5.0.8",
     "mongo-seeding": "^3.5.0",
+    "npx": "^10.2.2",
     "nyc": "^15.1.0"
   },
   "ava": {
@@ -67,6 +68,9 @@
       "!test/libs",
       "!test/queries"
     ]
+  },
+  "scripts": {
+    "postinstall": "husky install"
   },
   "husky": {
     "hooks": {
