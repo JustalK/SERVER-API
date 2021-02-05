@@ -57,6 +57,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "faker": "^5.1.0",
+    "husky": "^5.0.8",
     "mongo-seeding": "^3.5.0",
     "nyc": "^15.1.0"
   },
@@ -67,6 +68,11 @@
       "!test/queries"
     ]
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "echo \"[Husky] pre-commit\"",
+    }
+  }
   "_moduleAliases": {
     "@src": "./src",
     "@test": "./test",
