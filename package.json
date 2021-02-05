@@ -9,7 +9,8 @@
     "test": "nyc ava --verbose --timeout=1m",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "check-update": "npm outdated --depth=0",
-    "linter": "eslint --fix './src/**/*.js'"
+    "linter": "eslint --fix './src/**/*.js'",
+    "postinstall": "husky install"
   },
   "engines": {
     "node": ">=15.0"
@@ -69,14 +70,7 @@
       "!test/queries"
     ]
   },
-  "scripts": {
-    "postinstall": "husky install"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm test"
-    }
-  },
+  "private": true,
   "_moduleAliases": {
     "@src": "./src",
     "@test": "./test",
