@@ -8,6 +8,8 @@ The models are found in the folder **models**. Their schema are described with `
 
 The continuous integration is handled with `Travis` and the coverage is checked by `Coveralls` and `Codeclimate` for checking the level of maintainability of the code. Finally, I use `Ava` for making the test cases. For formatting the code, I use `xo`.
 
+Before committing, `Husky` will force the tests to be run and will validate or not the new commit.
+
 ## Plan of the presentation
 
 I explain with all the details how I build the project and my way of working.
@@ -91,6 +93,10 @@ The mutations, directives and queries are dynamically added to the graph. For ad
 - Those files will be automatically added by the file **apollo.js**.
 - Add the new request into the directives, mutations or queries types inside the folder **types**.
 - Depedning of your need you might need to create a file inside the **dbs** folder.
+
+### Pre-commit
+
+`Husky` has been installed and will prevent to push any code that has not been tested.
 
 ## Seeding
 
