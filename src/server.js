@@ -2,6 +2,9 @@
 
 const express = require('express')
 const voyagerMiddleware = require('graphql-voyager/middleware')
+const AdminBro = require('admin-bro')
+const AdminBroExpress = require('@admin-bro/express')
+const AdminBroMongoose = require('@admin-bro/mongoose')
 const apollo = require('@src/apollo')
 const logger = require('@src/libs/logger')
 
@@ -32,6 +35,25 @@ module.exports = {
     server.use(process.env.ENDPOINT_ERD, voyagerMiddleware.express({ endpointUrl: process.env.ENDPOINT }))
   },
   /**
+  * Allow us to use the middleware Admin Bro
+  * @params {Express} server The server allowed to use the middleware Admin Bro
+  **/
+  register_adminbro: (server) => {
+    AdminBro.registerAdapter(AdminBroMongoose)
+    const Config = require('@src/models/config.js')
+    const User_type = require('@src/models/user_type.js')
+    const User = require('@src/models/user.js')
+
+    const adminBro = new AdminBro({
+      databases: [],
+      resources: [Config, User_type, User],
+      rootPath: '/admin'
+    })
+
+    const router = AdminBroExpress.buildRouter(adminBro)
+    server.use(adminBro.options.rootPath, router)
+  },
+  /**
   * Allow us to use the middleware express status monitor
   * @params {Express} server The server allowed to use the monitor
   **/
@@ -48,6 +70,7 @@ module.exports = {
   start: async (name, host, port) => {
     const server = module.exports.create_server()
 
+    // module.exports.register_adminbro(server)
     module.exports.register_graphql(server)
     module.exports.register_voyager(server)
     module.exports.register_monitor(server)

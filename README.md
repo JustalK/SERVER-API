@@ -20,8 +20,9 @@ I explain with all the details how I build the project and my way of working.
 4. [Development](#development)
 5. [Seeding](#seeding)
 6. [Testing](#testing)
-6. [Monitoring](#monitoring)
-7. [Running](#running)
+7. [Admin](#admin)
+8. [Monitoring](#monitoring)
+9. [Running](#running)
 
 ## ERD
 
@@ -121,6 +122,14 @@ For connecting to the API during the development, I use `localtunnel` for exposi
 ```
 npm install -g localtunnel
 lt --port 5000 --subdomain couple-api
+```
+
+## Admin
+
+The server have a version of `AdminBro` for managing some of the content. Open a browser and go to the following URL :
+
+```
+http://localhost:5000/admin
 ```
 
 ## Monitoring

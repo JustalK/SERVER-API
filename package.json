@@ -26,6 +26,9 @@
   },
   "homepage": "https://github.com/JustalK/COUPLE-API#readme",
   "dependencies": {
+    "@admin-bro/express": "^3.1.0",
+    "@admin-bro/mongoose": "^1.1.0",
+    "admin-bro": "^3.4.0",
     "apollo-server-express": "^2.19.2",
     "apollo-server-fastify": "^2.19.0",
     "bcrypt": "^5.0.0",
