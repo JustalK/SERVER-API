@@ -70,7 +70,7 @@ module.exports = {
   start: async (name, host, port) => {
     const server = module.exports.create_server()
 
-    // module.exports.register_adminbro(server)
+    module.exports.register_adminbro(server)
     module.exports.register_graphql(server)
     module.exports.register_voyager(server)
     module.exports.register_monitor(server)

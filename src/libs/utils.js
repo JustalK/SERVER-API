@@ -7,6 +7,6 @@ module.exports = {
   * @return {string} The mode of node
   **/
   mode: node_env => {
-    return node_env !== undefined ? node_env : 'production'
+    return node_env !== undefined ? node_env : 'development'
   }
 }

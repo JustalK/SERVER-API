@@ -132,6 +132,8 @@ The server have a version of `AdminBro` for managing some of the content. Open a
 http://localhost:5000/admin
 ```
 
+**WARNING** : At February 06 2020, the AdminBro in production create a Teaser error with infinite call. The trick is to modify the `env` production or to force the minify to false in the source code.
+
 ## Monitoring
 
 The monitoring is enable by default and can be viewed live on the endpoint `/status` :

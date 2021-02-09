@@ -4,7 +4,7 @@
   "description": "In development",
   "main": "index.js",
   "scripts": {
-    "start": "npm run linter && node -e 'require(\"./src/index\").start()'",
+    "start": "export NODE_ENV=development && node --max-old-space-size=4096 -e 'require(\"./src/index\").start()'",
     "seed": "node -e 'require(\"./seeding/seeder.js\").seed()'",
     "test": "nyc ava --verbose --timeout=1m",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
@@ -50,6 +50,7 @@
     "mongoose": "^5.11.7",
     "react": "^16.3.0",
     "react-dom": "^16.8.6",
+    "terser": "^5.5.1",
     "winston": "^3.3.3"
   },
   "devDependencies": {
