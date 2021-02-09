@@ -2,6 +2,7 @@
 
 const express = require('express')
 const voyagerMiddleware = require('graphql-voyager/middleware')
+const fs = require('fs')
 const AdminBro = require('admin-bro')
 const AdminBroExpress = require('@admin-bro/express')
 const AdminBroMongoose = require('@admin-bro/mongoose')
@@ -39,19 +40,21 @@ module.exports = {
   * @params {Express} server The server allowed to use the middleware Admin Bro
   **/
   register_adminbro: (server) => {
-    AdminBro.registerAdapter(AdminBroMongoose)
-    const Config = require('@src/models/config.js')
-    const User_type = require('@src/models/user_type.js')
-    const User = require('@src/models/user.js')
+    if (process.env.ADMINBRO === 'TRUE') {
+      AdminBro.registerAdapter(AdminBroMongoose)
 
-    const adminBro = new AdminBro({
-      databases: [],
-      resources: [Config, User_type, User],
-      rootPath: '/admin'
-    })
+      const models = fs.readdirSync('src/models')
+      const modelsList = models.map(model => {
+        return require('./models/' + model.split('.')[0])
+      })
 
-    const router = AdminBroExpress.buildRouter(adminBro)
-    server.use(adminBro.options.rootPath, router)
+      const router = AdminBroExpress.buildRouter(new AdminBro({
+        databases: [],
+        resources: modelsList,
+        rootPath: process.env.ENDPOINT_ADMINBRO
+      }))
+      server.use(process.env.ENDPOINT_ADMINBRO, router)
+    }
   },
   /**
   * Allow us to use the middleware express status monitor
