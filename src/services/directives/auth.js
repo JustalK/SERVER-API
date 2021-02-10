@@ -1,6 +1,6 @@
 'use strict'
 
-const { ForbiddenError, SchemaDirectiveVisitor } = require('apollo-server-fastify')
+const { ForbiddenError, SchemaDirectiveVisitor } = require('apollo-server-express')
 const { defaultFieldResolver } = require('graphql')
 const utils_auth = require('@src/services/utils/auth')
 const utils_user = require('@src/services/utils/user')
