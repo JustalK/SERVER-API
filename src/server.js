@@ -8,6 +8,7 @@ const AdminBroExpress = require('@admin-bro/express')
 const AdminBroMongoose = require('@admin-bro/mongoose')
 const apollo = require('@src/apollo')
 const logger = require('@src/libs/logger')
+const auth = require('basic-auth')
 
 /**
 * This module take care of the server creation
@@ -19,6 +20,22 @@ module.exports = {
   **/
   create_server: () => {
     return express()
+  },
+  /**
+  * Secure the route with a httpaccess password
+  * @return {ExpressRouter} The router of express
+  **/
+  get_secure_router: () => {
+    const express_router = express.Router()
+    express_router.use((request, response, next) => {
+      const user = auth(request)
+      if (!user || process.env.PASSWORD_ADMINBRO !== user.pass || process.env.USERNAME_ADMINBRO !== user.name) {
+        response.set('WWW-Authenticate', 'Basic realm="example"')
+        return response.status(401).send()
+      }
+      return next()
+    })
+    return express_router
   },
   /**
   * Allow us to use Graph QL with fastify
@@ -52,7 +69,7 @@ module.exports = {
         databases: [],
         resources: modelsList,
         rootPath: process.env.ENDPOINT_ADMINBRO
-      }))
+      }), module.exports.get_secure_router())
       server.use(process.env.ENDPOINT_ADMINBRO, router)
     }
   },
