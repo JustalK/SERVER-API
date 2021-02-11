@@ -31,7 +31,10 @@ const schema = new mongoose.Schema({
   },
   collection: filename,
   toJSON: { virtuals: true },
-  toObject: { virtuals: true }
+  toObject: { virtuals: true },
+  admin_bro: {
+    listProperties: ['username', 'user_type', 'email']
+  }
 })
 
 module.exports = mongoose.model(filename, schema)

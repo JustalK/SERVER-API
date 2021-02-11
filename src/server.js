@@ -62,7 +62,11 @@ module.exports = {
 
       const models = fs.readdirSync('src/models')
       const modelsList = models.map(model => {
-        return require('./models/' + model.split('.')[0])
+        const model_loaded = require('./models/' + model.split('.')[0])
+        return {
+          resource: model_loaded,
+          options: model_loaded.schema.options.admin_bro
+        }
       })
 
       const router = AdminBroExpress.buildRouter(new AdminBro({
