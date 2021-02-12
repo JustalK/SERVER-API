@@ -6,10 +6,11 @@ const m_utils = require('@test/libs/utils')
 
 module.exports = {
   create_new_random_user: async (password = null) => {
+    // Faker password does not give a format following my condition
     const user = {
       username: faker.internet.userName(),
       email: faker.internet.email(),
-      password: password || faker.internet.password()
+      password: password || 'Awer96@sadasdDD'
     }
 
     return m_utils.getter({

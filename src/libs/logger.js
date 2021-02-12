@@ -39,10 +39,13 @@ module.exports = {
   * Write a message in the log file
   * @params {string} The message who will be writen
   * @params {string} The level of the log
+  * @params {boolean} Return true if log logged or else false
   **/
-  log: (message, object, level = 'info') => {
-    if (process.env.LOGS === 'TRUE') {
+  log: (message, object, level = 'info', activate = process.env.LOGS) => {
+    if (activate === 'TRUE') {
       logger.log({ level, message, object })
+      return true
     }
+    return false
   }
 }
