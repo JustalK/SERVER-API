@@ -85,6 +85,13 @@ module.exports = {
     server.use(require('express-status-monitor')())
   },
   /**
+  * Allow us to use the middleware helmet for hidding some headers
+  * @params {Express} server The server allowed to use helmet
+  **/
+  register_helmet: (server) => {
+    server.use(require('helmet')())
+  },
+  /**
   * Start the server using the parameter
   * @params {string} name The name of the server
   * @params {string} host The host of the server
@@ -98,6 +105,7 @@ module.exports = {
     module.exports.register_graphql(server)
     module.exports.register_voyager(server)
     module.exports.register_monitor(server)
+    module.exports.register_helmet(server)
 
     server.use('/', require('./routes/app'))
 

@@ -40,6 +40,7 @@
     "graphql": "^15.4.0",
     "graphql-tools": "^4.0.8",
     "graphql-voyager": "^1.0.0-rc.31",
+    "helmet": "^4.4.1",
     "isomorphic-fetch": "^3.0.0",
     "jsonwebtoken": "^8.5.1",
     "marked": "^1.2.7",
