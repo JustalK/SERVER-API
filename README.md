@@ -22,7 +22,8 @@ I explain with all the details how I build the project and my way of working.
 6. [Testing](#testing)
 7. [Admin](#admin)
 8. [Monitoring](#monitoring)
-9. [Running](#running)
+9. [Security](#security)
+10. [Running](#running)
 
 ## ERD
 
@@ -141,6 +142,12 @@ The monitoring is enable by default and can be viewed live on the endpoint `/sta
 ```
 http://localhost:5000/status
 ```
+
+## Security
+
+#### Helmet
+
+`Helmet` is automatically installed. It will setup the HTTP header of the app aappropriately and will hide some of them for the hacker. Helmet is not perfect but will help with cross-site scripting attack, clickjacking and some others.
 
 ## Running
 
