@@ -13,3 +13,13 @@ test('[STATIC] log activate', t => {
   const rsl = m.log('test', {}, 'info', 'TRUE')
   t.is(rsl, true)
 })
+
+test('[STATIC] info not activate', t => {
+  const rsl = m.info('test', {}, false)
+  t.is(rsl, false)
+})
+
+test('[STATIC] info activate', t => {
+  const rsl = m.info('test', {}, 'TRUE')
+  t.is(rsl, true)
+})

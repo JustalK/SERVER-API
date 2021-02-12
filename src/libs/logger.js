@@ -31,9 +31,14 @@ module.exports = {
   /**
   * Write a message in the console and the logger
   * @params {string} The message who will be display
+  * @params {boolean} Return true if log printed on console or else false
   **/
-  info: (message, object) => {
-    logger_console.info(message, object)
+  info: (message, object, activate = process.env.LOGS_CONSOLE) => {
+    if (activate === 'TRUE') {
+      logger_console.info(message, object)
+      return true
+    }
+    return false
   },
   /**
   * Write a message in the log file
