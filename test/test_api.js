@@ -24,6 +24,16 @@ test('[ADMIN] Login', async t => {
   t.not(response.login.token, undefined)
 })
 
+test('[ADMIN] Login with not existing username', async t => {
+  const response = await queries_auth.login_user('xxx', 'xxx')
+  t.is(response.login, null)
+})
+
+test('[ADMIN] Login with wrong password', async t => {
+  const response = await queries_auth.login_user('admin', 'xxx')
+  t.is(response.login, null)
+})
+
 test('[USER] Subscribe', async t => {
   const response = await queries_user.create_new_random_user()
 
