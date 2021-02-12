@@ -22,7 +22,7 @@ module.exports = {
     }
 
     const user_type = await utils_user_type.get_user_type_by_id(user.user_type)
-    if (user_type >= 99) {
+    if (user_type.permission_level >= 99) {
       throw new Error('This account cannot be edited with this request.')
     }
 

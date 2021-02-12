@@ -21,6 +21,6 @@ module.exports = {
     }
     const response = await fetch('http://127.0.0.1:5000/api/graphql', options)
     const response_json = await response.json()
-    return response_json.data
+    return response_json.errors !== undefined ? response_json : response_json.data
   }
 }
