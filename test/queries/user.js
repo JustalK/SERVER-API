@@ -5,18 +5,11 @@ const faker = require('faker')
 const m_utils = require('@test/libs/utils')
 
 module.exports = {
-  create_new_random_user: async (password = null) => {
-    // Faker password does not give a format following my condition
-    const user = {
-      username: faker.internet.userName(),
-      email: faker.internet.email(),
-      password: password || 'Awer96@sadasdDD'
-    }
-
+  create_new_random_user: async ({ email = faker.internet.email(), username = faker.internet.userName(), password = 'Awer96@sadasdDD' }) => {
     return m_utils.getter({
       query: `
         mutation {
-          signing(username: "${user.username}", email: "${user.email}", password: "${user.password}") {
+          signing(username: "${username}", email: "${email}", password: "${password}") {
             user {
               _id
               email

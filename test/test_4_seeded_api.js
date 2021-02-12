@@ -35,15 +35,39 @@ test('[ADMIN] Login with wrong password', async t => {
 })
 
 test('[USER] Subscribe', async t => {
-  const response = await queries_user.create_new_random_user()
+  const response = await queries_user.create_new_random_user({})
 
   t.not(response.signing.user.username, undefined)
   t.not(response.signing.user.email, undefined)
   t.not(response.signing.token, undefined)
 })
 
+test('[USER] Trying to subscribe with an existing email', async t => {
+  const response = await queries_user.create_new_random_user({
+    email: 'admin@gmail.com'
+  })
+
+  t.is(response.errors[0].message, 'This email is already used by someone else.')
+})
+
+test('[USER] Trying to subscribe with an existing username', async t => {
+  const response = await queries_user.create_new_random_user({
+    username: 'admin'
+  })
+
+  t.is(response.errors[0].message, 'This username is already used by someone else.')
+})
+
+test('[USER] Trying to subscribe with a weak password', async t => {
+  const response = await queries_user.create_new_random_user({
+    password: 'azerty'
+  })
+
+  t.not(response.errors[0].message, undefined)
+})
+
 test('[USER] Edit subscribe', async t => {
-  const response_user = await queries_user.create_new_random_user()
+  const response_user = await queries_user.create_new_random_user({})
   const username = response_user.signing.user.username
   const email = response_user.signing.user.email
   t.not(username, undefined)
@@ -82,7 +106,7 @@ test('[ADMIN] Edit config', async t => {
 })
 
 test('[USER] Trying to access config with user profile', async t => {
-  const response_user = await queries_user.create_new_random_user('Q@sDwerty10')
+  const response_user = await queries_user.create_new_random_user({ password: 'Q@sDwerty10' })
   const response_login = await queries_auth.login_user(response_user.signing.user.username, 'Q@sDwerty10')
   const response = await queries_config.get_config(response_login.login.token)
 
@@ -90,7 +114,7 @@ test('[USER] Trying to access config with user profile', async t => {
 })
 
 test('[USER] Get all users with limit', async t => {
-  const response_user = await queries_user.create_new_random_user('Q@sDwerty10')
+  const response_user = await queries_user.create_new_random_user({ password: 'Q@sDwerty10' })
   const response_login = await queries_auth.login_user(response_user.signing.user.username, 'Q@sDwerty10')
 
   const response_two_users = await queries_user.get_all_users_with_limit(2, response_login.login.token)
@@ -107,7 +131,7 @@ test('[USER] Get all users with limit', async t => {
 })
 
 test('[USER] Get all users', async t => {
-  const response_user = await queries_user.create_new_random_user('Q@sDwerty10')
+  const response_user = await queries_user.create_new_random_user({ password: 'Q@sDwerty10' })
   const response_login = await queries_auth.login_user(response_user.signing.user.username, 'Q@sDwerty10')
 
   const response = await queries_user.get_all_users(response_login.login.token)
@@ -119,7 +143,7 @@ test('[USER] Get all users', async t => {
 })
 
 test('[USER] Get all users with username', async t => {
-  const response_user = await queries_user.create_new_random_user('Q@sDwerty10')
+  const response_user = await queries_user.create_new_random_user({ password: 'Q@sDwerty10' })
   const response_login = await queries_auth.login_user(response_user.signing.user.username, 'Q@sDwerty10')
 
   const response = await queries_user.get_all_users_with_username('.*dmin', response_login.login.token)
