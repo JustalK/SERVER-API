@@ -21,3 +21,14 @@ test('[USER] Trying to access config with user profile', async t => {
 
   t.is(response.errors[0].message, 'You do not have enough permission for this request.')
 })
+
+test('[STATIC] Testing access to the app', async t => {
+  const response = await fetch('http://' + process.env.HOST + ':' + process.env.PORT + '/')
+  const response_json = await response.json()
+  t.is(response_json.status, 'working')
+})
+
+test('[STATIC] Testing access to the documentation', async t => {
+  const response = await fetch('http://' + process.env.HOST + ':' + process.env.PORT + '/documentation')
+  t.is(response.status, 200)
+})

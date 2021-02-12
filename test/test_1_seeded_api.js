@@ -61,7 +61,6 @@ test('[XXX] Trying to edit not existing user', async t => {
 
 test('[XXX] Trying to edit admin user', async t => {
   const response = await queries_user.edit_user('5fd5b58efbc2f7a33c2ab000')
-  console.log(response)
   t.is(response.errors[0].message, 'This account cannot be edited with this request.')
 })
 

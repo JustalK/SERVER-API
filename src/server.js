@@ -121,7 +121,7 @@ module.exports = {
     if (error) {
       logger.info('Server fail to start !')
       logger.log('Server fail to start !')
-      reject('Server fail to start !')
+      reject(new Error('Server fail to start !'))
     }
     logger.info('Server Started')
     logger.log('Logger Activated')
