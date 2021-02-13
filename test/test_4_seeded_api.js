@@ -42,6 +42,13 @@ test('[USER] Subscribe', async t => {
   t.not(response.signing.token, undefined)
 })
 
+test('[ADMIN] Create new admin account', async t => {
+  const response = await queries_user.create_new_random_admin({})
+  console.log(response)
+  t.not(response.create_admin_account.username, undefined)
+  t.not(response.create_admin_account.email, undefined)
+})
+
 test('[USER] Trying to subscribe with an existing email', async t => {
   const response = await queries_user.create_new_random_user({
     email: 'admin@gmail.com'

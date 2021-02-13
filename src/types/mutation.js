@@ -40,6 +40,18 @@ module.exports = gql`
       "New passport of the user"
       password: String): User
 
+      """
+      The method for creating admin to the application
+      """
+      create_admin_account(
+        "The username of the admin"
+        username: String!,
+        "The email of the admin"
+        email: String!,
+        "The password of the admin"
+        password: String!
+      ): User
+
     """
     Edit the config of the server
     """

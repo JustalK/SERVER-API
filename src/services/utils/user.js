@@ -3,7 +3,6 @@
 const path = require('path')
 const utils_password = require('@src/services/utils/password')
 const utils_email = require('@src/services/utils/email')
-const utils_user_type = require('@src/services/utils/user_type')
 const libs_object = require('@src/libs/object')
 const filename = path.basename(__filename, '.js')
 const dbs = require('@src/dbs/' + filename)
@@ -45,9 +44,6 @@ module.exports = {
     if (is_password_not_strong) {
       throw new Error('This password is not strong enough. It must have a lowercase, an uppercase, a number and a length superior at ' + Number(process.env.password_minimum_character))
     }
-
-    const default_user_type = await utils_user_type.get_default_user_type()
-    args.user_type = default_user_type._id
 
     tmp_user.password = await utils_password.hash_password(tmp_user.password)
     const user = new User(args)

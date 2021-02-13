@@ -2,6 +2,7 @@
 
 const utils_user = require('@src/services/utils/user')
 const utils_auth = require('@src/services/utils/auth')
+const utils_user_type = require('@src/services/utils/user_type')
 const utils_password = require('@src/services/utils/password')
 const libs_logger = require('@src/libs/logger')
 
@@ -16,6 +17,11 @@ module.exports = {
   **/
   signing: async (_, args) => {
     libs_logger.log('New signing to the app', { args })
+
+    // Get the default user type for the new user
+    const default_user_type = await utils_user_type.get_default_user_type()
+    args.user_type = default_user_type._id
+
     const user = await utils_user.add_user(args)
     const token = utils_auth.create_token(user)
     return { user: user._id, token: token }

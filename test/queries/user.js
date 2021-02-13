@@ -20,6 +20,21 @@ module.exports = {
         }`
     })
   },
+  create_new_random_admin: async ({ email = faker.internet.email(), username = faker.internet.userName(), password = 'Awer96@sadasdDD' }) => {
+    return m_utils.getter({
+      query: `
+        mutation {
+          create_admin_account(username: "${username}", email: "${email}", password: "${password}") {
+            _id
+            email
+            username
+            user_type {
+              name
+            }
+          }
+        }`
+    })
+  },
   edit_user: async (user_id) => {
     const user = {
       username: faker.internet.userName(),

@@ -30,5 +30,20 @@ module.exports = {
     delete update.user_id
 
     return utils_user.edit_user_by_user(user, update)
+  },
+  /**
+  * Edit an user
+  * @params {Object} _ The return value of the resolver (not needeed here)
+  * @params {Object} args The argument passed to the function
+  **/
+  create_admin_account: async (_, args) => {
+    libs_logger.log('New creationg of an admin account', { args })
+
+    // Get the admin user type for the new admin
+    const user_type_admin = await utils_user_type.get_user_type_by_name('ADMIN')
+    args.user_type = user_type_admin._id
+
+    const user = await utils_user.add_user(args)
+    return user
   }
 }
