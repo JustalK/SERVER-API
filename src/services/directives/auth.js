@@ -11,10 +11,12 @@ const read_token_from_context = (context) => {
   if (!token) {
     throw new ForbiddenError('Not Authorized.')
   }
+
   const payload = utils_auth.decode_token(token)
-  if (payload.date_given < payload.exp) {
+  if (Date.now() > payload.exp * 1000) {
     throw new ForbiddenError('The token expired.')
   }
+
   return payload
 }
 

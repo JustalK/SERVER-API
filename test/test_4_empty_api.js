@@ -53,9 +53,8 @@ test('[ADMIN] Trying to access config without token', async t => {
   const response = await queries_config.edit_config('')
   t.is(response.errors[0].message, 'Not Authorized.')
 })
-/**
+
 test('[ADMIN] Trying to access config with really old token', async t => {
   const response = await queries_config.edit_config('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRlX2dpdmVuIjoxNjEzMjE0NDUzMTY0LCJfaWQiOiI1ZmQ1YjU4ZWZiYzJmN2EzM2MyYWIwMDAiLCJpYXQiOjE2MTMyMTQ0NTMsImV4cCI6MTYxMzIxODA1M30.czTbSfBwF-rJIQSgKM-s9A9nGPQjb1DFi6bRTk7tdgo')
   t.is(response.errors[0].message, 'The token expired.')
 })
-**/
