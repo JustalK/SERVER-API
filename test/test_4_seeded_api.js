@@ -56,6 +56,14 @@ test('[USER] Trying to subscribe with an existing email', async t => {
   t.is(response.errors[0].message, 'This email is already used by someone else.')
 })
 
+test('[USER] Trying to subscribe with wrong email', async t => {
+  const response = await queries_user.create_new_random_user({
+    email: 'test'
+  })
+
+  t.is(response.errors[0].message, 'This is not an email.')
+})
+
 test('[USER] Trying to subscribe with an existing username', async t => {
   const response = await queries_user.create_new_random_user({
     username: 'admin'

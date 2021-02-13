@@ -19,7 +19,7 @@ module.exports = {
   /**
   * Seed the database with the informations in data
   **/
-  seed: async () => {
+  seed: async (folder = 'datas') => {
     const seeder = module.exports.get_seeder({
       database: process.env.DB_URI_DATA + process.env.DB_NAME,
       dropDatabase: true
@@ -32,7 +32,7 @@ module.exports = {
     }
 
     const collections = seeder.readCollectionsFromPath(
-      path.resolve('./seeding/datas'),
+      path.resolve('./seeding/' + folder),
       collectionReadingOptions
     )
 
