@@ -13,12 +13,14 @@ module.exports = {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(query)
     }
+
     if (bearer !== null) {
       options.headers.Authorization = 'Bearer ' + bearer
       options.credentials = 'include'
       options.withCredentials = true
       options.headers.Accept = 'application/json'
     }
+
     const response = await fetch('http://127.0.0.1:5000/api/graphql', options)
     const response_json = await response.json()
     return response_json.errors !== undefined ? response_json : response_json.data

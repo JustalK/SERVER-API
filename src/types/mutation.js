@@ -59,6 +59,6 @@ module.exports = gql`
       "New minimum length of the password for an user"
       password_minimum_character: Int,
       "New default usertype of an user"
-      default_user_type_id: String): Config
+      default_user_type_id: String): Config @isAdmin @isLoggedIn
   }
 `
