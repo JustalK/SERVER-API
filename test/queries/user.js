@@ -63,6 +63,18 @@ module.exports = {
         }`
     }, token)
   },
+  get_all_users_sorted_ordered: async (sort, order, token) => {
+    return m_utils.getter({
+      query: `
+        query {
+          get_all_users(sort: "${sort}", order: "${order}") {
+            _id
+            email
+            username
+          }
+        }`
+    }, token)
+  },
   get_all_users_with_limit: async (limit, token) => {
     return m_utils.getter({
       query: `
@@ -80,6 +92,30 @@ module.exports = {
       query: `
         query {
           get_all_users(username: "${username}") {
+            _id
+            email
+            username
+          }
+        }`
+    }, token)
+  },
+  get_all_users_with_email: async (email, token) => {
+    return m_utils.getter({
+      query: `
+        query {
+          get_all_users(email: "${email}") {
+            _id
+            email
+            username
+          }
+        }`
+    }, token)
+  },
+  get_all_users_with_username_joint_email: async (username, email, joint, token) => {
+    return m_utils.getter({
+      query: `
+        query {
+          get_all_users(username: "${username}", email: "${email}", joint: "${joint}") {
             _id
             email
             username

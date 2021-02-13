@@ -44,7 +44,6 @@ test('[USER] Subscribe', async t => {
 
 test('[ADMIN] Create new admin account', async t => {
   const response = await queries_user.create_new_random_admin({})
-  console.log(response)
   t.not(response.create_admin_account.username, undefined)
   t.not(response.create_admin_account.email, undefined)
 })
@@ -149,11 +148,66 @@ test('[USER] Get all users', async t => {
   t.not(response.get_all_users[1].email, undefined)
 })
 
+test('[USER] Get all users sorted by name ordered', async t => {
+  await queries_user.create_new_random_user({ username: '222' })
+  await queries_user.create_new_random_user({ username: '111' })
+  const response_user = await queries_user.create_new_random_user({ username: '000', password: 'Q@sDwerty10' })
+  const response_login = await queries_auth.login_user(response_user.signing.user.username, 'Q@sDwerty10')
+
+  const response = await queries_user.get_all_users_sorted_ordered('username', 'desc', response_login.login.token)
+  t.not(response.get_all_users.length, undefined)
+  const length = response.get_all_users.length
+  t.is(response.get_all_users[0].username, '000')
+  t.is(response.get_all_users[1].username, '111')
+  t.is(response.get_all_users[2].username, '222')
+
+  const response_ascending = await queries_user.get_all_users_sorted_ordered('username', 'asc', response_login.login.token)
+  t.is(response_ascending.get_all_users[length - 1].username, '000')
+  t.is(response_ascending.get_all_users[length - 2].username, '111')
+  t.is(response_ascending.get_all_users[length - 3].username, '222')
+})
+
 test('[USER] Get all users with username', async t => {
   const response_user = await queries_user.create_new_random_user({ password: 'Q@sDwerty10' })
   const response_login = await queries_auth.login_user(response_user.signing.user.username, 'Q@sDwerty10')
 
   const response = await queries_user.get_all_users_with_username('.*dmin', response_login.login.token)
+  t.is(response.get_all_users.length, 1)
+  t.is(response.get_all_users[0].username, 'admin')
+  t.is(response.get_all_users[0].email, 'admin@gmail.com')
+})
+
+test('[USER] Get all users with email', async t => {
+  const response_user = await queries_user.create_new_random_user({ password: 'Q@sDwerty10' })
+  const response_login = await queries_auth.login_user(response_user.signing.user.username, 'Q@sDwerty10')
+
+  const response = await queries_user.get_all_users_with_email('.*dmin@', response_login.login.token)
+  t.is(response.get_all_users.length, 1)
+  t.is(response.get_all_users[0].username, 'admin')
+  t.is(response.get_all_users[0].email, 'admin@gmail.com')
+})
+
+test('[USER] Get all users with username and email', async t => {
+  const response_user = await queries_user.create_new_random_user({ password: 'Q@sDwerty10' })
+  const response_login = await queries_auth.login_user(response_user.signing.user.username, 'Q@sDwerty10')
+
+  const response_empty = await queries_user.get_all_users_with_username_joint_email('adminx', '.*dmin@', 'and', response_login.login.token)
+  t.is(response_empty.get_all_users.length, 0)
+
+  const response = await queries_user.get_all_users_with_username_joint_email('admin', '.*dmin@', 'and', response_login.login.token)
+  t.is(response.get_all_users.length, 1)
+  t.is(response.get_all_users[0].username, 'admin')
+  t.is(response.get_all_users[0].email, 'admin@gmail.com')
+})
+
+test('[USER] Get all users with username or email', async t => {
+  const response_user = await queries_user.create_new_random_user({ password: 'Q@sDwerty10' })
+  const response_login = await queries_auth.login_user(response_user.signing.user.username, 'Q@sDwerty10')
+
+  const response_empty_on_one = await queries_user.get_all_users_with_username_joint_email('adminx', '.*dmin@', 'or', response_login.login.token)
+  t.is(response_empty_on_one.get_all_users.length, 1)
+
+  const response = await queries_user.get_all_users_with_username_joint_email('admin', '.*dmin@', 'or', response_login.login.token)
   t.is(response.get_all_users.length, 1)
   t.is(response.get_all_users[0].username, 'admin')
   t.is(response.get_all_users[0].email, 'admin@gmail.com')
