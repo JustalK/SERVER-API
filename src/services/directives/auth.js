@@ -1,7 +1,6 @@
 'use strict'
 
 const { ForbiddenError, SchemaDirectiveVisitor } = require('apollo-server-express')
-const { defaultFieldResolver } = require('graphql')
 const utils_auth = require('@src/services/utils/auth')
 const utils_user = require('@src/services/utils/user')
 const utils_user_type = require('@src/services/utils/user_type')
@@ -25,7 +24,7 @@ const read_token_from_context = (context) => {
 **/
 class isLoggedIn extends SchemaDirectiveVisitor {
   visitFieldDefinition (field) {
-    const { resolve = defaultFieldResolver } = field
+    const { resolve } = field
     field.resolve = async function (...args) {
       read_token_from_context(args[2])
       const result = await resolve.apply(this, args)
@@ -36,7 +35,7 @@ class isLoggedIn extends SchemaDirectiveVisitor {
 
 class isAdmin extends SchemaDirectiveVisitor {
   visitFieldDefinition (field) {
-    const { resolve = defaultFieldResolver } = field
+    const { resolve } = field
     field.resolve = async function (...args) {
       const payload = read_token_from_context(args[2])
       const user = await utils_user.get_user_by_id(payload._id)

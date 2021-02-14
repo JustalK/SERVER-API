@@ -57,25 +57,23 @@ module.exports = {
   * @params {Express} server The server allowed to use the middleware Admin Bro
   **/
   register_adminbro: (server) => {
-    if (process.env.ADMINBRO === 'TRUE') {
-      AdminBro.registerAdapter(AdminBroMongoose)
+    AdminBro.registerAdapter(AdminBroMongoose)
 
-      const models = fs.readdirSync('src/models')
-      const modelsList = models.map(model => {
-        const model_loaded = require('./models/' + model.split('.')[0])
-        return {
-          resource: model_loaded,
-          options: model_loaded.schema.options.admin_bro
-        }
-      })
+    const models = fs.readdirSync('src/models')
+    const modelsList = models.map(model => {
+      const model_loaded = require('./models/' + model.split('.')[0])
+      return {
+        resource: model_loaded,
+        options: model_loaded.schema.options.admin_bro
+      }
+    })
 
-      const router = AdminBroExpress.buildRouter(new AdminBro({
-        databases: [],
-        resources: modelsList,
-        rootPath: process.env.ENDPOINT_ADMINBRO
-      }), module.exports.get_secure_router())
-      server.use(process.env.ENDPOINT_ADMINBRO, router)
-    }
+    const router = AdminBroExpress.buildRouter(new AdminBro({
+      databases: [],
+      resources: modelsList,
+      rootPath: process.env.ENDPOINT_ADMINBRO
+    }), module.exports.get_secure_router())
+    server.use(process.env.ENDPOINT_ADMINBRO, router)
   },
   /**
   * Allow us to use the middleware express status monitor
