@@ -11,7 +11,7 @@ The server is using the library `Express` but it can be switch easily in the **s
 
 The models are found in the folder **models**. Their schema are described with `mongoose` and also typed for using `GraphQL`.
 
-The continuous integration is handled with `Travis` and the coverage is checked by `Coveralls` and `Codeclimate` for checking the level of maintainability of the code. Finally, I use `Ava` for making the test cases. For formatting the code, I use `eslint`.
+The continuous integration is handled with `Travis` and the coverage is checked by `Coveralls` and `Codeclimate` for checking the level of maintainability of the code. Finally, I use `Ava` for making the test cases. For fixing the style, I use `Eslint`.
 
 Before committing, `Husky` will force the tests to be run and will validate or not the new push.
 
