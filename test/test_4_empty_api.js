@@ -1,4 +1,4 @@
-require('module-alias/register')
+'use strict'
 
 require('dotenv').config({ path: './env/.env.test' })
 require('isomorphic-fetch')

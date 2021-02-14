@@ -1,5 +1,6 @@
 'use strict'
 
+require('dotenv').config({ path: './env/.env.test' })
 require('module-alias/register')
 const test = require('ava')
 const m = require('@src/services/utils/user')
