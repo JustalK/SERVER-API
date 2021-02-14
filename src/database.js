@@ -13,6 +13,9 @@ module.exports = {
   * @return {Object} The data of the db
   **/
   parse_db_uri: (db_name, db_uri, db_username, db_password) => {
+    console.log(process.env)
+    console.log(db_name)
+    console.log(db_uri)
     db_uri += db_name
     const split_uri = db_uri.split('/')
 
