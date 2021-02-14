@@ -1,5 +1,7 @@
 # SERVER-API
 
+[![Travis](https://img.shields.io/travis/com/justalk/server-api.svg?style=flat-square)](https://travis-ci.com/github/JustalK/server-api)
+
 This project is a fresh starter for creating a **REST API** with all my favorite tools.
 
 The server is using the library `Express` but it can be switch easily in the **server.js** file for Fastify or Restify. The server is linked to the library `Apollo-server` for managing the data with `GraphQL`. The database is handle by `MongoDB` and can also be easily switch in **database.js**.
