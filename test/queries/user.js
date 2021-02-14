@@ -51,71 +51,18 @@ module.exports = {
         }`
     })
   },
-  get_all_users: async token => {
+  get_all_users: async ({ limit = null, sort = null, order = null, joint = null, username = null, email = null }, token) => {
+    const params = []
+    limit && params.push(`limit: ${limit}`)
+    sort && params.push(`sort: "${sort}"`)
+    order && params.push(`order: "${order}"`)
+    joint && params.push(`joint: "${joint}"`)
+    username && params.push(`username: "${username}"`)
+    email && params.push(`email: "${email}"`)
     return m_utils.getter({
       query: `
         query {
-          get_all_users {
-            _id
-            email
-            username
-          }
-        }`
-    }, token)
-  },
-  get_all_users_sorted_ordered: async (sort, order, token) => {
-    return m_utils.getter({
-      query: `
-        query {
-          get_all_users(sort: "${sort}", order: "${order}") {
-            _id
-            email
-            username
-          }
-        }`
-    }, token)
-  },
-  get_all_users_with_limit: async (limit, token) => {
-    return m_utils.getter({
-      query: `
-        query {
-          get_all_users(limit: ${limit}) {
-            _id
-            email
-            username
-          }
-        }`
-    }, token)
-  },
-  get_all_users_with_username: async (username, token) => {
-    return m_utils.getter({
-      query: `
-        query {
-          get_all_users(username: "${username}") {
-            _id
-            email
-            username
-          }
-        }`
-    }, token)
-  },
-  get_all_users_with_email: async (email, token) => {
-    return m_utils.getter({
-      query: `
-        query {
-          get_all_users(email: "${email}") {
-            _id
-            email
-            username
-          }
-        }`
-    }, token)
-  },
-  get_all_users_with_username_joint_email: async (username, email, joint, token) => {
-    return m_utils.getter({
-      query: `
-        query {
-          get_all_users(username: "${username}", email: "${email}", joint: "${joint}") {
+          get_all_users${params.length > 0 ? '(' + params.join() + ')' : ''} {
             _id
             email
             username

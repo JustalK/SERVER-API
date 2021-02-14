@@ -19,7 +19,7 @@ module.exports = {
   * @params {Int} limit Limit the number of user returned
   * @return {[User]} All the users
   **/
-  get_all_users: ({ limit = null, sort = null, order = null, joint = null, username = null, email = null }) => {
+  get_all_users: ({ limit, sort, order, joint, username, email }) => {
     const aggregation = []
 
     // Manage all the matches
@@ -34,7 +34,7 @@ module.exports = {
     if (matches.length === 1) {
       aggregation.push({ $match: matches[0] })
     } else if (matches.length > 1) {
-      joint = joint === constants.joint_and || joint === constants.joint_or ? joint : constants.joint_and
+      // Joint has been filtered in the filter util already
       aggregation.push({ $match: { ['$' + joint]: matches } })
     }
 
