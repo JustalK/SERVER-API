@@ -1,6 +1,6 @@
 'use strict'
 
-require('dotenv').config({ path: './env/.env.production' })
+require('dotenv').config({ path: './env/.env.test' })
 require('isomorphic-fetch')
 require('module-alias/register')
 
