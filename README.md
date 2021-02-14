@@ -3,6 +3,7 @@
 [![Travis](https://img.shields.io/travis/com/justalk/server-api.svg?style=flat-square)](https://travis-ci.com/github/JustalK/server-api)
 [![Coverage Status](https://coveralls.io/repos/github/JustalK/SERVER-API/badge.svg?branch=master)](https://coveralls.io/github/JustalK/SERVER-API?branch=master)
 [![Maintainability](https://api.codeclimate.com/v1/badges/7e6edeed2150efaa35bd/maintainability)](https://codeclimate.com/github/JustalK/SERVER-API/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/7e6edeed2150efaa35bd/test_coverage)](https://codeclimate.com/github/JustalK/SERVER-API/test_coverage)
 
 This project is a fresh starter for creating a **REST API** with all my favorite tools.
 
@@ -10,7 +11,7 @@ The server is using the library `Express` but it can be switch easily in the **s
 
 The models are found in the folder **models**. Their schema are described with `mongoose` and also typed for using `GraphQL`.
 
-The continuous integration is handled with `Travis` and the coverage is checked by `Coveralls` and `Codeclimate` for checking the level of maintainability of the code. Finally, I use `Ava` for making the test cases. For formatting the code, I use `xo`.
+The continuous integration is handled with `Travis` and the coverage is checked by `Coveralls` and `Codeclimate` for checking the level of maintainability of the code. Finally, I use `Ava` for making the test cases. For formatting the code, I use `eslint`.
 
 Before committing, `Husky` will force the tests to be run and will validate or not the new push.
 
@@ -102,7 +103,7 @@ The mutations, directives and queries are dynamically added to the graph. For ad
 
 ### Pre-commit
 
-`Husky` has been installed and will prevent to push any code that has not been tested.
+`Husky` has been installed and will prevent to push any code that break the project.
 
 ## Seeding
 
