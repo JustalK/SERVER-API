@@ -1,6 +1,7 @@
 'use strict'
 
 const validator = require('email-validator')
+const fs = require('fs')
 const mailgun = require('mailgun-js')({
   apiKey: process.env.API_MAILGUN_KEY,
   domain: process.env.API_MAILGUN_DOMAIN
@@ -19,9 +20,33 @@ module.exports = {
     return validator.validate(email)
   },
   /**
+  * Get the html template from the path given
+  * @params {string} path The path of the mail template
+  * @return {string} The template in a long string
+  **/
+  get_html_template_from_path: path => {
+    if (!path) {
+      throw new Error(`The path (${path}) cannot be null or undefined.`)
+    }
+
+    return fs.readFileSync(path, 'utf8')
+  },
+  /**
+  * Prepare a forgetten password mail for an user
+  * @params {string} to The email to who the mail will be send
+  * @return {Object} Return the mailgun mail
+  **/
+  forgotten_password_email: to => {
+    return module.exports.prepare_email({
+      subject: 'The password has been forgotten !',
+      html: module.exports.get_html_template_from_path('./emails/email.html'),
+      to
+    })
+  },
+  /**
   * Prepare a mail before being sent
   * @params {string} subject The subject of the mail
-  * @params {string} to The email to who the email will be send
+  * @params {string} to The email to who the mail will be send
   * @params {string} html The content of the mail
   * @return {Object} Return the mailgun mail
   **/
