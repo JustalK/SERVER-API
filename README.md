@@ -92,6 +92,30 @@ A html doc will be then found inside the directory **/doc/schema**.
 
 ## Development
 
+#### Environment variables
+
+The environment variable are not present in the project but can be found in the `travis.yaml`. Most of them are visible but some are encrypted for Travis to perform his tests.
+
+For encrypting the variables, you will need Travis :
+
+```
+gem install travis
+```
+
+Then you will need to connect your GitHub account to it. I recommend using GitHub-token.
+
+```
+travis login --github-token my_token
+```
+
+Where **my_token** is the token you will have generated in `https://github.com/settings/tokens`
+
+For encrypting a value, you just need to use the following command :
+
+```
+travis encrypt KEY="value"
+```
+
 ### Adding new request
 
 The mutations, directives and queries are dynamically added to the graph. For adding a new request, you need to follow the logic under :
@@ -153,26 +177,6 @@ http://localhost:5000/status
 #### Helmet
 
 `Helmet` is automatically installed. It will setup the HTTP header of the app aappropriately and will hide some of them for the hacker. Helmet is not perfect but will help with cross-site scripting attack, clickjacking and some others.
-
-#### Environnment variables
-
-For encrypting the variables, you will need travis :
-
-```
-gem install travis
-```
-
-```
-travis login --github-token xxxxxxxxxx
-```
-
-Where xxxxxxxx is the token you will have generated in `https://github.com/settings/tokens`
-
-For encrypting a value, use :
-
-```
-travis encrypt KEY="value"
-```
 
 ## Running
 
