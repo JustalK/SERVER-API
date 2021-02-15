@@ -154,6 +154,26 @@ http://localhost:5000/status
 
 `Helmet` is automatically installed. It will setup the HTTP header of the app aappropriately and will hide some of them for the hacker. Helmet is not perfect but will help with cross-site scripting attack, clickjacking and some others.
 
+#### Environnment variables
+
+For encrypting the variables, you will need travis :
+
+```
+gem install travis
+```
+
+```
+travis login --github-token xxxxxxxxxx
+```
+
+Where xxxxxxxx is the token you will have generated in `https://github.com/settings/tokens`
+
+For encrypting a value, use :
+
+```
+travis encrypt KEY="value"
+```
+
 ## Running
 
 For running the API, a single command is needed. You might want to use the [SSH Tunneling](#ssh-tunneling).

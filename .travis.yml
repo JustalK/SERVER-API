@@ -1,6 +1,30 @@
 env:
   global:
     - CC_TEST_REPORTER_ID=4e8fe03ad9ddc885a68a9980b8fb23feca575cd59caf0bbc3274b0c537d36a63
+    - secure: "qXUa2jsjW0tDQBamJDjLfHGmJOEtACfGARQKS4CEQ/HEoK8lVDfLDzphsO+kbpkG/cxdrcvyk46J1gztYbl3eCorJorb/af91YECmpiw18tEgCrFC6khAs3j0PB6lCYDOZZOX6Pcmk/KydIlNutmZ/2R9Oa+BftNs5efaA5XTP0QNQD/vpFUlgv28EYtxdoCyYKnBM0e1doULx/5xdQnD+iOhOTprqLMNUBDX1iEHGvEyxY3pUPs/aiSM8DeE4y/Z/6xQakUQtF4c48tQY9xbRMXQiAJLfH7wvcITBCLt2jKQtuIaS1Sb/8JNBHC+5Z0ZfKkBLdVeT9DlelqETaHu5CyPkx4RH72hiuVU4omlD5EN0kCcUGrt8/XHR+xxcuMVdP51cST24eJLkpVluPGmDdYXpTBxb37dQrgBDMnoQdYBNgK27dzXubEysL1d65kJPWrhu945NNnoG2/DZl2oeL5d0AklaPyWMCFxBS9+eZCMAmdAIcGCwsG42UeZqnK22gi3wmcfVz5Fblw9p+mddxdo3E9QEBrc/NMcHfVyXal4lIkrRfGUWD5Y3CkkKtekJjrDyXIZ1wDFoeAcliAUvQ9X0rFfZAS38EkRIEgMGbALcPOvm4uGeYFwFhsn6m+ZfzSDRqTGQboLz8P3+tk3F/uFLhJQ1xjRHODRGcIs78="
+    - secure: "MGwGKyU2mBKF8HtAQY71W6PI8Owcks3xu1YJ2IXXIhZ/n0CqgiPGKtZlwvuuu9qhpVZa/hhhPxJ0zTl0HCkboXYYtr/AjHDZZKPiAA+B9aiDloDjnHrFRGHKcDqyUm/KZ0o/3Zm4pbRuBDNmDCpu5x3i+Pd/15VaZGqymaoCp548ncyHsrJ27qp1X079rlk0VsCLDwQywh80LOjSG6PN7p3KKntpBENqDMWVFhMrukGk1hki5WlAz1IGwS5+GDhE73bOHPHyqEGNd9uW064vslDHzyj5IatAMyoc8Qi82WDtaKGdADbQroArHaaSP9gMnwDHPDOA6G7inffaLc9kkBtBreEtrPmd8R8oJVdnyNHxOarydvxj6PccnR/6VrWJzIT1hvsLT0v2LjBbVRgCPy8hKNC2n6I2IxellqmOkp3lsKUrMFJ4PGXTPZCU0to3NJyrvG/CKEOgeaCsZmVlclPYokcNyumDsaQU0MXsn1lTCVwehfVKw820uSJ5/Huv08RbF8M4KWDkqo2bNBtoajRXGg9EAoew1AQFynyRt1B+w+Y9f+RIEUx42O/tJjYlFP2sfE6C5YFgbxNBLoG0bhE2oZRes+BUINmllCYYjnFa/bThLMKYZmyFG2z45uWafW5dzDrGRCK3CnQVikY0Jn6/C9+hTfp9XGUVV5nhnQA="
+    - NODE_ENV: "test"
+    - API_NAME: "SERVER-API"
+    - HOST: "localhost"
+    - PORT: "5000"
+    - ENDPOINT: "/api/graphql"
+    - ENDPOINT_ERD: "/erd"
+    - ENDPOINT_ADMINBRO: "/admin"
+    - PASSWORD_ADMINBRO: "admin"
+    - USERNAME_ADMINBRO: "admin"
+    - SECRET_JWT: "TryAgain"
+    - BCRYPT_SALT: 10
+    - PASSWORD_LIMIT_CHARACTER: 5
+    - TOKEN_EXPIRE_TIME: "1h"
+    - LOGS: "FALSE"
+    - LOGS_CONSOLE: "FALSE"
+    - FROM_EMAIL: "justal.kevin@gmail.com"
+    - DB_NAME: "server_api"
+    - DB_URI_DATA: "mongodb://localhost:27017/"
+    - DB_URI_LOG: "mongodb://localhost:27017/logs"
+    - DB_HOST_LOG: "localhost"
+    - DB_PORT_LOG: 27017
+    - DB_NAME_LOG: "logs"
 language: node_js
 node_js:
   - 15

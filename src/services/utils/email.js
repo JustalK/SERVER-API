@@ -13,23 +13,32 @@ module.exports = {
   /**
   * Check if an email is valide meaning in the format xxx@xxx.xxx
   * @params {string} email The email you want to check
-  * @return True if the email is valid or else False
+  * @return {Boolean} True if the email is valid or else False
   **/
   check_email: email => {
     return validator.validate(email)
   },
   /**
-  * Send a mail to a particular email
-  * @params {string} email The email you want to send a mail
-  * @return True if the email is valid or else False
+  * Prepare a mail before being sent
+  * @params {string} subject The subject of the mail
+  * @params {string} to The email to who the email will be send
+  * @params {string} html The content of the mail
+  * @return {Object} Return the mailgun mail
   **/
-  send_email: async user_email => {
-    const mail = {
+  prepare_email: ({ subject, to, html }) => {
+    return {
       from: process.env.FROM_EMAIL,
-      subject: 'Test',
-      to: user_email,
-      html: 'aa'
+      subject,
+      to,
+      html
     }
+  },
+  /**
+  * Send a mailgun mail
+  * @params {Object} mail The mail you want to send
+  * @return {Boolean} True if the email is valid or else False
+  **/
+  send_email: async mail => {
     return new Promise((resolve, reject) => {
       mailgun.messages().send(mail, (error, body) => {
         if (error) {

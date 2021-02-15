@@ -1,6 +1,6 @@
 'use strict'
 
-require('dotenv').config({ path: './env/.env.test' })
+require('dotenv').config({ path: './env/.env.secret' })
 require('isomorphic-fetch')
 require('module-alias/register')
 const test = require('ava')
@@ -11,8 +11,16 @@ test.before(async () => {
   await m.start()
 })
 
+test('[STATIC] Trying to send_email with bad mail', async t => {
+  await t.throwsAsync(async () => { await m_email.send_email({}) })
+})
+
 test('[STATIC] send_email', async t => {
-  const rsl = await m_email.send_email('justal.kevin@gmail.com')
-  console.log(rsl)
-  t.pass()
+  const mail = m_email.prepare_email({
+    to: 'justal.kevin@gmail.com',
+    subject: 'Test Subject',
+    html: 'Test Content'
+  })
+  const rsl = await m_email.send_email(mail)
+  t.is(rsl.message, 'Queued. Thank you.')
 })
