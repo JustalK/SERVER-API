@@ -1,6 +1,6 @@
 'use strict'
 
-require('dotenv').config({ path: './env/.env.secret' })
+require('dotenv').config({ path: './env/.env.test' })
 require('isomorphic-fetch')
 require('module-alias/register')
 const test = require('ava')
