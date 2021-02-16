@@ -195,6 +195,14 @@ test('[USER] Get all users with email', async t => {
   t.is(response.get_all_users[0].email, 'admin@gmail.com')
 })
 
+test('[USER] get_user_from_token for admin', async t => {
+  const response = await queries_user.get_user_from_token('2662395a24030edae2656c3b3e790ae6' + process.env.ENCRYPTION_SPLIT + '874de9d4de31b0443b963e315af8262429e930393f0573b9')
+  console.log(response)
+  t.is(response.get_all_users[0]._id, '5fd5b58efbc2f7a33c2ab000')
+  t.is(response.get_all_users[0].username, 'admin')
+  t.is(response.get_all_users[0].email, 'admin@gmail.com')
+})
+
 test('[USER] Get all users with username and email', async t => {
   const response_user = await queries_user.create_new_random_user({ password: 'Q@sDwerty10' })
   const response_login = await queries_auth.login_user(response_user.signing.user.username, 'Q@sDwerty10')

@@ -3,6 +3,7 @@
 const path = require('path')
 const utils_user = require('@src/services/utils/user')
 const utils_filter = require('@src/services/utils/filter')
+const utils_token = require('@src/services/utils/token')
 const filename = path.basename(__filename, '.js')
 const User = require('@src/models/' + filename)
 /**
@@ -27,6 +28,7 @@ module.exports = {
   * @params {User} Return the user
   **/
   get_user_from_token: async (_, args) => {
-    return true
+    const user_id = utils_token.get_informations_from_recover_token(args.recover_token)
+    return utils_user.get_user_by_id(user_id)
   }
 }

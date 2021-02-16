@@ -35,12 +35,26 @@ module.exports = {
         }`
     })
   },
+  get_user_from_token: recover_token => {
+    return m_utils.getter({
+      query: `
+        query {
+          get_user_from_token(recover_token: "${recover_token}") {
+            _id
+            email
+            username
+            user_type {
+              name
+            }
+          }
+        }`
+    })
+  },
   edit_user: async (user_id) => {
     const user = {
       username: faker.internet.userName(),
       email: faker.internet.email()
     }
-
     return m_utils.getter({
       query: `
         mutation {
