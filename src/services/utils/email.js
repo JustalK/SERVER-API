@@ -1,6 +1,7 @@
 'use strict'
 
 const validator = require('email-validator')
+const mustache = require('mustache')
 const fs = require('fs')
 const mailgun = require('mailgun-js')({
   apiKey: process.env.API_MAILGUN_KEY,
@@ -37,9 +38,12 @@ module.exports = {
   * @return {Object} Return the mailgun mail
   **/
   forgotten_password_email: to => {
+    const data = {
+      title: 'JOE'
+    }
     return module.exports.prepare_email({
       subject: 'The password has been forgotten !',
-      html: module.exports.get_html_template_from_path('./emails/email.html'),
+      html: mustache.render(module.exports.get_html_template_from_path('./emails/email.html'), data),
       to
     })
   },

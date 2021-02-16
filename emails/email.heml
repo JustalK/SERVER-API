@@ -8,7 +8,7 @@
   </head>
   <body>
     <container>
-      <marquee><h1>Hello world 💌</h1></marquee>
+      <marquee><h1>Hello world {{title}}</h1></marquee>
     </container>
   </body>
 </heml>

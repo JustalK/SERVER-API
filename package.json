@@ -4,6 +4,7 @@
   "description": "In development",
   "main": "index.js",
   "scripts": {
+    "build:emails": "heml build emails/*.heml",
     "start": "export NODE_ENV=development && node --max-old-space-size=4096 -e 'require(\"./src/index\").start()'",
     "seed": "node -e 'require(\"./seeding/seeder.js\").seed()'",
     "test": "export NODE_ENV=test && nyc ava --serial --verbose --timeout=1m",
@@ -49,6 +50,7 @@
     "module-alias": "^2.2.2",
     "mongo-uri-builder": "^3.2.2",
     "mongoose": "^5.11.7",
+    "mustache": "^4.1.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "terser": "^5.5.1",
