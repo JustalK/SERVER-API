@@ -25,6 +25,13 @@ module.exports = gql`
       email: String): [User]! @isLoggedIn
 
     """
+    Get User from recover token\n
+    A recover token is a token gotten when the user asked for a new password
+    """
+    get_user_from_token(
+      "The token containing the user_id"
+      recover_token: String!): User!
+    """
     Return the config of the system
     """
     get_config: Config! @isAdmin @isLoggedIn

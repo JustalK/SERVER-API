@@ -21,5 +21,12 @@ module.exports = {
     const username = utils_filter.handle_match_argument(args.username)
     const email = utils_filter.handle_match_argument(args.email)
     return utils_user.get_all_users({ limit, sort, order, username, email, joint })
+  },
+  /**
+  * Query for getting an user from a recover token
+  * @params {User} Return the user
+  **/
+  get_user_from_token: async (_, args) => {
+    return true
   }
 }
