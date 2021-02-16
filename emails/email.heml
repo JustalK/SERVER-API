@@ -8,7 +8,7 @@
   </head>
   <body>
     <container>
-      <marquee><h1>Hello world {{title}}</h1></marquee>
+      <marquee><h1>Hello {{username}}, here is your link for your renew your password : {{recovery_url}}</h1></marquee>
     </container>
   </body>
 </heml>

@@ -7,6 +7,7 @@ const mailgun = require('mailgun-js')({
   apiKey: process.env.API_MAILGUN_KEY,
   domain: process.env.API_MAILGUN_DOMAIN
 })
+const utils_token = require('@src/services/utils/token')
 
 /**
 * Manage the utils function for email
@@ -37,14 +38,20 @@ module.exports = {
   * @params {string} to The email to who the mail will be send
   * @return {Object} Return the mailgun mail
   **/
-  forgotten_password_email: to => {
+  forgotten_password_email: user => {
+    // Create the token
+    const hash = utils_token.create_recover_token_from_user(user._id.toString())
+    const token = hash.iv + process.env.ENCRYPTION_SPLIT + hash.content
+    // Create the data to be parse by mustache
     const data = {
-      title: 'JOE'
+      username: user.username,
+      recovery_url: process.env.FRONTEND_URL + process.env.ENDPOINT_EMAIL_FORGOTTEN + '?token=' + token
     }
+    // Prepare the email
     return module.exports.prepare_email({
       subject: 'The password has been forgotten !',
       html: mustache.render(module.exports.get_html_template_from_path('./emails/email.html'), data),
-      to
+      to: user.email
     })
   },
   /**

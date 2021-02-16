@@ -10,6 +10,7 @@ const m_seeding = require('@seeding/seeder')
 const queries_user = require('@test/queries/user')
 const queries_auth = require('@test/queries/auth')
 const queries_config = require('@test/queries/config')
+const queries_email = require('@test/queries/email')
 
 test.before(async () => {
   await m.start()
@@ -100,6 +101,12 @@ test('[XXX] Trying to edit not existing user', async t => {
 test('[XXX] Trying to edit admin user', async t => {
   const response = await queries_user.edit_user('5fd5b58efbc2f7a33c2ab000')
   t.is(response.errors[0].message, 'This account cannot be edited with this request.')
+})
+
+test('[USER] Forget password', async t => {
+  await queries_user.create_new_random_user({ email: 'justal.kevin@gmail.com' })
+  const response = await queries_email.send_recovery_email('justal.kevin@gmail.com')
+  t.is(response.send_recovery_email, true)
 })
 
 test('[ADMIN] Get the config', async t => {

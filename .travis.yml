@@ -8,6 +8,7 @@ env:
     - HOST: "localhost"
     - PORT: "5000"
     - ENDPOINT: "/api/graphql"
+    - FRONTEND_URL: "http://www.justalk.online"
     - ENDPOINT_ERD: "/erd"
     - ENDPOINT_ADMINBRO: "/admin"
     - PASSWORD_ADMINBRO: "admin"
@@ -17,6 +18,9 @@ env:
     - PASSWORD_LIMIT_CHARACTER: 5
     - TOKEN_EXPIRE_TIME: "1h"
     - LOGS: "FALSE"
+    - ENCRYPTION_ALGORITHM: "aes-256-ctr"
+    - ENCRYPTION_SECRET_KEY: "vOVH6sdmpNWjRRIqCc7rdxs01lwHzfr3"
+    - ENCRYPTION_SPLIT: "w"
     - LOGS_CONSOLE: "FALSE"
     - FROM_EMAIL: "justal.kevin@gmail.com"
     - DB_NAME: "server_api"
