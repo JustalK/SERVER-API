@@ -13,7 +13,7 @@ const User = require('@src/models/' + filename)
 module.exports = {
   /**
   * Query for getting all the user
-  * @params {[User]} Return the list of all the user
+  * @param {[User]} Return the list of all the user
   **/
   get_all_users: async (_, args) => {
     const limit = utils_filter.handle_limit_argument(args.limit)
@@ -26,7 +26,7 @@ module.exports = {
   },
   /**
   * Query for getting an user from a recover token
-  * @params {User} Return the user
+  * @param {User} Return the user
   **/
   get_user_from_token: async (_, args) => {
     const informations = utils_token.get_informations_from_recover_token(args.recover_token)
@@ -34,7 +34,7 @@ module.exports = {
   },
   /**
   * Query for changing the password of an user with a recover token
-  * @params {User} Return the user
+  * @param {User} Return the user
   **/
   change_password_user: async (_, args) => {
     const informations = utils_token.get_informations_from_recover_token(args.recover_token)

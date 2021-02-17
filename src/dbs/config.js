@@ -7,7 +7,7 @@ const model = require('@src/models/' + filename)
 module.exports = {
   /**
   * Call mongoDB for finding all the match to the request
-  * @params {Object} find The matching parameters
+  * @param {Object} find The matching parameters
   * @return {Level[]} Return an array of level
   **/
   get_config: () => {
@@ -16,8 +16,8 @@ module.exports = {
   },
   /**
   * Update a document in mongodb respecting the condtion
-  * @params {Object} filter The condition the document has to respect
-  * @params {Object} update The update to apply
+  * @param {Object} filter The condition the document has to respect
+  * @param {Object} update The update to apply
   * @return {Object} The document updated or null
   **/
   update_by_id: (_id, update) => {

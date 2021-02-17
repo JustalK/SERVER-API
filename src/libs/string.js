@@ -3,7 +3,7 @@
 module.exports = {
   /**
   * Capitalize the first letter of a word or sentance
-  * @params {string} sentance The word or sentance to capitalize
+  * @param {string} sentance The word or sentance to capitalize
   * @return {string} The sentance or word captilized
   **/
   capitalize: (sentance) => {
@@ -12,7 +12,7 @@ module.exports = {
   },
   /**
   * Sanitize a string for the database
-  * @params {string} value The string to sanitize
+  * @param {string} value The string to sanitize
   * @return {string} The sanitized string
   **/
   sanitize: (string) => {

@@ -9,8 +9,8 @@ const libs_logger = require('@src/libs/logger')
 module.exports = {
   /**
   * Edit the config
-  * @params {Object} _ The return value of the resolver (not needeed here)
-  * @params {Object} args The argument passed to the function
+  * @param {Object} _ The return value of the resolver (not needeed here)
+  * @param {Object} args The argument passed to the function
   **/
   edit_config: async (_, args) => {
     libs_logger.log('New edit of the config', { args })

@@ -15,7 +15,7 @@ const utils_token = require('@src/services/utils/token')
 module.exports = {
   /**
   * Check if an email is valide meaning in the format xxx@xxx.xxx
-  * @params {string} email The email you want to check
+  * @param {string} email The email you want to check
   * @return {Boolean} True if the email is valid or else False
   **/
   check_email: email => {
@@ -23,7 +23,7 @@ module.exports = {
   },
   /**
   * Get the html template from the path given
-  * @params {string} path The path of the mail template
+  * @param {string} path The path of the mail template
   * @return {string} The template in a long string
   **/
   get_html_template_from_path: path => {
@@ -35,7 +35,7 @@ module.exports = {
   },
   /**
   * Prepare a forgetten password mail for an user
-  * @params {string} to The email to who the mail will be send
+  * @param {string} to The email to who the mail will be send
   * @return {Object} Return the mailgun mail
   **/
   forgotten_password_email: user => {
@@ -59,9 +59,9 @@ module.exports = {
   },
   /**
   * Prepare a mail before being sent
-  * @params {string} subject The subject of the mail
-  * @params {string} to The email to who the mail will be send
-  * @params {string} html The content of the mail
+  * @param {string} subject The subject of the mail
+  * @param {string} to The email to who the mail will be send
+  * @param {string} html The content of the mail
   * @return {Object} Return the mailgun mail
   **/
   prepare_email: ({ subject, to, html }) => {
@@ -74,7 +74,7 @@ module.exports = {
   },
   /**
   * Send a mailgun mail
-  * @params {Object} mail The mail you want to send
+  * @param {Object} mail The mail you want to send
   * @return {Boolean} True if the email is valid or else False
   **/
   send_email: async mail => {

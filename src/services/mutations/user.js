@@ -10,8 +10,8 @@ const libs_logger = require('@src/libs/logger')
 module.exports = {
   /**
   * Edit an user
-  * @params {Object} _ The return value of the resolver (not needeed here)
-  * @params {Object} args The argument passed to the function
+  * @param {Object} _ The return value of the resolver (not needeed here)
+  * @param {Object} args The argument passed to the function
   **/
   edit_user_account: async (_, args) => {
     libs_logger.log('New edit of an user account', { args })
@@ -33,8 +33,8 @@ module.exports = {
   },
   /**
   * Edit an user
-  * @params {Object} _ The return value of the resolver (not needeed here)
-  * @params {Object} args The argument passed to the function
+  * @param {Object} _ The return value of the resolver (not needeed here)
+  * @param {Object} args The argument passed to the function
   **/
   create_admin_account: async (_, args) => {
     libs_logger.log('New creationg of an admin account', { args })

@@ -9,7 +9,7 @@ const dbs_config = require('@src/dbs/config')
 module.exports = {
   /**
   * Hash a password with bcrypt
-  * @params {number} alternative_salt If we want to specify a different salt that the environment file
+  * @param {number} alternative_salt If we want to specify a different salt that the environment file
   * @return The encrypted password
   **/
   hash_password: async (password, alternative_salt = null) => {
@@ -18,8 +18,8 @@ module.exports = {
   },
   /**
   * Compare a password with a hash password
-  * @params {string} password The password we want to check
-  * @params {string} hash_password The password to what we want to check
+  * @param {string} password The password we want to check
+  * @param {string} hash_password The password to what we want to check
   * @return The encrypted password
   **/
   compare_password_hash: async (password, hash_password) => {
@@ -27,7 +27,7 @@ module.exports = {
   },
   /**
   * Check if the password has a lowercase
-  * @params {string} password The password to check
+  * @param {string} password The password to check
   * @return {string} True if the password has a lowercase or else False
   **/
   has_lowercase: (password) => {
@@ -35,7 +35,7 @@ module.exports = {
   },
   /**
   * Check if the password has a uppercase
-  * @params {string} password The password to check
+  * @param {string} password The password to check
   * @return {string} True if the password has a uppercase or else False
   **/
   has_uppercase: (password) => {
@@ -43,7 +43,7 @@ module.exports = {
   },
   /**
   * Check if the password has a number
-  * @params {string} password The password to check
+  * @param {string} password The password to check
   * @return {string} True if the password has a number or else False
   **/
   has_number: (password) => {
@@ -51,7 +51,7 @@ module.exports = {
   },
   /**
   * Check if the password is long enough
-  * @params {string} password The password to check
+  * @param {string} password The password to check
   * @return {string} True if the password is long enough or else False
   **/
   has_enough_length: async (password, length) => {
@@ -61,8 +61,8 @@ module.exports = {
   /**
   * Check if the password depending of the conditon passed
   * The conditions represente the name of the function of the password util file
-  * @params {string} password The password to check
-  * @params {string[]} conditions An array of the name of the check function
+  * @param {string} password The password to check
+  * @param {string[]} conditions An array of the name of the check function
   * @return {string} True if the password respect all condition or else False
   **/
   check_new_password: async (password, conditions = []) => {

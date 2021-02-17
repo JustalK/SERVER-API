@@ -48,6 +48,14 @@ The documentation of the server can be access at this endpoint. It gives informa
 http://localhost:5000/documentation
 ```
 
+#### Code documentation
+
+The jsdoc can be generated locally with the following command :
+
+```
+npm run build:docs
+```
+
 #### Online API documentation
 
 The playground of the apollo server is activated, so the documentation and the json format can be access at the endpoint of the api. Open a browser and browse to the following URL :
@@ -116,7 +124,15 @@ For encrypting a value, you just need to use the following command :
 travis encrypt KEY="value"
 ```
 
-### Adding new request
+#### Build email
+
+The email are build with `heml` and `Mustache`. They can be build easily with the following command :
+
+```
+npm run build:emails
+```
+
+#### Adding new request
 
 The mutations, directives and queries are dynamically added to the graph. For adding a new request, you need to follow the logic under :
 
@@ -125,7 +141,7 @@ The mutations, directives and queries are dynamically added to the graph. For ad
 - Add the new request into the directives, mutations or queries types inside the folder **types**.
 - Depedning of your need you might need to create a file inside the **dbs** folder.
 
-### Pre-commit
+#### Pre-commit
 
 `Husky` has been installed and will prevent to push any code that break the project.
 

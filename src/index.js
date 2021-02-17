@@ -1,3 +1,8 @@
+/**
+* The module for managing the entry point of the API
+* @module home
+*/
+
 'use strict'
 
 require('module-alias/register')
@@ -7,9 +12,6 @@ require('dotenv').config({ path: './env/.env.' + mode })
 const server = require('./server')
 const database = require('./database')
 
-/**
-* Entry point of the API
-**/
 module.exports = {
   /**
   * Start the API

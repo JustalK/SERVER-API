@@ -30,8 +30,8 @@ const logger = winston.createLogger({
 module.exports = {
   /**
   * Write a message in the console and the logger
-  * @params {string} The message who will be display
-  * @params {boolean} Return true if log printed on console or else false
+  * @param {string} The message who will be display
+  * @param {boolean} Return true if log printed on console or else false
   **/
   info: (message, object, activate = process.env.LOGS_CONSOLE) => {
     if (activate === 'TRUE') {
@@ -42,9 +42,9 @@ module.exports = {
   },
   /**
   * Write a message in the log file
-  * @params {string} The message who will be writen
-  * @params {string} The level of the log
-  * @params {boolean} Return true if log logged or else false
+  * @param {string} The message who will be writen
+  * @param {string} The level of the log
+  * @param {boolean} Return true if log logged or else false
   **/
   log: (message, object, level = 'info', activate = process.env.LOGS) => {
     if (activate === 'TRUE') {

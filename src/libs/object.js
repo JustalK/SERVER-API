@@ -5,7 +5,7 @@ const libs_string = require('@src/libs/string')
 module.exports = {
   /**
   * Capitalize the first letter of a word or sentance
-  * @params {string} sentance The word or sentance to capitalize
+  * @param {string} sentance The word or sentance to capitalize
   * @return {string} The sentance or word captilized
   **/
   clean_values: (object, accept_null = true) => {

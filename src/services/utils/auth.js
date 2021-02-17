@@ -15,7 +15,7 @@ module.exports = {
   },
   /**
   * Return the token from the bearer token
-  * @params {string} bearer_token The bearer token
+  * @param {string} bearer_token The bearer token
   * @return {string} The token
   **/
   get_token_from_bearer: bearer_token => {
@@ -23,7 +23,7 @@ module.exports = {
   },
   /**
   * Create the informations to put inside the token
-  * @params {Object} user The user you want to take the informations from
+  * @param {Object} user The user you want to take the informations from
   * @return {Object} The payload
   **/
   create_payload: (user) => {
@@ -34,7 +34,7 @@ module.exports = {
   },
   /**
   * Create a token for an user
-  * @params {Object} user The user you want to create the token for
+  * @param {Object} user The user you want to create the token for
   * @return {string} The token for the OAUTH
   **/
   create_token: (user) => {

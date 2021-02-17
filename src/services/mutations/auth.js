@@ -12,8 +12,8 @@ const libs_logger = require('@src/libs/logger')
 module.exports = {
   /**
   * Signing to the application
-  * @params {Object} _ The return value of the resolver (not needeed here)
-  * @params {Object} args The argument passed to the function
+  * @param {Object} _ The return value of the resolver (not needeed here)
+  * @param {Object} args The argument passed to the function
   **/
   signing: async (_, args) => {
     libs_logger.log('New signing to the app', { args })
@@ -28,8 +28,8 @@ module.exports = {
   },
   /**
   * Login to the application
-  * @params {Object} _ The return value of the resolver (not needeed here)
-  * @params {Object} args The argument passed to the function
+  * @param {Object} _ The return value of the resolver (not needeed here)
+  * @param {Object} args The argument passed to the function
   **/
   login: async (_, args) => {
     libs_logger.log('New login to the app', { args })

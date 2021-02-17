@@ -11,7 +11,7 @@ const utils_config = require('@src/services/utils/config')
 module.exports = {
   /**
   * Return the user_type by the name
-  * @params {String} name The name of the user type searched
+  * @param {String} name The name of the user type searched
   * @return {user_type} The user type found
   **/
   get_user_type_by_id: id => {
@@ -19,7 +19,7 @@ module.exports = {
   },
   /**
   * Return the user_type by the name
-  * @params {String} name The name of the user type searched
+  * @param {String} name The name of the user type searched
   * @return {user_type} The user type found
   **/
   get_user_type_by_name: name => {

@@ -14,7 +14,7 @@ const User = require('@src/models/' + filename)
 module.exports = {
   /**
   * Services for adding a new user
-  * @params {Object} args The argument passed to the function
+  * @param {Object} args The argument passed to the function
   **/
   add_user: async (args) => {
     const tmp_user = args
@@ -59,7 +59,7 @@ module.exports = {
   },
   /**
   * Get an user by username or email
-  * @params {String} login The username or email to search
+  * @param {String} login The username or email to search
   * @return {Object} The user found or null
   **/
   get_user_by_login: async login => {
@@ -67,7 +67,7 @@ module.exports = {
   },
   /**
   * Get an user by id
-  * @params {String} id The id of the user to search
+  * @param {String} id The id of the user to search
   * @return {Object} The user found or null
   **/
   get_user_by_id: async id => {
@@ -75,14 +75,14 @@ module.exports = {
   },
   /**
   * Return all the users
-  * @params {Int} limit Limit the number of user returned
+  * @param {Int} limit Limit the number of user returned
   **/
   get_all_users: async ({ limit = null, sort, order, username, email, joint }) => {
     return dbs.get_all_users({ limit, sort, order, joint, username, email })
   },
   /**
   * Test the an user exist in the db with the username specified
-  * @params {String} username The username to test
+  * @param {String} username The username to test
   * @return {boolean} True if the username exist or else False
   **/
   is_user_exist_by_username: async username => {
@@ -90,7 +90,7 @@ module.exports = {
   },
   /**
   * Test the email if a user exist in the db with this email
-  * @params {String} email The email to test
+  * @param {String} email The email to test
   * @return {boolean} True if the user exist or else False
   **/
   is_user_exist_by_email: async email => {
@@ -98,7 +98,7 @@ module.exports = {
   },
   /**
   * Test if the user is an instance of user
-  * @params {Object} user The object user to test
+  * @param {Object} user The object user to test
   * @return {boolean} True if it's an object user or else false
   **/
   is_instanceof_user: user => {

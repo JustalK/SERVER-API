@@ -1,3 +1,7 @@
+/**
+* The module for managing everything relative to the server
+* @module server
+*/
 'use strict'
 
 const express = require('express')
@@ -10,9 +14,6 @@ const apollo = require('@src/apollo')
 const logger = require('@src/libs/logger')
 const auth = require('basic-auth')
 
-/**
-* This module take care of the server creation
-**/
 module.exports = {
   /**
   * Create the restify server
@@ -39,7 +40,7 @@ module.exports = {
   },
   /**
   * Allow us to use Graph QL with fastify
-  * @params {Express} server The server allowed to use graphQl
+  * @param {Express} server The server allowed to use graphQl
   **/
   register_graphql: (server) => {
     const apollo_server = apollo.get_handler()
@@ -47,14 +48,14 @@ module.exports = {
   },
   /**
   * Allow us to use the middleware voyager
-  * @params {Express} server The server allowed to use the middleware voyager
+  * @param {Express} server The server allowed to use the middleware voyager
   **/
   register_voyager: (server) => {
     server.use(process.env.ENDPOINT_ERD, voyagerMiddleware.express({ endpointUrl: process.env.ENDPOINT }))
   },
   /**
   * Allow us to use the middleware Admin Bro
-  * @params {Express} server The server allowed to use the middleware Admin Bro
+  * @param {Express} server The server allowed to use the middleware Admin Bro
   **/
   register_adminbro: (server) => {
     AdminBro.registerAdapter(AdminBroMongoose)
@@ -77,23 +78,23 @@ module.exports = {
   },
   /**
   * Allow us to use the middleware express status monitor
-  * @params {Express} server The server allowed to use the monitor
+  * @param {Express} server The server allowed to use the monitor
   **/
   register_monitor: (server) => {
     server.use(require('express-status-monitor')())
   },
   /**
   * Allow us to use the middleware helmet for hidding some headers
-  * @params {Express} server The server allowed to use helmet
+  * @param {Express} server The server allowed to use helmet
   **/
   register_helmet: (server) => {
     server.use(require('helmet')())
   },
   /**
   * Start the server using the parameter
-  * @params {string} name The name of the server
-  * @params {string} host The host of the server
-  * @params {string} port The port of the server
+  * @param {string} name The name of the server
+  * @param {string} host The host of the server
+  * @param {string} port The port of the server
   * @return {Promise<boolean>} True if the server start or else an error
   **/
   start: async (name, host, port) => {
@@ -113,7 +114,7 @@ module.exports = {
   },
   /**
   * Handle the callback of the server listening
-  * @params {Error} error The object error returned by the listen function
+  * @param {Error} error The object error returned by the listen function
   **/
   callback: (error, resolve, reject) => {
     if (error) {

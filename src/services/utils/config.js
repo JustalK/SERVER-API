@@ -21,7 +21,7 @@ module.exports = {
   },
   /**
   * Test if the user is an instance of user
-  * @params {Object} user The object user to test
+  * @param {Object} user The object user to test
   * @return {boolean} True if it's an object user or else false
   **/
   is_instanceof_config: config => {

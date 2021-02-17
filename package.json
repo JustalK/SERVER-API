@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build:emails": "heml build emails/*.heml",
+    "build:docs": "npx jsdoc ./src",
     "start": "export NODE_ENV=development && node --max-old-space-size=4096 -e 'require(\"./src/index\").start()'",
     "seed": "node -e 'require(\"./seeding/seeder.js\").seed()'",
     "test": "export NODE_ENV=test && nyc ava --serial --verbose --timeout=1m",
@@ -67,6 +68,7 @@
     "faker": "^5.3.1",
     "heml": "^1.1.3",
     "husky": "^5.0.8",
+    "jsdoc": "^3.6.6",
     "mongo-seeding": "^3.5.0",
     "npx": "^10.2.2",
     "nyc": "^15.1.0"

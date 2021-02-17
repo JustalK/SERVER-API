@@ -8,7 +8,7 @@ const encryption = require('@src/libs/encryption')
 module.exports = {
   /**
   * Handle the limit argument
-  * @params {Int} limit The argument to handle
+  * @param {Int} limit The argument to handle
   * @return {Int|null} Return the limit or null
   **/
   create_recover_token_from_user: user_id => {

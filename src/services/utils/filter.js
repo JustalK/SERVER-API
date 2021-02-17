@@ -8,7 +8,7 @@ const constants = require('@src/libs/constants')
 module.exports = {
   /**
   * Handle the limit argument
-  * @params {Int} limit The argument to handle
+  * @param {Int} limit The argument to handle
   * @return {Int|null} Return the limit or null
   **/
   handle_limit_argument: limit => {
@@ -16,7 +16,7 @@ module.exports = {
   },
   /**
   * Handle the order argument
-  * @params {String} order The argument to handle
+  * @param {String} order The argument to handle
   * @return {String} Return the order to use for the query
   **/
   handle_order_argument: order => {
@@ -32,8 +32,8 @@ module.exports = {
   },
   /**
   * Handle the sorting argument
-  * @params {String} sort The key on what we gonna apply the sort
-  * @params {Object} model The model use for checking if a key is valid or no
+  * @param {String} sort The key on what we gonna apply the sort
+  * @param {Object} model The model use for checking if a key is valid or no
   * @return {String} The sort key
   **/
   handle_sort_argument: (sort, model) => {
@@ -52,7 +52,7 @@ module.exports = {
   },
   /**
   * Handle the matching argument
-  * @params {String} match The key on what we gonna apply the match
+  * @param {String} match The key on what we gonna apply the match
   * @return {String} The match key
   **/
   handle_match_argument: match => {
@@ -64,7 +64,7 @@ module.exports = {
   },
   /**
   * Handle the joint argument
-  * @params {String} match The key on what we gonna apply the match joint
+  * @param {String} match The key on what we gonna apply the match joint
   * @return {String} The joint key
   **/
   handle_joint_argument: joint => {

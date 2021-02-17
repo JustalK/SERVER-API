@@ -1,3 +1,7 @@
+/**
+* The module for managing everything relative to the apollo server
+* @module apollo
+*/
 'use strict'
 
 const { ApolloServer } = require('apollo-server-express')
@@ -105,7 +109,7 @@ module.exports = {
   },
   /**
   * Create the apollo server
-  * @params {Object} schema The excutable schema for apollo
+  * @param {Object} schema The excutable schema for apollo
   * @return {ApolloServer} The apollo server
   **/
   create_server: schema => {

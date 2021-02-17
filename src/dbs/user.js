@@ -8,7 +8,7 @@ const constants = require('@src/libs/constants')
 module.exports = {
   /**
   * Call mongodb for adding an user to the database
-  * @params {User} user The user to add to the database
+  * @param {User} user The user to add to the database
   * @return {User} The user added with the id
   **/
   insert: (user) => {
@@ -16,7 +16,7 @@ module.exports = {
   },
   /**
   * Call mongodb for getting all the document
-  * @params {Int} limit Limit the number of user returned
+  * @param {Int} limit Limit the number of user returned
   * @return {[User]} All the users
   **/
   get_all_users: ({ limit, sort, order, joint, username, email }) => {
@@ -52,7 +52,7 @@ module.exports = {
   },
   /**
   * Call mongodb for getting an user by id
-  * @params {String} id The id to search
+  * @param {String} id The id to search
   * @return {Object} The user found or null
   **/
   get_user_by_id: id => {
@@ -60,7 +60,7 @@ module.exports = {
   },
   /**
   * Call mongodb for getting an user by login
-  * @params {String} login The login to search
+  * @param {String} login The login to search
   * @return {Object} The user found or null
   **/
   get_user_by_login: login => {
@@ -68,8 +68,8 @@ module.exports = {
   },
   /**
   * Update a document in mongodb respecting the condtion
-  * @params {Object} filter The condition the document has to respect
-  * @params {Object} update The update to apply
+  * @param {Object} filter The condition the document has to respect
+  * @param {Object} update The update to apply
   * @return {Object} The document updated or null
   **/
   update_by_id: (_id, update) => {
@@ -77,7 +77,7 @@ module.exports = {
   },
   /**
   * Call mongodb for testing the existence of an user by username
-  * @params {String} username The username to search
+  * @param {String} username The username to search
   * @return {boolean} True if a document exist or else False
   **/
   test_user_by_username: username => {
@@ -85,7 +85,7 @@ module.exports = {
   },
   /**
   * Call mongodb for testing the existence of an user by email
-  * @params {String} username The username to search
+  * @param {String} username The username to search
   * @return {boolean} True if a document exist or else False
   **/
   test_user_by_email: email => {
