@@ -103,6 +103,11 @@ test('[XXX] Trying to edit admin user', async t => {
   t.is(response.errors[0].message, 'This account cannot be edited with this request.')
 })
 
+test('[USER] Trying to Forget password on inexisting user', async t => {
+  const response = await queries_email.send_recovery_email('idontreallycare.iamnotworking@gmail.com')
+  t.is(response.errors[0].message, 'This account does not exist.')
+})
+
 test('[USER] Forget password', async t => {
   await queries_user.create_new_random_user({ email: 'justal.kevin@gmail.com' })
   const response = await queries_email.send_recovery_email('justal.kevin@gmail.com')
