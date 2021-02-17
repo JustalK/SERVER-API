@@ -108,7 +108,7 @@ test('[USER] Trying to Forget password on inexisting user', async t => {
   t.is(response.errors[0].message, 'This account does not exist.')
 })
 
-test('[USER] Forget password', async t => {
+test('[USER] Forget password and change password', async t => {
   const response_creation_user = await queries_user.create_new_random_user({ email: 'justal.kevin@gmail.com' })
   const response_token = await queries_email.send_recovery_email('justal.kevin@gmail.com')
   const token = response_token.send_recovery_email
@@ -117,6 +117,11 @@ test('[USER] Forget password', async t => {
   const response_user = await queries_user.get_user_from_token(token)
   t.is(response_user.get_user_from_token._id, response_creation_user.signing.user._id)
   t.is(response_user.get_user_from_token.username, response_creation_user.signing.user.username)
+
+  await queries_user.change_password_user('aaa', token)
+  const response_login = await queries_auth.login_user('justal.kevin@gmail.com', 'aaa')
+  t.is(response_login.login.user.username, response_creation_user.signing.user.username)
+  t.is(response_login.login.user.email, 'justal.kevin@gmail.com')
 })
 
 test('[ADMIN] Get the config', async t => {

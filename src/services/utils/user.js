@@ -53,7 +53,6 @@ module.exports = {
     if (!module.exports.is_instanceof_user(user)) {
       throw new Error('This is not an user.')
     }
-
     const update_sanitized = libs_object.clean_values(update, false)
 
     return dbs.update_by_id(user._id, update_sanitized)

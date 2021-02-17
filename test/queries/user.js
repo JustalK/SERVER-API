@@ -50,6 +50,14 @@ module.exports = {
         }`
     })
   },
+  change_password_user: (password, recover_token) => {
+    return m_utils.getter({
+      query: `
+        query {
+          change_password_user(password: "${password}", recover_token: "${recover_token}")
+        }`
+    })
+  },
   edit_user: async (user_id) => {
     const user = {
       username: faker.internet.userName(),
