@@ -30,7 +30,7 @@ module.exports = gql`
     """
     send_recovery_email(
       "The login or the email of the user"
-      login: String!): Boolean
+      login: String!): String!
 
     """
     Get User from recover token\n

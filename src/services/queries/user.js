@@ -28,7 +28,7 @@ module.exports = {
   * @params {User} Return the user
   **/
   get_user_from_token: async (_, args) => {
-    const user_id = utils_token.get_informations_from_recover_token(args.recover_token)
-    return utils_user.get_user_by_id(user_id)
+    const informations = utils_token.get_informations_from_recover_token(args.recover_token)
+    return utils_user.get_user_by_id(informations.user_id)
   }
 }

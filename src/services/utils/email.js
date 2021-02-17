@@ -48,11 +48,14 @@ module.exports = {
       recovery_url: process.env.FRONTEND_URL + process.env.ENDPOINT_EMAIL_FORGOTTEN + '?token=' + token
     }
     // Prepare the email
-    return module.exports.prepare_email({
-      subject: 'The password has been forgotten !',
-      html: mustache.render(module.exports.get_html_template_from_path('./emails/email.html'), data),
-      to: user.email
-    })
+    return {
+      mail: module.exports.prepare_email({
+        subject: 'The password has been forgotten !',
+        html: mustache.render(module.exports.get_html_template_from_path('./emails/email.html'), data),
+        to: user.email
+      }),
+      token
+    }
   },
   /**
   * Prepare a mail before being sent

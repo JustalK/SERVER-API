@@ -109,9 +109,14 @@ test('[USER] Trying to Forget password on inexisting user', async t => {
 })
 
 test('[USER] Forget password', async t => {
-  await queries_user.create_new_random_user({ email: 'justal.kevin@gmail.com' })
-  const response = await queries_email.send_recovery_email('justal.kevin@gmail.com')
-  t.is(response.send_recovery_email, true)
+  const response_creation_user = await queries_user.create_new_random_user({ email: 'justal.kevin@gmail.com' })
+  const response_token = await queries_email.send_recovery_email('justal.kevin@gmail.com')
+  const token = response_token.send_recovery_email
+  t.not(token, undefined)
+
+  const response_user = await queries_user.get_user_from_token(token)
+  t.is(response_user.get_user_from_token._id, response_creation_user.signing.user._id)
+  t.is(response_user.get_user_from_token.username, response_creation_user.signing.user.username)
 })
 
 test('[ADMIN] Get the config', async t => {
@@ -207,11 +212,9 @@ test('[USER] Get all users with email', async t => {
   t.is(response.get_all_users[0].email, 'admin@gmail.com')
 })
 
-test('[USER] get_user_from_token for admin', async t => {
-  const response = await queries_user.get_user_from_token('2662395a24030edae2656c3b3e790ae6' + process.env.ENCRYPTION_SPLIT + '874de9d4de31b0443b963e315af8262429e930393f0573b9')
-  t.is(response.get_user_from_token._id, '5fd5b58efbc2f7a33c2ab000')
-  t.is(response.get_user_from_token.username, 'admin')
-  t.is(response.get_user_from_token.email, 'admin@gmail.com')
+test('[USER] get_user_from_token for admin with expired token', async t => {
+  const response = await queries_user.get_user_from_token('6012d27f399f18dbdc1e613af713697aw6b8294ef76026e3d613fec693286977ec4f973878e210b41336d8394bc3fe819f2881962514229e19ad4d204275ebc85f5997b2dd05a3d3ee6473e5891128de471')
+  t.not(response.errors[0].message, null)
 })
 
 test('[XXX] get_user_from_token with bad value', async t => {

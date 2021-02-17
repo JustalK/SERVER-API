@@ -12,7 +12,11 @@ module.exports = {
   * @return {Int|null} Return the limit or null
   **/
   create_recover_token_from_user: user_id => {
-    return encryption.encrypt(user_id)
+    const recover_token = {
+      user_id,
+      date_given: Date.now()
+    }
+    return encryption.encrypt(JSON.stringify(recover_token))
   },
   get_informations_from_recover_token: recover_token => {
     if (!recover_token) {
@@ -29,6 +33,11 @@ module.exports = {
       content: token[1]
     }
 
-    return encryption.decrypt(hash)
+    const recover_token_string = JSON.parse(encryption.decrypt(hash))
+    if (Date.now() - recover_token_string.date_given > Number(process.env.FORGET_TOKEN_EXPIRE_TIME.replace('h', '')) * 3600000) {
+      throw new Error(`The token (${recover_token}) expired.`)
+    }
+
+    return recover_token_string
   }
 }
