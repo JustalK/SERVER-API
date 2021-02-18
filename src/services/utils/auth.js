@@ -1,6 +1,6 @@
 /**
 * The utils function for managing the authentication process
-* @module Authentication Utils
+* @module utils/auth
 */
 'use strict'
 

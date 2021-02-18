@@ -1,6 +1,6 @@
 /**
 * The utils function for managing the password (creation and restriction)
-* @module Password Utils
+* @module utils/password
 */
 'use strict'
 

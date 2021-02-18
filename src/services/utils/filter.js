@@ -1,6 +1,6 @@
 /**
 * The utils function for managing the parameter of the calls
-* @module Filter Utils
+* @module utils/filter
 */
 'use strict'
 

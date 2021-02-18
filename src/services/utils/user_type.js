@@ -1,6 +1,6 @@
 /**
 * The utils function for managing the type of user
-* @module User Type Utils
+* @module utils/user_type
 */
 'use strict'
 

@@ -1,6 +1,6 @@
 /**
 * The utils function for managing the token for recovering a password
-* @module Token Utils
+* @module utils/token
 */
 'use strict'
 

@@ -1,6 +1,6 @@
 /**
 * The utils function for managing the configuration global of the app
-* @module Configuration Utils
+* @module utils/config
 */
 'use strict'
 

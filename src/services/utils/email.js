@@ -1,6 +1,6 @@
 /**
 * The utils function for managing the email process
-* @module Email Utils
+* @module utils/email
 */
 'use strict'
 

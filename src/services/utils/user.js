@@ -1,6 +1,6 @@
 /**
 * The utils function for managing the user
-* @module User Utils
+* @module utils/user
 */
 'use strict'
 
