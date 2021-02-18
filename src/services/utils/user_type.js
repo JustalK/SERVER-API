@@ -1,3 +1,7 @@
+/**
+* The utils function for managing the type of user
+* @module User Type Utils
+*/
 'use strict'
 
 const path = require('path')

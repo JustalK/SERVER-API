@@ -1,3 +1,7 @@
+/**
+* The utils function for managing the password (creation and restriction)
+* @module Password Utils
+*/
 'use strict'
 
 const bcrypt = require('bcrypt')

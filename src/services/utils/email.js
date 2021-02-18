@@ -1,3 +1,7 @@
+/**
+* The utils function for managing the email process
+* @module Email Utils
+*/
 'use strict'
 
 const validator = require('email-validator')

@@ -1,3 +1,7 @@
+/**
+* The utils function for managing the user
+* @module User Utils
+*/
 'use strict'
 
 const path = require('path')

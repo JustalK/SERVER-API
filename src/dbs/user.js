@@ -17,7 +17,7 @@ module.exports = {
   /**
   * Call mongodb for getting all the document
   * @param {Int} limit Limit the number of user returned
-  * @return {[User]} All the users
+  * @return {Object[]} All the users
   **/
   get_all_users: ({ limit, sort, order, joint, username, email }) => {
     const aggregation = []

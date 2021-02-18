@@ -1,3 +1,7 @@
+/**
+* The utils function for managing the token for recovering a password
+* @module Token Utils
+*/
 'use strict'
 
 const encryption = require('@src/libs/encryption')

@@ -1,3 +1,7 @@
+/**
+* The utils function for managing the configuration global of the app
+* @module Configuration Utils
+*/
 'use strict'
 
 const path = require('path')

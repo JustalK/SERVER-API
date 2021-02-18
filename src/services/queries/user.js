@@ -13,7 +13,7 @@ const User = require('@src/models/' + filename)
 module.exports = {
   /**
   * Query for getting all the user
-  * @param {[User]} Return the list of all the user
+  * @param {Object[]} Return the list of all the user
   **/
   get_all_users: async (_, args) => {
     const limit = utils_filter.handle_limit_argument(args.limit)

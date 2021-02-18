@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build:emails": "heml build emails/*.heml",
-    "build:docs": "npx jsdoc ./src",
+    "build:docs": "npx jsdoc ./src/**/**/*.js",
     "start": "export NODE_ENV=development && node --max-old-space-size=4096 -e 'require(\"./src/index\").start()'",
     "seed": "node -e 'require(\"./seeding/seeder.js\").seed()'",
     "test": "export NODE_ENV=test && nyc ava --serial --verbose --timeout=1m",

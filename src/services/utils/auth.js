@@ -1,3 +1,7 @@
+/**
+* The utils function for managing the authentication process
+* @module Authentication Utils
+*/
 'use strict'
 
 const jwt = require('jsonwebtoken')

@@ -1,3 +1,7 @@
+/**
+* The utils function for managing the parameter of the calls
+* @module Filter Utils
+*/
 'use strict'
 
 const constants = require('@src/libs/constants')
