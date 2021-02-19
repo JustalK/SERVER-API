@@ -1,3 +1,7 @@
+/**
+* The queries for the email
+* @module queries/email
+*/
 'use strict'
 
 const utils_user = require('@src/services/utils/user')

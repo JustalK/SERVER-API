@@ -1,3 +1,7 @@
+/**
+* The queries for the config
+* @module queries/config
+*/
 'use strict'
 
 const utils_config = require('@src/services/utils/config')

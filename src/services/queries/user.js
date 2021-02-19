@@ -1,3 +1,7 @@
+/**
+* The queries for the user
+* @module queries/user
+*/
 'use strict'
 
 const path = require('path')
