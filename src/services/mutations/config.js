@@ -1,6 +1,6 @@
 /**
 * The mutation for config
-* @module mutation/config
+* @module mutations/config
 */
 'use strict'
 

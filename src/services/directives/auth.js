@@ -1,3 +1,7 @@
+/**
+* The directives of the auth
+* @module directives/auth
+*/
 'use strict'
 
 const { ForbiddenError, SchemaDirectiveVisitor } = require('apollo-server-express')
@@ -5,7 +9,12 @@ const utils_auth = require('@src/services/utils/auth')
 const utils_user = require('@src/services/utils/user')
 const utils_user_type = require('@src/services/utils/user_type')
 
-const read_token_from_context = (context) => {
+/**
+* Read the token and check is validity and if it expires
+* @param {Object} context The context of the call
+* @return {Object} The decoded information from the token
+**/
+const read_token_from_context = context => {
   const token = utils_auth.get_token_from_bearer(context.auth)
   if (!token) {
     throw new ForbiddenError('Not Authorized.')
@@ -21,6 +30,7 @@ const read_token_from_context = (context) => {
 
 /**
 * Create a directive for managing the Permissions of call
+* Checked that the user has a valid token for accessing the call
 **/
 class isLoggedIn extends SchemaDirectiveVisitor {
   visitFieldDefinition (field) {
@@ -33,6 +43,10 @@ class isLoggedIn extends SchemaDirectiveVisitor {
   }
 }
 
+/**
+* Create a directive for managing the Permissions of call
+* Checked that the user is an admin
+**/
 class isAdmin extends SchemaDirectiveVisitor {
   visitFieldDefinition (field) {
     const { resolve } = field

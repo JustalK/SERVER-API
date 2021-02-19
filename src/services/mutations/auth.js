@@ -1,6 +1,6 @@
 /**
 * The mutation for auth
-* @module mutation/auth
+* @module mutations/auth
 */
 'use strict'
 
