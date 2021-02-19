@@ -41,6 +41,7 @@ module.exports = {
   * @param {User} Return the user
   **/
   change_password_user: async (_, args) => {
+    await utils_password.check_password_strong_enough(args.password)
     const informations = utils_recover_token.get_informations_from_recover_token(args.recover_token)
     const user = await utils_user.get_user_by_id(informations.user_id)
     const hash = await utils_password.hash_password(args.password)

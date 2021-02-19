@@ -118,8 +118,8 @@ test('[USER] Forget password and change password', async t => {
   t.is(response_user.get_user_from_token._id, response_creation_user.signing.user._id)
   t.is(response_user.get_user_from_token.username, response_creation_user.signing.user.username)
 
-  await queries_user.change_password_user('aaa', token)
-  const response_login = await queries_auth.login_user('justal.kevin@gmail.com', 'aaa')
+  await queries_user.change_password_user('Qwerty10@10', token)
+  const response_login = await queries_auth.login_user('justal.kevin@gmail.com', 'Qwerty10@10')
   t.is(response_login.login.user.username, response_creation_user.signing.user.username)
   t.is(response_login.login.user.email, 'justal.kevin@gmail.com')
 })
