@@ -1,17 +1,19 @@
+/**
+* The mutation for user
+* @module mutations/user
+*/
 'use strict'
 
 const utils_user = require('@src/services/utils/user')
 const utils_user_type = require('@src/services/utils/user_type')
 const libs_logger = require('@src/libs/logger')
 
-/**
-* Manage the queries for the authentification process
-**/
 module.exports = {
   /**
   * Edit an user
   * @param {Object} _ The return value of the resolver (not needeed here)
   * @param {Object} args The argument passed to the function
+  * @return {Object} The edited user
   **/
   edit_user_account: async (_, args) => {
     libs_logger.log('New edit of an user account', { args })
@@ -35,6 +37,7 @@ module.exports = {
   * Edit an user
   * @param {Object} _ The return value of the resolver (not needeed here)
   * @param {Object} args The argument passed to the function
+  * @return {Object} The new admin account
   **/
   create_admin_account: async (_, args) => {
     libs_logger.log('New creationg of an admin account', { args })

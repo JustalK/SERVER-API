@@ -1,16 +1,18 @@
+/**
+* The mutation for config
+* @module mutation/config
+*/
 'use strict'
 
 const utils_config = require('@src/services/utils/config')
 const libs_logger = require('@src/libs/logger')
 
-/**
-* Manage the queries for the authentification process
-**/
 module.exports = {
   /**
   * Edit the config
   * @param {Object} _ The return value of the resolver (not needeed here)
   * @param {Object} args The argument passed to the function
+  * @return {Object} The edited config
   **/
   edit_config: async (_, args) => {
     libs_logger.log('New edit of the config', { args })
