@@ -13,6 +13,11 @@ const schema = new mongoose.Schema({
     type: Number,
     required: true
   },
+  password_restriction: [{
+    type: String,
+    enum: ['has_lowercase', 'has_uppercase', 'has_number', 'has_enough_length'],
+    required: true
+  }],
   default_user_type: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user_type',

@@ -19,6 +19,10 @@ module.exports = gql`
     """
     password_minimum_character: Int!
     """
+    The minimum character a password can have
+    """
+    password_restriction: [String!]!
+    """
     The user type an user signin will get
     """
     default_user_type: User_type!
