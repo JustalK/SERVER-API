@@ -1,3 +1,7 @@
+/**
+* Module for managing the dbs for user
+* @module dbs/user
+*/
 'use strict'
 
 const path = require('path')

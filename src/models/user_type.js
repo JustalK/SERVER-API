@@ -1,3 +1,9 @@
+/**
+* The models of the user_type
+* @module models/user_type
+*/
+'use strict'
+
 const mongoose = require('mongoose')
 const path = require('path')
 const filename = path.basename(__filename, '.js')

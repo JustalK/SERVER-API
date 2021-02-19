@@ -1,3 +1,7 @@
+/**
+* Set of global functions or constants about logs
+* @module libs/logger
+*/
 'use strict'
 
 const winston = require('winston')

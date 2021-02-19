@@ -1,3 +1,7 @@
+/**
+* Module for managing the dbs for config
+* @module dbs/config
+*/
 'use strict'
 
 const path = require('path')

@@ -1,3 +1,7 @@
+/**
+* Set of global functions or constants about object
+* @module libs/object
+*/
 'use strict'
 
 const libs_string = require('@src/libs/string')

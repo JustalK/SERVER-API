@@ -1,3 +1,7 @@
+/**
+* Set of global functions or constants about constants
+* @module libs/constants
+*/
 'use strict'
 
 module.exports = {
