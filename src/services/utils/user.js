@@ -18,7 +18,7 @@ const User = require('@src/models/' + filename)
 module.exports = {
   /**
   * Services for adding a new user
-  * @param {Object} args The argument passed to the function
+  * @param {User} args The argument passed to the function
   **/
   add_user: async (args) => {
     const tmp_user = args

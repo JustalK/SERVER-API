@@ -2,6 +2,13 @@
 
 const { gql } = require('apollo-server-express')
 
+/**
+ * The config object
+ * @typedef {Object} Config
+ * @property {boolean} password_minimum_character - password_minimum_character
+ * @property {User_type} default_user_type - The user type an user signin will get
+ */
+
 module.exports = gql`
   """
   Manage the config of the app

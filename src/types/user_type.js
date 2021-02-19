@@ -2,6 +2,13 @@
 
 const { gql } = require('apollo-server-express')
 
+/**
+ * The User_type object
+ * @typedef {Object} User_type
+ * @property {string} name - The name of the user type
+ * @property {Number} permission_level - The permission of the user
+ */
+
 module.exports = gql`
   """
   User type of the app \n
