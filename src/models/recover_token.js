@@ -1,6 +1,6 @@
 /**
-* The models of the user_type
-* @module models/user_type
+* The models of the recover_token
+* @module models/token
 */
 'use strict'
 
@@ -9,14 +9,29 @@ const path = require('path')
 const filename = path.basename(__filename, '.js')
 
 const schema = new mongoose.Schema({
-  name: {
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user',
+    required: true
+  },
+  token: {
     type: String,
     uppercase: true,
     trim: true,
     required: true
   },
-  permission_level: {
-    type: Number,
+  date: {
+    type: Date,
+    required: true
+  },
+  deleted: {
+    type: Boolean,
+    default: false,
+    required: true
+  },
+  used: {
+    type: Boolean,
+    default: false,
     required: true
   }
 }, {
@@ -28,7 +43,7 @@ const schema = new mongoose.Schema({
   toJSON: { virtuals: true },
   toObject: { virtuals: true },
   admin_bro: {
-    listProperties: ['name', 'permission_level']
+    listProperties: ['user', 'date']
   }
 })
 

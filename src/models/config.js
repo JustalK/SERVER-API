@@ -11,7 +11,7 @@ const filename = path.basename(__filename, '.js')
 const schema = new mongoose.Schema({
   password_minimum_character: {
     type: Number,
-    require: true
+    required: true
   },
   default_user_type: {
     type: mongoose.Schema.Types.ObjectId,

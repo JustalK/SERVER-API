@@ -24,7 +24,7 @@ module.exports = {
       throw new Error('This account does not exist.')
     }
 
-    const informations = utils_email.forgotten_password_email(user)
+    const informations = await utils_email.forgotten_password_email(user)
     utils_email.send_email(informations.mail)
     return informations.token
   }

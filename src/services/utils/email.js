@@ -11,7 +11,7 @@ const mailgun = require('mailgun-js')({
   apiKey: process.env.API_MAILGUN_KEY,
   domain: process.env.API_MAILGUN_DOMAIN
 })
-const utils_token = require('@src/services/utils/token')
+const utils_recover_token = require('@src/services/utils/recover_token')
 
 /**
 * Manage the utils function for email
@@ -42,10 +42,9 @@ module.exports = {
   * @param {string} to The email to who the mail will be send
   * @return {Object} Return the mailgun mail
   **/
-  forgotten_password_email: user => {
+  forgotten_password_email: async user => {
     // Create the token
-    const hash = utils_token.create_recover_token_from_user(user._id.toString())
-    const token = hash.iv + process.env.ENCRYPTION_SPLIT + hash.content
+    const token = await utils_recover_token.create_recover_token_from_user(user._id.toString())
     // Create the data to be parse by mustache
     const data = {
       username: user.username,

@@ -17,18 +17,18 @@ const schema = new mongoose.Schema({
   username: {
     type: String,
     trim: true,
-    require: true
+    required: true
   },
   email: {
     type: String,
     trim: true,
     lowercase: true,
-    require: true
+    required: true
   },
   password: {
     type: String,
     trim: true,
-    require: true
+    required: true
   }
 }, {
   timestamps: {
