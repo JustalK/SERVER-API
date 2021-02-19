@@ -111,7 +111,6 @@ test('[USER] Trying to Forget password on inexisting user', async t => {
 test('[USER] Forget password and change password', async t => {
   const response_creation_user = await queries_user.create_new_random_user({ email: 'justal.kevin@gmail.com' })
   const response_token = await queries_email.send_recovery_email('justal.kevin@gmail.com')
-  console.log(response_token)
   const token = response_token.send_recovery_email
   t.not(token, undefined)
 
@@ -123,6 +122,11 @@ test('[USER] Forget password and change password', async t => {
   const response_login = await queries_auth.login_user('justal.kevin@gmail.com', 'aaa')
   t.is(response_login.login.user.username, response_creation_user.signing.user.username)
   t.is(response_login.login.user.email, 'justal.kevin@gmail.com')
+})
+
+test('[USER] Trying to forget password with an existing valid recover token already created', async t => {
+  const response = await queries_email.send_recovery_email('kevin@gmail.com')
+  t.is(response.errors[0].message, 'There is already a valid token existing for this user.')
 })
 
 test('[ADMIN] Get the config', async t => {

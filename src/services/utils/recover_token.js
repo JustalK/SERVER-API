@@ -27,7 +27,7 @@ module.exports = {
     const recover_token = {
       user: user_id,
       token,
-      date: new Date()
+      date: Date.now()
     }
 
     return dbs.insert(recover_token)
