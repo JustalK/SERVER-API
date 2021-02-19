@@ -6,6 +6,7 @@
 
 const bcrypt = require('bcrypt')
 const dbs_config = require('@src/dbs/config')
+const utils_config = require('@src/services/utils/config')
 
 /**
 * Manage the utils function for password
@@ -74,5 +75,19 @@ module.exports = {
       return Promise.resolve(await accumulator + Number(await module.exports[current_value](password)))
     }, Promise.resolve(0))
     return result !== conditions.length
+  },
+  /**
+  * Check if the password respect all the condition from the config
+  * @param {string} password The password to check
+  **/
+  check_password_strong_enough: async password => {
+    const password_restrictions = await utils_config.get_password_restriction()
+    const is_password_not_strong = await module.exports.check_new_password(
+      password,
+      password_restrictions
+    )
+    if (is_password_not_strong) {
+      throw new Error('This password is not strong enough. It must have a lowercase, an uppercase, a number and a length superior at ' + Number(process.env.password_minimum_character))
+    }
   }
 }

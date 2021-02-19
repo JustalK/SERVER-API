@@ -41,13 +41,7 @@ module.exports = {
       throw new Error('This username is already used by someone else.')
     }
     // Check if the password is strong
-    const is_password_not_strong = await utils_password.check_new_password(
-      args.password,
-      ['has_lowercase', 'has_uppercase', 'has_number', 'has_enough_length']
-    )
-    if (is_password_not_strong) {
-      throw new Error('This password is not strong enough. It must have a lowercase, an uppercase, a number and a length superior at ' + Number(process.env.password_minimum_character))
-    }
+    await utils_password.check_password_strong_enough(args.password)
 
     tmp_user.password = await utils_password.hash_password(tmp_user.password)
     const user = new User(args)
