@@ -6,6 +6,8 @@
 
 const utils_user = require('@src/services/utils/user')
 const utils_user_type = require('@src/services/utils/user_type')
+const utils_password = require('@src/services/utils/password')
+const utils_recover_token = require('@src/services/utils/recover_token')
 const libs_logger = require('@src/libs/logger')
 
 module.exports = {
@@ -48,5 +50,19 @@ module.exports = {
 
     const user = await utils_user.add_user(args)
     return user
+  },
+  /**
+  * Query for changing the password of an user with a recover token
+  * @param {User} Return the user
+  **/
+  change_password_user: async (_, args) => {
+    await utils_password.check_password_strong_enough(args.password)
+    await utils_recover_token.check_recover_token_exist_by_token(args.recover_token)
+    const informations = utils_recover_token.get_informations_from_recover_token(args.recover_token)
+    const user = await utils_user.get_user_by_id(informations.user_id)
+    const hash = await utils_password.hash_password(args.password)
+    await utils_user.edit_user_by_user(user, { password: hash })
+    await utils_recover_token.invalid_token_by_user(user)
+    return true
   }
 }

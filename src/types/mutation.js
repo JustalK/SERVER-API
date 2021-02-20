@@ -53,6 +53,16 @@ module.exports = gql`
     ): User
 
     """
+    Change password with a recovery token\n
+    A recover token is a token gotten when the user asked for a new password
+    """
+    change_password_user(
+      "The new password for the account"
+      password: String!,
+      "The recovery token"
+      recover_token: String!): Boolean
+
+    """
     Edit the config of the server
     """
     edit_config(

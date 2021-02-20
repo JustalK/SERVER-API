@@ -8,7 +8,6 @@ const path = require('path')
 const utils_user = require('@src/services/utils/user')
 const utils_filter = require('@src/services/utils/filter')
 const utils_recover_token = require('@src/services/utils/recover_token')
-const utils_password = require('@src/services/utils/password')
 const filename = path.basename(__filename, '.js')
 const User = require('@src/models/' + filename)
 /**
@@ -35,17 +34,5 @@ module.exports = {
   get_user_from_token: async (_, args) => {
     const informations = utils_recover_token.get_informations_from_recover_token(args.recover_token)
     return utils_user.get_user_by_id(informations.user_id)
-  },
-  /**
-  * Query for changing the password of an user with a recover token
-  * @param {User} Return the user
-  **/
-  change_password_user: async (_, args) => {
-    await utils_password.check_password_strong_enough(args.password)
-    const informations = utils_recover_token.get_informations_from_recover_token(args.recover_token)
-    const user = await utils_user.get_user_by_id(informations.user_id)
-    const hash = await utils_password.hash_password(args.password)
-    await utils_user.edit_user_by_user(user, { password: hash })
-    return true
   }
 }

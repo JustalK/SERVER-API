@@ -20,7 +20,7 @@ module.exports = {
   * @return {Object} The recover_token saved
   **/
   add_recover_token: async (user_id, token) => {
-    if (await module.exports.is_user_exist_by_user_id(user_id)) {
+    if (await module.exports.is_recover_token_exist_by_user_id(user_id)) {
       throw new Error('There is already a valid token existing for this user.')
     }
 
@@ -47,6 +47,11 @@ module.exports = {
     await module.exports.add_recover_token(user_id, recover_token_encrypted)
     return recover_token_encrypted
   },
+  /**
+  * Get the information encoded in the recover token
+  * @param {Object} recover_token The encoded token
+  * @return {Object} The decoded information in the token
+  **/
   get_informations_from_recover_token: recover_token => {
     if (!recover_token) {
       throw new Error('The recover token cannot be null or undefined.')
@@ -70,11 +75,29 @@ module.exports = {
     return recover_token_string
   },
   /**
+  * Invalid a token by user
+  * @param {user} user The user who need his token to be invalidated
+  * @return {Object} The invalidated token
+  **/
+  invalid_token_by_user: async user => {
+    return dbs.invalid_token_by_user(user._id)
+  },
+  /**
+  * Check a recover token exist for an user an return an error if not
+  * @param {String} user_id The _id of the user we want to check
+  **/
+  check_recover_token_exist_by_token: async token => {
+    const exist = await dbs.test_recover_token_by_recover_token(token)
+    if (!exist) {
+      throw new Error('This recover token has already been used or does not exist.')
+    }
+  },
+  /**
   * Test if a valid token exist in the database
   * @param {String} user_id The _id of the user we are looking for a token
   * @return {boolean} True if a token already exist or else false
   **/
-  is_user_exist_by_user_id: async user_id => {
+  is_recover_token_exist_by_user_id: async user_id => {
     return dbs.test_recover_token_by_user(user_id)
   }
 }

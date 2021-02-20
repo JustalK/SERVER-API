@@ -129,6 +129,11 @@ test('[USER] Trying to forget password with an existing valid recover token alre
   t.is(response.errors[0].message, 'There is already a valid token existing for this user.')
 })
 
+test('[USER] Trying to change password with an already used recover token', async t => {
+  const response = await queries_user.change_password_user('Qwerty10@10', 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb')
+  t.is(response.errors[0].message, 'This recover token has already been used or does not exist.')
+})
+
 test('[ADMIN] Get the config', async t => {
   const response_login = await queries_auth.login_admin()
 

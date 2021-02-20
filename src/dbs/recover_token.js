@@ -18,11 +18,27 @@ module.exports = {
     return model.create(recover_token)
   },
   /**
+  * Call mongodb for invalidating a token by user_id
+  * @param {String} user_id The _id of the user to search
+  * @return {Object} The token invalidated
+  **/
+  invalid_token_by_user: user_id => {
+    return model.findOneAndUpdate({ user: user_id, used: false, deleted: false }, { used: true, deleted: true })
+  },
+  /**
   * Call mongodb for testing if a token by the name of the user exists
   * @param {String} user_id The _id of the user to search
   * @return {boolean} True if a document exist or else False
   **/
   test_recover_token_by_user: user_id => {
     return model.exists({ user: user_id, used: false, deleted: false })
+  },
+  /**
+  * Call mongodb for testing if a token by the token of the user exists
+  * @param {String} token The token of the user to search
+  * @return {boolean} True if a document exist or else False
+  **/
+  test_recover_token_by_recover_token: token => {
+    return model.exists({ token, used: false, deleted: false })
   }
 }

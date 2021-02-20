@@ -41,16 +41,6 @@ module.exports = gql`
       recover_token: String!): User!
 
     """
-    Change password with a recovery token\n
-    A recover token is a token gotten when the user asked for a new password
-    """
-    change_password_user(
-      "The new password for the account"
-      password: String!,
-      "The recovery token"
-      recover_token: String!): Boolean
-
-    """
     Return the config of the system
     """
     get_config: Config! @isAdmin @isLoggedIn

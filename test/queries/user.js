@@ -53,7 +53,7 @@ module.exports = {
   change_password_user: (password, recover_token) => {
     return m_utils.getter({
       query: `
-        query {
+        mutation {
           change_password_user(password: "${password}", recover_token: "${recover_token}")
         }`
     })
