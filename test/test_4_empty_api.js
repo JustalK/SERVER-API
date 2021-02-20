@@ -9,6 +9,7 @@ const m = require('@src')
 const m_seeding = require('@seeding/seeder')
 const queries_auth = require('@test/queries/auth')
 const queries_config = require('@test/queries/config')
+const m_service_recover_token = require('@src/services/utils/recover_token')
 
 test.before(async () => {
   await m.start()
@@ -40,6 +41,14 @@ test('[STATIC] Access to the admin', async t => {
 test('[STATIC] Trying to access to the admin', async t => {
   const response = await fetch('http://' + process.env.HOST + ':' + process.env.PORT + '/admin')
   t.is(response.status, 401)
+})
+
+test('[ADMIN] Testing the cron for invalidating outdated token', async t => {
+  const response_token_maureen = await m_service_recover_token.is_recover_token_exist_by_user_id('5fd5b58efbc2f7a33c2ab002')
+  t.is(response_token_maureen, true)
+  await m_service_recover_token.invalid_outdated_token()
+  const response_token_maureen_after_cron = await m_service_recover_token.is_recover_token_exist_by_user_id('5fd5b58efbc2f7a33c2ab002')
+  t.is(response_token_maureen_after_cron, false)
 })
 
 test('[ADMIN] Trying to access inexisting config', async t => {

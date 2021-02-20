@@ -12,6 +12,7 @@ const AdminBroExpress = require('@admin-bro/express')
 const AdminBroMongoose = require('@admin-bro/mongoose')
 const apollo = require('@src/apollo')
 const logger = require('@src/libs/logger')
+const crontab = require('@src/crontab/crontab')
 const auth = require('basic-auth')
 
 module.exports = {
@@ -99,6 +100,7 @@ module.exports = {
   **/
   start: async (name, host, port) => {
     const server = module.exports.create_server()
+    crontab.start()
 
     module.exports.register_adminbro(server)
     module.exports.register_graphql(server)

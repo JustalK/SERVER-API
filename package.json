@@ -52,6 +52,7 @@
     "mongo-uri-builder": "^3.2.2",
     "mongoose": "^5.11.7",
     "mustache": "^4.1.0",
+    "node-cron": "^2.0.3",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "terser": "^5.5.1",

@@ -93,6 +93,12 @@ module.exports = {
     }
   },
   /**
+  * Delete the token outdated from the database
+  **/
+  invalid_outdated_token: async () => {
+    return dbs.invalid_outdated_token()
+  },
+  /**
   * Test if a valid token exist in the database
   * @param {String} user_id The _id of the user we are looking for a token
   * @return {boolean} True if a token already exist or else false

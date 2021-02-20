@@ -7,6 +7,7 @@
 const path = require('path')
 const filename = path.basename(__filename, '.js')
 const model = require('@src/models/' + filename)
+const date = require('@src/libs/date')
 
 module.exports = {
   /**
@@ -24,6 +25,12 @@ module.exports = {
   **/
   invalid_token_by_user: user_id => {
     return model.findOneAndUpdate({ user: user_id, used: false, deleted: false }, { used: true, deleted: true })
+  },
+  /**
+  * Call mongodb for invalidating outdated token
+  **/
+  invalid_outdated_token: () => {
+    return model.updateMany({ date: { $lt: date.yesterday() }, deleted: false }, { deleted: true })
   },
   /**
   * Call mongodb for testing if a token by the name of the user exists
