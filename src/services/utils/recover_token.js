@@ -20,10 +20,6 @@ module.exports = {
   * @return {Object} The recover_token saved
   **/
   add_recover_token: async (user_id, token) => {
-    if (await module.exports.is_recover_token_exist_by_user_id(user_id)) {
-      throw new Error('There is already a valid token existing for this user.')
-    }
-
     const recover_token = {
       user: user_id,
       token,
@@ -97,6 +93,14 @@ module.exports = {
   **/
   invalid_outdated_token: async () => {
     return dbs.invalid_outdated_token()
+  },
+  /**
+  * Get existing recover token by user id
+  * @param {String} user_id The _id of the user we are looking for a token
+  * @return {Object} The recover token
+  **/
+  get_existing_recover_token_by_user_id: async user_id => {
+    return dbs.get_existing_recover_token_by_user_id(user_id)
   },
   /**
   * Test if a valid token exist in the database

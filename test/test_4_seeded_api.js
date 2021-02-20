@@ -125,8 +125,9 @@ test('[USER] Forget password and change password', async t => {
 })
 
 test('[USER] Trying to forget password with an existing valid recover token already created', async t => {
-  const response = await queries_email.send_recovery_email('kevin@gmail.com')
-  t.is(response.errors[0].message, 'There is already a valid token existing for this user.')
+  const response_token = await queries_email.send_recovery_email('justal.kevin.spam@gmail.com')
+  const token = response_token.send_recovery_email
+  t.not(token, 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb')
 })
 
 test('[USER] Trying to change password with an already used recover token', async t => {

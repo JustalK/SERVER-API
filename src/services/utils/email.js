@@ -44,7 +44,12 @@ module.exports = {
   **/
   forgotten_password_email: async user => {
     // Create the token
-    const token = await utils_recover_token.create_recover_token_from_user(user._id.toString())
+    const user_id = user._id.toString()
+    console.log(user)
+    const token = await utils_recover_token.is_recover_token_exist_by_user_id(user_id)
+      ? await utils_recover_token.get_existing_recover_token_by_user_id(user_id)
+      : await utils_recover_token.create_recover_token_from_user(user_id)
+
     // Create the data to be parse by mustache
     const data = {
       username: user.username,

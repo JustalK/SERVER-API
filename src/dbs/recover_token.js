@@ -19,6 +19,14 @@ module.exports = {
     return model.create(recover_token)
   },
   /**
+  * Call mongodb for getting a recover token by user_id
+  * @param {String} user_id The _id of the user to search for a recover token
+  * @return {Object} The recover token
+  **/
+  get_existing_recover_token_by_user_id: user_id => {
+    return model.findOne({ user: user_id, used: false, deleted: false })
+  },
+  /**
   * Call mongodb for invalidating a token by user_id
   * @param {String} user_id The _id of the user to search
   * @return {Object} The token invalidated
