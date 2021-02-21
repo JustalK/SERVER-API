@@ -1,49 +1,53 @@
 env:
   global:
-    - secure: "StAj8h4P9srK9Cvn0ZSlqKt1pVoJ+htUXmJF7MC6UUu3hYOiW8FqM0wgCGTvPZ12Dw96mr9adxP42yDEcntbGeWRybKAw7VKA05uRfMWPvfRQUtwu/cAmIBmSbq6mSqc7MPOpcMdqw0CToPnr0wQXTdRjuHDy3JCJK1uJ9/y8jvhKeu/XyqhNxsHwDZBKDket+aiyUO+jrN6wUbubbfYV56/HSFTxI9meQLoM6e0H+A0MOETdA4W+8ATDbMDjvC22zeq9fFl4G8ysmpjLuTx1Iazsv22GcucM8RbqR+n5yhDb2kT2ifhnWzey+DOYBEmhfMkdP0WFCONmDl2ZtU9E0Slzsjmbc3II9Kq20wK7mrgX5Yh8vf+d2h9GmbkBCaLt7O8AqvF6sATMHEppEH/0O+Wj+vqK5+OuzIgpYJ2vWI6nZqUs5pnNuaegtVH3lXe8nIuHorpJKiCWHmDcWpfgkjf6KZMs3frx5K2mhxK/XhdlfKn+RMnPzl27f5QHc3KF3yfa8DQvlvP9bpPF9xtMTLmaEJzpQGvMBQrapGF5UrhwtZf082mLDCgoGwCcXr7btfFDeT6oY+HPwg1hhYFi+7sfEBpoOdv43JJD6XrljGTaJ4Tb6zo59HWL6kOl9bN0OckNP0fjn//nbCrxs6si4CXiyRCc83xZh/sgbEhTbI="
-    - secure: "YrGi6O19oxgwnOsvd9qs5hDYrlgt5mvl3p5EGdwAxjlOhS5uswWglLsBvzu2LKC3yjj3k0haqxVbrDIxZ4s/4e3O/pUw/jNlatq4IP+/eBQ6mdKKL3VFTp+k3JrILB7u3E6iCKeE73MyrzEpSyCBflfdSoPCHemw7TgpPCRgH5QYQSthf4jVovD1+BjPDB0kteRWBsEwNeb/QFiHxvaO0N0YXtkCEbgcLQq9TKhzztjO32wEt14lNKjdHU3leXjyEg0TRL1bk0KSJLsNNIv+NlZTrkpsFZP9trSThHguI6EeBVuaj0LyBSVBbgmfysbo88TAD4rWA4Ojkjo/jHMiC/gDOx2RisY1wGaSHip5BbxsOUnW3MnsSViapTwkjkr99cQnw00++hS8EiJMHnrmkJfWnsbPIus+MN5OkkjmXHNUUzXMhbyu0e4Cmd09c5dkYqQTQmSEjH/Yg/Rxn2t1WhVljklXd0HrVlQ064L7tgJKKrcb/+yOLW/xD1qLLZszhwUAmOm1ooWiXKQz61h5el3ccLnWaGQN84K9CXSx/mn/TIxh1Qh6haJ/16vMa6aJ9ZeF+2KHcauttbYqMw27alQ3o5mbD/N7K0qts76NC/NZcpmayZtpHcy4C3/lWfB3IbCBOlAUlBoWdBMTgT+GsW61Qq/9Coa+Z2Xe456eUYs="
-    - secure: "bozXRdqEB/cRyJCjKCWOC/r3ZfD4N01UOc3Lr7vdw+LYwsTR+QiQNqDN0Ez2lAJEoMUajVNCzLdsGRCuOenCpqvh2SqnEk5oHIcb/5U5P65INi95PWeHEd5Cmr5JtbKw2Vl8dJZYMMY/Zr1SC+CFG6udhv9jcI6JEd9/anPnOcYU1tOmvPj1QQn7AKil9JQ6K0pGOzFTvUtz/0UGtD2h2TRzShbyQ7kTLSmGbNF81tZ4n5jF8uCDMmb6KlALQYqhWck4+58n3OjgsS+uvQFmtsPoe09pQCGCuL5UlV1ly8yLechE+cwEuly7BCRKmER/upajf+P0KbGMYhaItdsP0PR4kt5YZOIf5KK/kuaMlydo1t90nG0OfOsvOd8oIlztAW73kCUtcEdNkTiEDBDguxxYvTVpu7SG32NcXaKR1LteQZj6EZ+FQyuHjY2pYViGkMT6xJLUy+nvtWddIu278EuLgwig6Q2q0yurJ731wK2KOCJ/nkIdzwtU7CQLnwMc77P9wcWWBYnGciXxhX+dc79CmokphkJNQ/6uSj6pEijKzHw7Z/OimZ4NhOLUsKd2iVI3iKpLEwZ6IIVyAe4S2+eCuJFR6qYmyTASbrpf5HWMlnK67WL38Axf6aNuQrdyiZDRXmj/cvx+5lPCwDs0UR/5cNlKuvWW1NPmnF/gcVs="
-    - NODE_ENV: "test"
-    - API_NAME: "SERVER-API"
-    - HOST: "localhost"
-    - PORT: "5000"
-    - ENDPOINT: "/api/graphql"
-    - FRONTEND_URL: "http://www.justalk.online"
-    - ENDPOINT_ERD: "/erd"
-    - ENDPOINT_ADMINBRO: "/admin"
-    - PASSWORD_ADMINBRO: "admin"
-    - USERNAME_ADMINBRO: "admin"
-    - SECRET_JWT: "TryAgain"
-    - BCRYPT_SALT: 10
-    - PASSWORD_LIMIT_CHARACTER: 5
-    - TOKEN_EXPIRE_TIME: "1h"
-    - FORGET_TOKEN_EXPIRE_TIME: "1h"
-    - LOGS: "FALSE"
-    - ENCRYPTION_ALGORITHM: "aes-256-ctr"
-    - ENCRYPTION_SECRET_KEY: "vOVH6sdmpNWjRRIqCc7rdxs01lwHzfr3"
-    - ENCRYPTION_SPLIT: "w"
-    - LOGS_CONSOLE: "FALSE"
-    - FROM_EMAIL: "justal.kevin@gmail.com"
-    - DB_NAME: "server_api"
-    - DB_URI_DATA: "mongodb://localhost:27017/"
-    - DB_URI_LOG: "mongodb://localhost:27017/logs"
-    - DB_HOST_LOG: "localhost"
-    - DB_PORT_LOG: 27017
-    - DB_NAME_LOG: "logs"
+  - secure: StAj8h4P9srK9Cvn0ZSlqKt1pVoJ+htUXmJF7MC6UUu3hYOiW8FqM0wgCGTvPZ12Dw96mr9adxP42yDEcntbGeWRybKAw7VKA05uRfMWPvfRQUtwu/cAmIBmSbq6mSqc7MPOpcMdqw0CToPnr0wQXTdRjuHDy3JCJK1uJ9/y8jvhKeu/XyqhNxsHwDZBKDket+aiyUO+jrN6wUbubbfYV56/HSFTxI9meQLoM6e0H+A0MOETdA4W+8ATDbMDjvC22zeq9fFl4G8ysmpjLuTx1Iazsv22GcucM8RbqR+n5yhDb2kT2ifhnWzey+DOYBEmhfMkdP0WFCONmDl2ZtU9E0Slzsjmbc3II9Kq20wK7mrgX5Yh8vf+d2h9GmbkBCaLt7O8AqvF6sATMHEppEH/0O+Wj+vqK5+OuzIgpYJ2vWI6nZqUs5pnNuaegtVH3lXe8nIuHorpJKiCWHmDcWpfgkjf6KZMs3frx5K2mhxK/XhdlfKn+RMnPzl27f5QHc3KF3yfa8DQvlvP9bpPF9xtMTLmaEJzpQGvMBQrapGF5UrhwtZf082mLDCgoGwCcXr7btfFDeT6oY+HPwg1hhYFi+7sfEBpoOdv43JJD6XrljGTaJ4Tb6zo59HWL6kOl9bN0OckNP0fjn//nbCrxs6si4CXiyRCc83xZh/sgbEhTbI=
+  - secure: YrGi6O19oxgwnOsvd9qs5hDYrlgt5mvl3p5EGdwAxjlOhS5uswWglLsBvzu2LKC3yjj3k0haqxVbrDIxZ4s/4e3O/pUw/jNlatq4IP+/eBQ6mdKKL3VFTp+k3JrILB7u3E6iCKeE73MyrzEpSyCBflfdSoPCHemw7TgpPCRgH5QYQSthf4jVovD1+BjPDB0kteRWBsEwNeb/QFiHxvaO0N0YXtkCEbgcLQq9TKhzztjO32wEt14lNKjdHU3leXjyEg0TRL1bk0KSJLsNNIv+NlZTrkpsFZP9trSThHguI6EeBVuaj0LyBSVBbgmfysbo88TAD4rWA4Ojkjo/jHMiC/gDOx2RisY1wGaSHip5BbxsOUnW3MnsSViapTwkjkr99cQnw00++hS8EiJMHnrmkJfWnsbPIus+MN5OkkjmXHNUUzXMhbyu0e4Cmd09c5dkYqQTQmSEjH/Yg/Rxn2t1WhVljklXd0HrVlQ064L7tgJKKrcb/+yOLW/xD1qLLZszhwUAmOm1ooWiXKQz61h5el3ccLnWaGQN84K9CXSx/mn/TIxh1Qh6haJ/16vMa6aJ9ZeF+2KHcauttbYqMw27alQ3o5mbD/N7K0qts76NC/NZcpmayZtpHcy4C3/lWfB3IbCBOlAUlBoWdBMTgT+GsW61Qq/9Coa+Z2Xe456eUYs=
+  - secure: bozXRdqEB/cRyJCjKCWOC/r3ZfD4N01UOc3Lr7vdw+LYwsTR+QiQNqDN0Ez2lAJEoMUajVNCzLdsGRCuOenCpqvh2SqnEk5oHIcb/5U5P65INi95PWeHEd5Cmr5JtbKw2Vl8dJZYMMY/Zr1SC+CFG6udhv9jcI6JEd9/anPnOcYU1tOmvPj1QQn7AKil9JQ6K0pGOzFTvUtz/0UGtD2h2TRzShbyQ7kTLSmGbNF81tZ4n5jF8uCDMmb6KlALQYqhWck4+58n3OjgsS+uvQFmtsPoe09pQCGCuL5UlV1ly8yLechE+cwEuly7BCRKmER/upajf+P0KbGMYhaItdsP0PR4kt5YZOIf5KK/kuaMlydo1t90nG0OfOsvOd8oIlztAW73kCUtcEdNkTiEDBDguxxYvTVpu7SG32NcXaKR1LteQZj6EZ+FQyuHjY2pYViGkMT6xJLUy+nvtWddIu278EuLgwig6Q2q0yurJ731wK2KOCJ/nkIdzwtU7CQLnwMc77P9wcWWBYnGciXxhX+dc79CmokphkJNQ/6uSj6pEijKzHw7Z/OimZ4NhOLUsKd2iVI3iKpLEwZ6IIVyAe4S2+eCuJFR6qYmyTASbrpf5HWMlnK67WL38Axf6aNuQrdyiZDRXmj/cvx+5lPCwDs0UR/5cNlKuvWW1NPmnF/gcVs=
+  - NODE_ENV: test
+  - API_NAME: SERVER-API
+  - HOST: localhost
+  - PORT: '5000'
+  - ENDPOINT: "/api/graphql"
+  - FRONTEND_URL: http://www.justalk.online
+  - ENDPOINT_ERD: "/erd"
+  - ENDPOINT_ADMINBRO: "/admin"
+  - PASSWORD_ADMINBRO: admin
+  - USERNAME_ADMINBRO: admin
+  - SECRET_JWT: TryAgain
+  - BCRYPT_SALT: 10
+  - PASSWORD_LIMIT_CHARACTER: 5
+  - TOKEN_EXPIRE_TIME: 1h
+  - FORGET_TOKEN_EXPIRE_TIME: 1h
+  - LOGS: 'FALSE'
+  - ENCRYPTION_ALGORITHM: aes-256-ctr
+  - ENCRYPTION_SECRET_KEY: vOVH6sdmpNWjRRIqCc7rdxs01lwHzfr3
+  - ENCRYPTION_SPLIT: w
+  - LOGS_CONSOLE: 'FALSE'
+  - FROM_EMAIL: justal.kevin@gmail.com
+  - DB_NAME: server_api
+  - DB_URI_DATA: mongodb://localhost:27017/
+  - DB_URI_LOG: mongodb://localhost:27017/logs
+  - DB_HOST_LOG: localhost
+  - DB_PORT_LOG: 27017
+  - DB_NAME_LOG: logs
 language: node_js
 node_js:
-  - 15
+- 15
 services:
-  - mongodb
+- mongodb
 install:
-  - npm install nyc -g
-  - npm install
+- npm install nyc -g
+- npm install
 before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+  > ./cc-test-reporter
+- chmod +x ./cc-test-reporter
+- "./cc-test-reporter before-build"
 script:
-  - nyc --reporter=lcov npm run test
+- nyc --reporter=lcov npm run test
 after_success:
-  - npm run coverage
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+- npm run coverage
+- "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
+before_install:
+- openssl aes-256-cbc -K $encrypted_dfdcfd5172af_key -iv $encrypted_dfdcfd5172af_iv
+  -in deploy_key.enc -out ./deploy_key -d

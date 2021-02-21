@@ -124,6 +124,12 @@ For encrypting a value, you just need to use the following command :
 travis encrypt KEY="value"
 ```
 
+or for an entire file :
+
+```
+travis encrypt-file ./xxx_filename --add
+```
+
 #### Build email
 
 The email are build with `heml` and `Mustache`. They can be build easily with the following command :
