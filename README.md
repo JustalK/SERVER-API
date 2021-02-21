@@ -29,6 +29,7 @@ I explain with all the details how I build the project and my way of working.
 8. [Monitoring](#monitoring)
 9. [Security](#security)
 10. [Running](#running)
+11. [Deployment](#deployment)
 
 ## ERD
 
@@ -207,6 +208,8 @@ For running the API, a single command is needed. You might want to use the [SSH 
 ```
 npm run start
 ```
+
+## Deployment
 
 ## License
 
