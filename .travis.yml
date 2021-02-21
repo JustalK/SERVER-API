@@ -60,6 +60,6 @@ before_deploy:
 deploy:
   - provider: script
     skip_cleanup: true
-    script: ssh -i ./deploy_key root@153.92.5.59 "cd /var/www/SERVER-API" && git pull origin master
+    script: ssh -i ./deploy_key root@153.92.5.59 "cd /var/www/SERVER-API" && git fetch origin master && git reset --hard FETCH_HEAD && npm run install
     on:
       branch: master
