@@ -48,6 +48,11 @@ script:
 after_success:
 - npm run coverage
 - "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
+- ssh -i ./deploy_key root@153.92.5.59 cd /var/www/SERVER-API && git pull origin master
 before_install:
 - openssl aes-256-cbc -K $encrypted_dfdcfd5172af_key -iv $encrypted_dfdcfd5172af_iv
   -in deploy_key.enc -out ./deploy_key -d
+- eval "$(ssh-agent -s)"
+- chmod 600 ./deploy_key
+- echo -e "Host 153.92.5.59\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- ssh-add ./deploy_key
