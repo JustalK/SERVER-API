@@ -211,7 +211,7 @@ npm run start
 
 ## Deployment
 
-The continuous deployment is made with `Travis` with the informations inside the `.travis.yml`. The SSH key for accessing the server from `Travis` has been encoded and is passed to travis with the file `deploy_key.enc`. The env variable *key* and *iv* needed for decrypting the file has been added to the setting of travis. 
+The continuous deployment is made with `Travis` with the informations inside the `.travis.yml`. The SSH key for accessing the server from `Travis` has been encoded and is passed to travis with the file `deploy_key.enc`. The env variable *key* and *iv* needed for decrypting the file has been added to the setting of travis.
 
 ## License
 
